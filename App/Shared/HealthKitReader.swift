@@ -112,8 +112,22 @@ public final class HealthKitReader {
         let startOfDay = calendar.startOfDay(for: day)
         let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay) ?? startOfDay
         let end = endOverride ?? endOfDay
+        let isToday = calendar.isDateInToday(day)
 
-        let steps = try await steps(from: startOfDay, to: end)
+        // Prefer CoreMotion for today's live count ON THE WATCH — HealthKit lags
+        // behind the motion coprocessor by minutes. On iPhone we keep HealthKit
+        // because the phone may be on a desk (CMPedometer = 0) while the watch
+        // is actually the counting device — HealthKit merges those samples.
+        let steps: Int
+        #if os(watchOS)
+        if isToday, PedometerReader.shared.isAvailable {
+            steps = (try? await PedometerReader.shared.steps(from: startOfDay, to: end)) ?? 0
+        } else {
+            steps = try await self.steps(from: startOfDay, to: end)
+        }
+        #else
+        steps = try await self.steps(from: startOfDay, to: end)
+        #endif
 
         // Max HR is computed as-of the day being scored (more accurate if the DOB boundary falls within the range).
         let dob = settings.dobOverride ?? dateOfBirth(calendar: calendar)

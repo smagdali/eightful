@@ -29,8 +29,11 @@
 		84696C2B79BD0DAAE846179A /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288838AABB195F187153F1D5 /* StepsProvider.swift */; };
 		988C756E1A4210EAC607D922 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756A4C9DF28F82EB2847EBCE /* HistoryStore.swift */; };
 		9C1590BC989BEA55ED3CAD1A /* StepsToEightCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9970AACD5B2186E85AFDF292 /* StepsToEightCore */; };
+		A04FB98A3D6A36592945EFEB /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F6A7B5B820B93C6D9A86F /* PedometerReader.swift */; };
+		A42FDEC4A08957B02BD2DE78 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F6A7B5B820B93C6D9A86F /* PedometerReader.swift */; };
 		A7DA4FF0DC9C3D1A0F0BFC49 /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465495B0151FC42603FA4992 /* ReconciliationStore.swift */; };
 		AD6DC23EF3043D3908D081DA /* StepsToEightWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A400867519705B7839ACF5 /* StepsToEightWidget.swift */; };
+		B12E54378605450B110B05F6 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F6A7B5B820B93C6D9A86F /* PedometerReader.swift */; };
 		BC24AC78959AEE293FDCA50D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49C423D83769E994BD9C68 /* RootView.swift */; };
 		BC4A48FB61ADBD5D4F7CA40D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53754DF98089C15EFC68E8 /* SettingsStore.swift */; };
 		CF657CB160E469844B16E431 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756A4C9DF28F82EB2847EBCE /* HistoryStore.swift */; };
@@ -70,6 +73,7 @@
 		465495B0151FC42603FA4992 /* ReconciliationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconciliationStore.swift; sourceTree = "<group>"; };
 		53A49CA22D8C1686ABC85C2E /* StepsToEightWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepsToEightWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C53754DF98089C15EFC68E8 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		652F6A7B5B820B93C6D9A86F /* PedometerReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedometerReader.swift; sourceTree = "<group>"; };
 		71A400867519705B7839ACF5 /* StepsToEightWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsToEightWidget.swift; sourceTree = "<group>"; };
 		756A4C9DF28F82EB2847EBCE /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
 		8B67487095A587625A022D60 /* StepsToEightWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsToEightWatchApp.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			children = (
 				05381BE8F00CFE85B769DC28 /* HealthKitReader.swift */,
 				756A4C9DF28F82EB2847EBCE /* HistoryStore.swift */,
+				652F6A7B5B820B93C6D9A86F /* PedometerReader.swift */,
 				465495B0151FC42603FA4992 /* ReconciliationStore.swift */,
 				5C53754DF98089C15EFC68E8 /* SettingsStore.swift */,
 				B2F2D277BABB7A310DD9E29C /* TierColor.swift */,
@@ -311,6 +316,7 @@
 				CF657CB160E469844B16E431 /* HistoryStore.swift in Sources */,
 				D82FE3761A3712EBA61D33EE /* MainTabView.swift in Sources */,
 				1EC0531B9FDD19334288B644 /* NotificationScheduler.swift in Sources */,
+				A42FDEC4A08957B02BD2DE78 /* PedometerReader.swift in Sources */,
 				A7DA4FF0DC9C3D1A0F0BFC49 /* ReconciliationStore.swift in Sources */,
 				04CD5FDFF708BD8283E0B768 /* ReconciliationView.swift in Sources */,
 				BC24AC78959AEE293FDCA50D /* RootView.swift in Sources */,
@@ -327,6 +333,7 @@
 				72FEAEB569274F8A7669B474 /* ComplicationView.swift in Sources */,
 				0BA8631631321F2DDFB5E93F /* HealthKitReader.swift in Sources */,
 				71216397C4411569DDEBE98C /* HistoryStore.swift in Sources */,
+				B12E54378605450B110B05F6 /* PedometerReader.swift in Sources */,
 				241F80633F2F2A543EA4F919 /* ReconciliationStore.swift in Sources */,
 				76FA1F44452A7F10C21FAF20 /* SettingsStore.swift in Sources */,
 				84696C2B79BD0DAAE846179A /* StepsProvider.swift in Sources */,
@@ -341,6 +348,7 @@
 			files = (
 				67048F0560F781ED92A023AA /* HealthKitReader.swift in Sources */,
 				988C756E1A4210EAC607D922 /* HistoryStore.swift in Sources */,
+				A04FB98A3D6A36592945EFEB /* PedometerReader.swift in Sources */,
 				230163751725AB54527F409E /* ReconciliationStore.swift in Sources */,
 				1594A6AFED1B7AD253F63ECD /* SettingsStore.swift in Sources */,
 				5CE840594D83B816F66709A0 /* StepsToEightWatchApp.swift in Sources */,

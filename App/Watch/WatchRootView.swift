@@ -53,10 +53,33 @@ struct WatchRootView: View {
         .padding()
         .task { await grantAndLoad() }
         .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active { Task { await refresh() } }
+            if newPhase == .active {
+                Task { await refresh() }
+                startLivePedometer()
+            } else if newPhase == .background {
+                PedometerReader.shared.stopLiveUpdates()
+            }
         }
         .onReceive(refreshTimer) { _ in
             Task { await refresh() }
+        }
+    }
+
+    /// Start CoreMotion push updates so the step count increments in real time
+    /// rather than waiting for HealthKit or our timer.
+    private func startLivePedometer() {
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        PedometerReader.shared.startLiveUpdates(from: startOfDay) { steps in
+            Task { @MainActor in
+                if var s = state {
+                    s = DayState(steps: steps, workoutGreen: s.workoutGreen, timestamp: Date())
+                    state = s
+                } else {
+                    state = DayState(steps: steps, workoutGreen: false, timestamp: Date())
+                }
+                lastUpdated = Date()
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }
     }
 
@@ -84,6 +107,7 @@ struct WatchRootView: View {
             lastUpdated = Date()
             phase = .ready
             WidgetCenter.shared.reloadAllTimelines()
+            startLivePedometer()
         } catch let err as NSError where err.domain == "com.apple.healthkit" && err.code == 5 {
             phase = .needsAuth
         } catch {

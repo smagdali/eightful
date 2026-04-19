@@ -22,6 +22,8 @@
     <string>1</string>
     <key>NSHealthShareUsageDescription</key>
     <string>StepsToEight reads your step count, workouts, and heart rate so it can show progress toward your 8-point target on your watch face.</string>
+    <key>NSMotionUsageDescription</key>
+    <string>StepsToEight uses the motion sensors so the step count on the watch face updates in real time, not minutes after you take them.</string>
     <key>WKApplication</key>
     <true/>
     <key>WKCompanionAppBundleIdentifier</key>

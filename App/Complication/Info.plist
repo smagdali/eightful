@@ -27,5 +27,7 @@
     </dict>
     <key>NSHealthShareUsageDescription</key>
     <string>StepsToEight reads your step count to display on watch complications.</string>
+    <key>NSMotionUsageDescription</key>
+    <string>StepsToEight uses the motion sensors so the complication updates in real time.</string>
 </dict>
 </plist>
