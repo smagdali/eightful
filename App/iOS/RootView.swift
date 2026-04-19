@@ -105,8 +105,8 @@ struct RootView: View {
         } catch {
             authError = String(describing: error)
         }
-        let notif = try? await UNUserNotificationCenter.current().notificationSettings()
-        notificationsAuthorized = notif?.authorizationStatus == .authorized
+        let notif = await UNUserNotificationCenter.current().notificationSettings()
+        notificationsAuthorized = notif.authorizationStatus == .authorized
     }
 
     private func requestHealthAuth() async {
