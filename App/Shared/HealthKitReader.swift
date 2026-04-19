@@ -38,10 +38,9 @@ public final class HealthKitReader {
         return calendar.date(from: components)
     }
 
-    /// Sum of step count samples for today (midnight -> now, local calendar).
-    public func stepsToday(calendar: Calendar = .current, now: Date = Date()) async throws -> Int {
-        let startOfDay = calendar.startOfDay(for: now)
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
+    /// Sum of step count samples between two dates.
+    public func steps(from start: Date, to end: Date) async throws -> Int {
+        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
         let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
 
         return try await withCheckedThrowingContinuation { cont in
@@ -57,10 +56,14 @@ public final class HealthKitReader {
         }
     }
 
-    /// Scans today's workouts; returns true if any single workout earns 8 Vitality points.
-    public func workoutGreenToday(maxHR: Double, calendar: Calendar = .current, now: Date = Date()) async throws -> Bool {
-        let startOfDay = calendar.startOfDay(for: now)
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
+    /// Convenience: sum of step count samples from local midnight to `now`.
+    public func stepsToday(calendar: Calendar = .current, now: Date = Date()) async throws -> Int {
+        try await steps(from: calendar.startOfDay(for: now), to: now)
+    }
+
+    /// Returns true if any single workout between `start` and `end` earns 8 Vitality points.
+    public func workoutGreen(maxHR: Double, from start: Date, to end: Date) async throws -> Bool {
+        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
 
         let workouts: [HKWorkout] = try await withCheckedThrowingContinuation { cont in
             let q = HKSampleQuery(sampleType: .workoutType(), predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, samples, error in
@@ -99,19 +102,53 @@ public final class HealthKitReader {
 
     /// Compute today's `DayState` by fetching steps + workout-green evaluation.
     public func currentDayState(settings: AppSettings, calendar: Calendar = .current, now: Date = Date()) async throws -> DayState {
-        let steps = try await stepsToday(calendar: calendar, now: now)
+        try await dayState(on: now, settings: settings, calendar: calendar, endOverride: now)
+    }
 
+    /// Compute a historical `DayState` for any calendar day.
+    /// - Parameter day: any time on the day of interest; we normalise to start-of-day.
+    /// - Parameter endOverride: upper bound. Nil uses end-of-day. For "today" we pass `now`.
+    public func dayState(on day: Date, settings: AppSettings, calendar: Calendar = .current, endOverride: Date? = nil) async throws -> DayState {
+        let startOfDay = calendar.startOfDay(for: day)
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay) ?? startOfDay
+        let end = endOverride ?? endOfDay
+
+        let steps = try await steps(from: startOfDay, to: end)
+
+        // Max HR is computed as-of the day being scored (more accurate if the DOB boundary falls within the range).
         let dob = settings.dobOverride ?? dateOfBirth(calendar: calendar)
-        let maxHR: Double = dob.map { MaxHeartRate.from(dateOfBirth: $0, now: now, calendar: calendar) } ?? 0
+        let maxHR: Double = dob.map { MaxHeartRate.from(dateOfBirth: $0, now: startOfDay, calendar: calendar) } ?? 0
 
-        let workoutGreen: Bool
+        let isWorkoutGreen: Bool
         if maxHR > 0 {
-            workoutGreen = (try? await workoutGreenToday(maxHR: maxHR, calendar: calendar, now: now)) ?? false
+            isWorkoutGreen = (try? await workoutGreen(maxHR: maxHR, from: startOfDay, to: end)) ?? false
         } else {
-            workoutGreen = false
+            isWorkoutGreen = false
         }
 
-        return DayState(steps: steps, workoutGreen: workoutGreen, timestamp: now)
+        return DayState(steps: steps, workoutGreen: isWorkoutGreen, timestamp: startOfDay)
+    }
+
+    /// Build reconciliation entries for the week containing `date` (Monday -> Sunday, local calendar).
+    public func weekReconciliation(
+        containing date: Date,
+        settings: AppSettings,
+        reported: (Date) -> Int? = { _ in nil },
+        calendar: Calendar = .current
+    ) async -> WeekReconciliation {
+        var cal = calendar
+        cal.firstWeekday = 2 // Monday
+        let weekStart: Date = {
+            let comps = cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date)
+            return cal.date(from: comps) ?? cal.startOfDay(for: date)
+        }()
+        var entries: [ReconciliationEntry] = []
+        for offset in 0..<7 {
+            guard let d = cal.date(byAdding: .day, value: offset, to: weekStart) else { continue }
+            let state = (try? await dayState(on: d, settings: settings, calendar: cal)) ?? DayState(steps: 0, workoutGreen: false, timestamp: cal.startOfDay(for: d))
+            entries.append(ReconciliationEntry(date: cal.startOfDay(for: d), calculated: state, reported: reported(d)))
+        }
+        return WeekReconciliation(weekStart: weekStart, days: entries)
     }
 
     /// Long-lived observer. Caller retains the query; call `store.stop(query)` when done.

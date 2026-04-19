@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04CD5FDFF708BD8283E0B768 /* ReconciliationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80367FA981021546D5B3159 /* ReconciliationView.swift */; };
 		0BA8631631321F2DDFB5E93F /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05381BE8F00CFE85B769DC28 /* HealthKitReader.swift */; };
 		1594A6AFED1B7AD253F63ECD /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53754DF98089C15EFC68E8 /* SettingsStore.swift */; };
 		1B3FC1FE0581AB816394DF8C /* StepsToEightCore in Frameworks */ = {isa = PBXBuildFile; productRef = 076FA49E83835FE5CB2A058C /* StepsToEightCore */; };
 		1EC0531B9FDD19334288B644 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E628930BBBD36226CDCAC79B /* NotificationScheduler.swift */; };
 		20D1F064D6AC9AFA225A065D /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F2D277BABB7A310DD9E29C /* TierColor.swift */; };
+		230163751725AB54527F409E /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465495B0151FC42603FA4992 /* ReconciliationStore.swift */; };
+		241F80633F2F2A543EA4F919 /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465495B0151FC42603FA4992 /* ReconciliationStore.swift */; };
 		294E1DC4580EFBD4B92E4127 /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA1551163597101BAF45CC2 /* WatchRootView.swift */; };
 		2E0FE8E9842F1496D43C512E /* StepsToEightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97096FCF32C6059953FD80C8 /* StepsToEightApp.swift */; };
 		47FBE39813E4344CCD15FF80 /* StepsToEightCore in Frameworks */ = {isa = PBXBuildFile; productRef = BD7A8F84380B487A27E807DE /* StepsToEightCore */; };
@@ -26,10 +29,12 @@
 		84696C2B79BD0DAAE846179A /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288838AABB195F187153F1D5 /* StepsProvider.swift */; };
 		988C756E1A4210EAC607D922 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756A4C9DF28F82EB2847EBCE /* HistoryStore.swift */; };
 		9C1590BC989BEA55ED3CAD1A /* StepsToEightCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9970AACD5B2186E85AFDF292 /* StepsToEightCore */; };
+		A7DA4FF0DC9C3D1A0F0BFC49 /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465495B0151FC42603FA4992 /* ReconciliationStore.swift */; };
 		AD6DC23EF3043D3908D081DA /* StepsToEightWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A400867519705B7839ACF5 /* StepsToEightWidget.swift */; };
 		BC24AC78959AEE293FDCA50D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49C423D83769E994BD9C68 /* RootView.swift */; };
 		BC4A48FB61ADBD5D4F7CA40D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53754DF98089C15EFC68E8 /* SettingsStore.swift */; };
 		CF657CB160E469844B16E431 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756A4C9DF28F82EB2847EBCE /* HistoryStore.swift */; };
+		D82FE3761A3712EBA61D33EE /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB59BCEEE77B50542159011F /* MainTabView.swift */; };
 		F234FDD9453FC65E8E2DF857 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05381BE8F00CFE85B769DC28 /* HealthKitReader.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +67,7 @@
 		0DADF3892110B7C28ECB803C /* watch-stepcounter */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "watch-stepcounter"; path = .; sourceTree = SOURCE_ROOT; };
 		1FEBC26F9782BD85CD1293C9 /* ComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationView.swift; sourceTree = "<group>"; };
 		288838AABB195F187153F1D5 /* StepsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProvider.swift; sourceTree = "<group>"; };
+		465495B0151FC42603FA4992 /* ReconciliationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconciliationStore.swift; sourceTree = "<group>"; };
 		53A49CA22D8C1686ABC85C2E /* StepsToEightWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepsToEightWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C53754DF98089C15EFC68E8 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		71A400867519705B7839ACF5 /* StepsToEightWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsToEightWidget.swift; sourceTree = "<group>"; };
@@ -71,8 +77,10 @@
 		9DA1551163597101BAF45CC2 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		B2F2D277BABB7A310DD9E29C /* TierColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierColor.swift; sourceTree = "<group>"; };
 		B521DB2382EB98591F6786E1 /* StepsToEightComplication.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StepsToEightComplication.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C80367FA981021546D5B3159 /* ReconciliationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconciliationView.swift; sourceTree = "<group>"; };
 		CB49C423D83769E994BD9C68 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		E628930BBBD36226CDCAC79B /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		EB59BCEEE77B50542159011F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		F3D21D5C1F4DBA01A4D774B9 /* StepsToEight.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = StepsToEight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -109,6 +117,7 @@
 			children = (
 				05381BE8F00CFE85B769DC28 /* HealthKitReader.swift */,
 				756A4C9DF28F82EB2847EBCE /* HistoryStore.swift */,
+				465495B0151FC42603FA4992 /* ReconciliationStore.swift */,
 				5C53754DF98089C15EFC68E8 /* SettingsStore.swift */,
 				B2F2D277BABB7A310DD9E29C /* TierColor.swift */,
 			);
@@ -147,7 +156,9 @@
 		62662562CC6539D521976732 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				EB59BCEEE77B50542159011F /* MainTabView.swift */,
 				E628930BBBD36226CDCAC79B /* NotificationScheduler.swift */,
+				C80367FA981021546D5B3159 /* ReconciliationView.swift */,
 				CB49C423D83769E994BD9C68 /* RootView.swift */,
 				97096FCF32C6059953FD80C8 /* StepsToEightApp.swift */,
 			);
@@ -295,7 +306,10 @@
 			files = (
 				F234FDD9453FC65E8E2DF857 /* HealthKitReader.swift in Sources */,
 				CF657CB160E469844B16E431 /* HistoryStore.swift in Sources */,
+				D82FE3761A3712EBA61D33EE /* MainTabView.swift in Sources */,
 				1EC0531B9FDD19334288B644 /* NotificationScheduler.swift in Sources */,
+				A7DA4FF0DC9C3D1A0F0BFC49 /* ReconciliationStore.swift in Sources */,
+				04CD5FDFF708BD8283E0B768 /* ReconciliationView.swift in Sources */,
 				BC24AC78959AEE293FDCA50D /* RootView.swift in Sources */,
 				BC4A48FB61ADBD5D4F7CA40D /* SettingsStore.swift in Sources */,
 				2E0FE8E9842F1496D43C512E /* StepsToEightApp.swift in Sources */,
@@ -310,6 +324,7 @@
 				72FEAEB569274F8A7669B474 /* ComplicationView.swift in Sources */,
 				0BA8631631321F2DDFB5E93F /* HealthKitReader.swift in Sources */,
 				71216397C4411569DDEBE98C /* HistoryStore.swift in Sources */,
+				241F80633F2F2A543EA4F919 /* ReconciliationStore.swift in Sources */,
 				76FA1F44452A7F10C21FAF20 /* SettingsStore.swift in Sources */,
 				84696C2B79BD0DAAE846179A /* StepsProvider.swift in Sources */,
 				AD6DC23EF3043D3908D081DA /* StepsToEightWidget.swift in Sources */,
@@ -323,6 +338,7 @@
 			files = (
 				67048F0560F781ED92A023AA /* HealthKitReader.swift in Sources */,
 				988C756E1A4210EAC607D922 /* HistoryStore.swift in Sources */,
+				230163751725AB54527F409E /* ReconciliationStore.swift in Sources */,
 				1594A6AFED1B7AD253F63ECD /* SettingsStore.swift in Sources */,
 				5CE840594D83B816F66709A0 /* StepsToEightWatchApp.swift in Sources */,
 				52777AADECF7AB043754AEE4 /* TierColor.swift in Sources */,

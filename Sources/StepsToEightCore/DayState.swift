@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DayState: Equatable, Sendable {
+public struct DayState: Equatable, Sendable, Codable {
     public let steps: Int
     public let workoutGreen: Bool
     public let timestamp: Date
