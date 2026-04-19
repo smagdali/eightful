@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 import StepsToEightCore
 
 struct WatchRootView: View {
@@ -55,6 +56,7 @@ struct WatchRootView: View {
         do {
             state = try await HealthKitReader.shared.currentDayState(settings: settings.settings)
             phase = .ready
+            WidgetCenter.shared.reloadAllTimelines()
         } catch let err as NSError where err.domain == "com.apple.healthkit" && err.code == 5 {
             phase = .needsAuth
         } catch {
