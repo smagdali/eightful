@@ -84,7 +84,7 @@ targets:
         product: StepsToEightCore
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: org.whitelabel.stepstoeight.watchkitapp.complication
+        PRODUCT_BUNDLE_IDENTIFIER: org.whitelabel.stepstoeight.watchkitapp.widget
         INFOPLIST_FILE: App/Complication/Info.plist
         CODE_SIGN_ENTITLEMENTS: App/Complication/StepsToEightComplication.entitlements
         SKIP_INSTALL: YES
