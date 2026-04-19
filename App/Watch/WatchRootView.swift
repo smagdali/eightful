@@ -3,11 +3,13 @@ import WidgetKit
 import StepsToEightCore
 
 struct WatchRootView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @State private var state: DayState?
     @State private var phase: Phase = .loading
     private let settings = SettingsStore.shared
+    private let refreshTimer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
-    enum Phase { case loading, needsAuth, error(String), ready }
+    enum Phase: Equatable { case loading, needsAuth, error(String), ready }
 
     var body: some View {
         VStack(spacing: 6) {
@@ -43,6 +45,22 @@ struct WatchRootView: View {
         }
         .padding()
         .task { await grantAndLoad() }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active { Task { await refresh() } }
+        }
+        .onReceive(refreshTimer) { _ in
+            Task { await refresh() }
+        }
+    }
+
+    /// Re-read HealthKit data without re-prompting for auth.
+    private func refresh() async {
+        guard phase == .ready || phase == .loading else { return }
+        if let s = try? await HealthKitReader.shared.currentDayState(settings: settings.settings) {
+            state = s
+            phase = .ready
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
 
     private func grantAndLoad() async {
