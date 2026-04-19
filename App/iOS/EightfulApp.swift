@@ -3,7 +3,7 @@ import HealthKit
 import UserNotifications
 
 @main
-struct StepsToEightApp: App {
+struct EightfulApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
     var body: some Scene {

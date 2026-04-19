@@ -3,7 +3,7 @@ import HealthKit
 import WidgetKit
 
 @main
-struct StepsToEightWatchApp: App {
+struct EightfulWatchApp: App {
     @WKApplicationDelegateAdaptor(WatchAppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup { WatchRootView() }

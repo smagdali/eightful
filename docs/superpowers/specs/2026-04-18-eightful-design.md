@@ -1,4 +1,4 @@
-# StepsToEight - Design Spec
+# Eightful - Design Spec
 
 **Date:** 2026-04-18
 **Target:** watchOS 9+ / iOS 16+
@@ -6,7 +6,7 @@
 
 ## 1. Overview
 
-StepsToEight is an Apple Watch complication with an iPhone companion app. It tracks progress toward Vitality's 8-point daily activity target, showing the day's step count with color tiers aligned to Vitality's step-point thresholds (3 / 5 / 8 pts). When a single workout independently earns 8 points via heart-rate rules, the complication turns green early. Notifications nudge the user across threshold boundaries in the evening.
+Eightful is an Apple Watch complication with an iPhone companion app. It tracks progress toward Vitality's 8-point daily activity target, showing the day's step count with color tiers aligned to Vitality's step-point thresholds (3 / 5 / 8 pts). When a single workout independently earns 8 points via heart-rate rules, the complication turns green early. Notifications nudge the user across threshold boundaries in the evening.
 
 ## 2. Vitality rules (encoded)
 
@@ -46,9 +46,9 @@ No critical data crosses WatchConnectivity - both devices independently read the
 ```
 watch-stepcounter/
   Sources/
-    StepsToEightCore/           # Pure logic, no UIKit/HealthKit. Testable via swift test.
+    EightfulCore/           # Pure logic, no UIKit/HealthKit. Testable via swift test.
   Tests/
-    StepsToEightCoreTests/
+    EightfulCoreTests/
   App/
     iOS/                        # iPhone app target
     Watch/                      # Watch app target
@@ -56,10 +56,10 @@ watch-stepcounter/
     Shared/                     # Health/Settings adapters shared by app targets
   project.yml                   # xcodegen spec
   docs/superpowers/specs/
-    2026-04-18-stepstoeight-design.md
+    2026-04-18-eightful-design.md
 ```
 
-### 5.1 `StepsToEightCore` (Swift package)
+### 5.1 `EightfulCore` (Swift package)
 
 Pure, testable. No platform dependencies.
 
@@ -73,9 +73,9 @@ Pure, testable. No platform dependencies.
   - inputs: `DayState`, `now: Date`, `Settings`, `NotificationHistory`
   - output: `.nudge(NudgeZone) | .report(DayState) | .suppress`
 
-### 5.2 iPhone app (`StepsToEightPhone`)
+### 5.2 iPhone app (`EightfulPhone`)
 
-- `StepsToEightApp.swift` - `@main` SwiftUI app.
+- `EightfulApp.swift` - `@main` SwiftUI app.
 - `RootView.swift` - onboarding (permissions) + settings UI.
 - `HealthKitStore.swift` - authorization, DOB fetch, step `HKStatisticsCollectionQuery`, workout `HKSampleQuery`, `HKObserverQuery` with background delivery enabled for both.
 - `NotificationScheduler.swift` - on each HealthKit observer fire: compute `DayState`, evaluate `NotificationDecision`, deliver via `UNUserNotificationCenter`.
@@ -83,14 +83,14 @@ Pure, testable. No platform dependencies.
 
 Info.plist: `NSHealthShareUsageDescription`, `UIBackgroundModes: ["processing", "fetch"]`, `NSUserActivityTypes` (for the settings deep-link).
 
-### 5.3 Watch app (`StepsToEightWatch`)
+### 5.3 Watch app (`EightfulWatch`)
 
-- `StepsToEightWatchApp.swift` - `@main`.
+- `EightfulWatchApp.swift` - `@main`.
 - `MainView.swift` - shows today's step count, tier, workout-green flag (primarily a debug / "does the app work" surface; complication is the real product).
 - `HealthKitStore.swift` - watch-local duplicate of iPhone's; shared logic via Core.
 - On HealthKit update: call `WidgetCenter.shared.reloadAllTimelines()`.
 
-### 5.4 Complication (`StepsToEightComplication`)
+### 5.4 Complication (`EightfulComplication`)
 
 Watch widget extension.
 
@@ -164,7 +164,7 @@ Stored in `@AppStorage` on iPhone. Synced to Watch via `WCSession.updateApplicat
 
 ## 10. Testing
 
-### 10.1 Unit tests (`StepsToEightCoreTests` via `swift test`)
+### 10.1 Unit tests (`EightfulCoreTests` via `swift test`)
 
 - `StepTierTests` - boundaries: 0, 6999, 7000, 9999, 10000, 12499, 12500.
 - `VitalityPointsTests` - all three workout rule combinations + near-miss edges.

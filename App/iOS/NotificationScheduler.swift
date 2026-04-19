@@ -2,7 +2,7 @@ import Foundation
 import HealthKit
 import UserNotifications
 import WidgetKit
-import StepsToEightCore
+import EightfulCore
 
 /// Coordinates HealthKit observer updates with notification delivery.
 /// Runs on iPhone where background delivery is more reliable than watchOS.
@@ -32,13 +32,13 @@ public final class NotificationScheduler {
     private func scheduleFallbackRefresh() {
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
-        content.title = "StepsToEight"
+        content.title = "Eightful"
         content.body = "" // silent trigger; real notification content fires from evaluate()
         content.sound = nil
 
         let comps = DateComponents(hour: 19, minute: 55) // kicks evaluation ahead of 8pm
         let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: true)
-        let req = UNNotificationRequest(identifier: "stepstoeight.fallback.evaluate", content: content, trigger: trigger)
+        let req = UNNotificationRequest(identifier: "eightful.fallback.evaluate", content: content, trigger: trigger)
         // The notification itself does nothing visible; observer-driven evaluation is the real path.
         // Keep silent/low-noise: we just rely on HKObserverQuery which iOS typically delivers reliably.
         center.add(req, withCompletionHandler: nil)
@@ -73,11 +73,11 @@ public final class NotificationScheduler {
             return
         case .nudge(let zone):
             guard let msg = Optional(NotificationCopy.nudge(zone: zone, steps: state.steps)) else { return }
-            await deliver(title: msg.title, body: msg.body, id: "stepstoeight.nudge.\(zone.rawValue)")
+            await deliver(title: msg.title, body: msg.body, id: "eightful.nudge.\(zone.rawValue)")
             HistoryStore.shared.save(history.markingNudged(zone))
         case .report(let s):
             guard let msg = NotificationCopy.message(for: .report(s)) else { return }
-            await deliver(title: msg.title, body: msg.body, id: "stepstoeight.report")
+            await deliver(title: msg.title, body: msg.body, id: "eightful.report")
             HistoryStore.shared.save(history.markingReported())
         }
     }

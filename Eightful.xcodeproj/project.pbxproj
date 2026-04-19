@@ -1,0 +1,674 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03D3015C3F1C05574149788E /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4F69E774024529FC1E96074C /* EightfulCore */; };
+		194CD4D3155D0FA5F33AE4E6 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
+		1AB7DC4D69270C2418F85A22 /* EightfulComplication.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1F0A3A3348896205A324C0D5 /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
+		37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */; };
+		3AFAB8721194D71938E61688 /* ReconciliationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F38C72AEC1333427BE6974 /* ReconciliationView.swift */; };
+		3B81C98B572FA8CF3B40EF20 /* EightfulWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */; };
+		4ACD579E401BF7B4C1218AAE /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
+		4CEC233B309BEC99F33AD18C /* EightfulApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D2DFC304448E7BCA7536F9 /* EightfulApp.swift */; };
+		4CF76C3C3F6CE16C5C486F4E /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
+		54D46C6C738244E94A0A5F6C /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = E04E2704AC49CC60D243F7AA /* EightfulCore */; };
+		5CBFE1EB73511AEB8FD7D508 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
+		627AE66E140E9860B8EDEE04 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
+		7543E86268A059A44F5AF578 /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5BE455088401FCAA1F7C6F42 /* EightfulCore */; };
+		76890318DD2729F0F8A639AC /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8111B0C99426D04775C869B8 /* TierColor.swift */; };
+		7A771BBF6F8EEBDEB3A22469 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494592A19BB9E5D09B7C64EE /* RootView.swift */; };
+		82A5563A735404BD2B80FC16 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
+		8625D6F77725890B49472ACF /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
+		93DFF3CC89B658AA41F220E5 /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8111B0C99426D04775C869B8 /* TierColor.swift */; };
+		97CF77B55268017026C78D78 /* EightfulWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E210304AA364A8F3D59694 /* EightfulWidget.swift */; };
+		9DBEF2EC0B599B8BE02C5D84 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD0985B79FEB723C1ECA56F /* MainTabView.swift */; };
+		A2C14B91DA751D65D659DAB4 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
+		AA3EFCC829C0C426DD409C1B /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A4BAAC1E2B5FA29FC7A8C /* NotificationScheduler.swift */; };
+		B0042B8E1478FA0BCD0D063B /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8111B0C99426D04775C869B8 /* TierColor.swift */; };
+		B2143989B5D852BCC45F0EA2 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
+		B278A57071639EF42A5A53AA /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
+		B44B1A0C16D1588A6ED41604 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
+		CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
+		D0D46EDD5155EFE63EB4A3DB /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
+		D306CE1943C301EA135C53CA /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
+		F532B5B5FDE7CEDD7C13A5FB /* ComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */; };
+		F64FDC6F3E23ED01C50A257E /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98D51A4B5F9159516D1F5AE /* WatchRootView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		09600DBA0FE3401AB8B165AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 235BB2F6B0721D37E7A1F91A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2DDAB8D613BFA0AC3F7C285;
+			remoteInfo = EightfulComplication;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6E8EACF0C7CC5CABAA82FEC8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1AB7DC4D69270C2418F85A22 /* EightfulComplication.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		06D2DFC304448E7BCA7536F9 /* EightfulApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulApp.swift; sourceTree = "<group>"; };
+		0C2A4BAAC1E2B5FA29FC7A8C /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		18E88A4FD67D169DC688AD23 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
+		1BD0985B79FEB723C1ECA56F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		20856B70F85C0A7EBA257356 /* Eightful.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Eightful.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		21865445C7BFCF7A40E743AA /* PedometerReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedometerReader.swift; sourceTree = "<group>"; };
+		3545FDA4B67CA8B075EBFAD6 /* EightfulWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EightfulWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42E210304AA364A8F3D59694 /* EightfulWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWidget.swift; sourceTree = "<group>"; };
+		494592A19BB9E5D09B7C64EE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconciliationStore.swift; sourceTree = "<group>"; };
+		7EE72392956158DCF5A7E261 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		8111B0C99426D04775C869B8 /* TierColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierColor.swift; sourceTree = "<group>"; };
+		82F38C72AEC1333427BE6974 /* ReconciliationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconciliationView.swift; sourceTree = "<group>"; };
+		8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EightfulComplication.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		97473905B694747640847F9F /* HealthKitReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitReader.swift; sourceTree = "<group>"; };
+		B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProvider.swift; sourceTree = "<group>"; };
+		C216E9C7291B6F9795814F9D /* watch-stepcounter */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "watch-stepcounter"; path = .; sourceTree = SOURCE_ROOT; };
+		D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWatchApp.swift; sourceTree = "<group>"; };
+		D98D51A4B5F9159516D1F5AE /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
+		EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		303D8730CB54CFE4347347CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7543E86268A059A44F5AF578 /* EightfulCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		585880AF5B87298FAC6359AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03D3015C3F1C05574149788E /* EightfulCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C643BC94DD266BFBD97F3BB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54D46C6C738244E94A0A5F6C /* EightfulCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1FADB73C88046DDD8FED6D8A /* Complication */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */,
+				42E210304AA364A8F3D59694 /* EightfulWidget.swift */,
+				B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */,
+			);
+			path = Complication;
+			sourceTree = "<group>";
+		};
+		32615921E6891BAFA8A20FBE /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */,
+				D98D51A4B5F9159516D1F5AE /* WatchRootView.swift */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
+		5C8AEBF81143B63FB4CCCF0C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				06D2DFC304448E7BCA7536F9 /* EightfulApp.swift */,
+				1BD0985B79FEB723C1ECA56F /* MainTabView.swift */,
+				0C2A4BAAC1E2B5FA29FC7A8C /* NotificationScheduler.swift */,
+				82F38C72AEC1333427BE6974 /* ReconciliationView.swift */,
+				494592A19BB9E5D09B7C64EE /* RootView.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		7165C8C09F29283DD7C4F7CF /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				C216E9C7291B6F9795814F9D /* watch-stepcounter */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		CF09B7C58123685332BF6943 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20856B70F85C0A7EBA257356 /* Eightful.app */,
+				8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */,
+				3545FDA4B67CA8B075EBFAD6 /* EightfulWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E6C02CF93DA7B4BD31B2C837 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				97473905B694747640847F9F /* HealthKitReader.swift */,
+				18E88A4FD67D169DC688AD23 /* HistoryStore.swift */,
+				21865445C7BFCF7A40E743AA /* PedometerReader.swift */,
+				5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */,
+				7EE72392956158DCF5A7E261 /* SettingsStore.swift */,
+				8111B0C99426D04775C869B8 /* TierColor.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		FA926C504668117CC15449EB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1FADB73C88046DDD8FED6D8A /* Complication */,
+				5C8AEBF81143B63FB4CCCF0C /* iOS */,
+				E6C02CF93DA7B4BD31B2C837 /* Shared */,
+				32615921E6891BAFA8A20FBE /* Watch */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FCF8FEA80E288596BB6A29B1 = {
+			isa = PBXGroup;
+			children = (
+				FA926C504668117CC15449EB /* App */,
+				7165C8C09F29283DD7C4F7CF /* Packages */,
+				CF09B7C58123685332BF6943 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		90534C0B17FD9F8636C624C7 /* Eightful */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42D18812713B804BAB6B10DA /* Build configuration list for PBXNativeTarget "Eightful" */;
+			buildPhases = (
+				1150A6E2B5BCE976BD1CAD9C /* Sources */,
+				C643BC94DD266BFBD97F3BB0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Eightful;
+			packageProductDependencies = (
+				E04E2704AC49CC60D243F7AA /* EightfulCore */,
+			);
+			productName = Eightful;
+			productReference = 20856B70F85C0A7EBA257356 /* Eightful.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B56A62B0104E10131839EC84 /* EightfulWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCDE978E6A4D57029CF7E618 /* Build configuration list for PBXNativeTarget "EightfulWatch" */;
+			buildPhases = (
+				301EAC7D87237E057D2D804A /* Sources */,
+				585880AF5B87298FAC6359AE /* Frameworks */,
+				6E8EACF0C7CC5CABAA82FEC8 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B0C654D6B2CB9144B5CA8FB6 /* PBXTargetDependency */,
+			);
+			name = EightfulWatch;
+			packageProductDependencies = (
+				4F69E774024529FC1E96074C /* EightfulCore */,
+			);
+			productName = EightfulWatch;
+			productReference = 3545FDA4B67CA8B075EBFAD6 /* EightfulWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2DDAB8D613BFA0AC3F7C285 /* EightfulComplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B434D0FDF41308F9930FD666 /* Build configuration list for PBXNativeTarget "EightfulComplication" */;
+			buildPhases = (
+				94F6CA773511D64124FB4760 /* Sources */,
+				303D8730CB54CFE4347347CC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EightfulComplication;
+			packageProductDependencies = (
+				5BE455088401FCAA1F7C6F42 /* EightfulCore */,
+			);
+			productName = EightfulComplication;
+			productReference = 8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		235BB2F6B0721D37E7A1F91A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					90534C0B17FD9F8636C624C7 = {
+						DevelopmentTeam = 86H54WCPYP;
+						ProvisioningStyle = Automatic;
+					};
+					B56A62B0104E10131839EC84 = {
+						DevelopmentTeam = 86H54WCPYP;
+						ProvisioningStyle = Automatic;
+					};
+					D2DDAB8D613BFA0AC3F7C285 = {
+						DevelopmentTeam = 86H54WCPYP;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C60D6FADA2289E5F5E3DD775 /* Build configuration list for PBXProject "Eightful" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = FCF8FEA80E288596BB6A29B1;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				94E18071DBC956777393758E /* XCLocalSwiftPackageReference "." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = CF09B7C58123685332BF6943 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				90534C0B17FD9F8636C624C7 /* Eightful */,
+				D2DDAB8D613BFA0AC3F7C285 /* EightfulComplication */,
+				B56A62B0104E10131839EC84 /* EightfulWatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1150A6E2B5BCE976BD1CAD9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEC233B309BEC99F33AD18C /* EightfulApp.swift in Sources */,
+				194CD4D3155D0FA5F33AE4E6 /* HealthKitReader.swift in Sources */,
+				5CBFE1EB73511AEB8FD7D508 /* HistoryStore.swift in Sources */,
+				9DBEF2EC0B599B8BE02C5D84 /* MainTabView.swift in Sources */,
+				AA3EFCC829C0C426DD409C1B /* NotificationScheduler.swift in Sources */,
+				A2C14B91DA751D65D659DAB4 /* PedometerReader.swift in Sources */,
+				4CF76C3C3F6CE16C5C486F4E /* ReconciliationStore.swift in Sources */,
+				3AFAB8721194D71938E61688 /* ReconciliationView.swift in Sources */,
+				7A771BBF6F8EEBDEB3A22469 /* RootView.swift in Sources */,
+				CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */,
+				76890318DD2729F0F8A639AC /* TierColor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		301EAC7D87237E057D2D804A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B81C98B572FA8CF3B40EF20 /* EightfulWatchApp.swift in Sources */,
+				B278A57071639EF42A5A53AA /* HealthKitReader.swift in Sources */,
+				B2143989B5D852BCC45F0EA2 /* HistoryStore.swift in Sources */,
+				B44B1A0C16D1588A6ED41604 /* PedometerReader.swift in Sources */,
+				4ACD579E401BF7B4C1218AAE /* ReconciliationStore.swift in Sources */,
+				D0D46EDD5155EFE63EB4A3DB /* SettingsStore.swift in Sources */,
+				93DFF3CC89B658AA41F220E5 /* TierColor.swift in Sources */,
+				F64FDC6F3E23ED01C50A257E /* WatchRootView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94F6CA773511D64124FB4760 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F532B5B5FDE7CEDD7C13A5FB /* ComplicationView.swift in Sources */,
+				97CF77B55268017026C78D78 /* EightfulWidget.swift in Sources */,
+				627AE66E140E9860B8EDEE04 /* HealthKitReader.swift in Sources */,
+				8625D6F77725890B49472ACF /* HistoryStore.swift in Sources */,
+				82A5563A735404BD2B80FC16 /* PedometerReader.swift in Sources */,
+				1F0A3A3348896205A324C0D5 /* ReconciliationStore.swift in Sources */,
+				D306CE1943C301EA135C53CA /* SettingsStore.swift in Sources */,
+				37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */,
+				B0042B8E1478FA0BCD0D063B /* TierColor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B0C654D6B2CB9144B5CA8FB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2DDAB8D613BFA0AC3F7C285 /* EightfulComplication */;
+			targetProxy = 09600DBA0FE3401AB8B165AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2EEDEC14A6CE5EBAB00D630A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App/Complication/EightfulComplication.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = App/Complication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp.widget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		80CF3AC984231A1ED1327CAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 86H54WCPYP;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		80D66C6E853DE6B1DE681E9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/Watch/EightfulWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = App/Watch/Info.plist;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		8DAEB83490788C32D14DBC10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/Watch/EightfulWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = App/Watch/Info.plist;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		A8060AA4665C5E281DAC4B39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/iOS/Eightful.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = App/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D05CDEC08F2AF58FFEDFAA27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App/Complication/EightfulComplication.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = App/Complication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp.widget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		D07A20BE328B5B7AF39EF52A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 86H54WCPYP;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		F9C2F4F1A41FF322775883F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/iOS/Eightful.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = App/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42D18812713B804BAB6B10DA /* Build configuration list for PBXNativeTarget "Eightful" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9C2F4F1A41FF322775883F3 /* Debug */,
+				A8060AA4665C5E281DAC4B39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B434D0FDF41308F9930FD666 /* Build configuration list for PBXNativeTarget "EightfulComplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D05CDEC08F2AF58FFEDFAA27 /* Debug */,
+				2EEDEC14A6CE5EBAB00D630A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C60D6FADA2289E5F5E3DD775 /* Build configuration list for PBXProject "Eightful" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80CF3AC984231A1ED1327CAD /* Debug */,
+				D07A20BE328B5B7AF39EF52A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FCDE978E6A4D57029CF7E618 /* Build configuration list for PBXNativeTarget "EightfulWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DAEB83490788C32D14DBC10 /* Debug */,
+				80D66C6E853DE6B1DE681E9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		94E18071DBC956777393758E /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4F69E774024529FC1E96074C /* EightfulCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EightfulCore;
+		};
+		5BE455088401FCAA1F7C6F42 /* EightfulCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EightfulCore;
+		};
+		E04E2704AC49CC60D243F7AA /* EightfulCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EightfulCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 235BB2F6B0721D37E7A1F91A /* Project object */;
+}

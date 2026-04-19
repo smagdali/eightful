@@ -1,11 +1,11 @@
 import Foundation
-import StepsToEightCore
+import EightfulCore
 
 /// Persists NotificationHistory across launches. Auto-resets on a new local calendar day.
 public final class HistoryStore {
     public static let shared = HistoryStore()
 
-    private enum Key { static let history = "stepstoeight.history.v1" }
+    private enum Key { static let history = "eightful.history.v1" }
 
     private let defaults: UserDefaults
 

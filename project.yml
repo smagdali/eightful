@@ -1,4 +1,4 @@
-name: StepsToEight
+name: Eightful
 options:
   bundleIdPrefix: org.whitelabel
   deploymentTarget:
@@ -9,7 +9,7 @@ options:
   developmentLanguage: en
 
 packages:
-  StepsToEightCore:
+  EightfulCore:
     path: .
 
 settings:
@@ -24,7 +24,7 @@ settings:
 
 targets:
 
-  StepsToEight:
+  Eightful:
     type: application
     platform: iOS
     deploymentTarget: "16.0"
@@ -35,18 +35,18 @@ targets:
           - "*.entitlements"
       - path: App/Shared
     dependencies:
-      - package: StepsToEightCore
-        product: StepsToEightCore
+      - package: EightfulCore
+        product: EightfulCore
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: org.whitelabel.stepstoeight
+        PRODUCT_BUNDLE_IDENTIFIER: org.whitelabel.eightful
         INFOPLIST_FILE: App/iOS/Info.plist
-        CODE_SIGN_ENTITLEMENTS: App/iOS/StepsToEight.entitlements
+        CODE_SIGN_ENTITLEMENTS: App/iOS/Eightful.entitlements
         TARGETED_DEVICE_FAMILY: "1"
         CURRENT_PROJECT_VERSION: "1"
         MARKETING_VERSION: "0.1.0"
 
-  StepsToEightWatch:
+  EightfulWatch:
     type: application
     platform: watchOS
     deploymentTarget: "9.0"
@@ -57,19 +57,19 @@ targets:
           - "*.entitlements"
       - path: App/Shared
     dependencies:
-      - target: StepsToEightComplication
+      - target: EightfulComplication
         embed: true
-      - package: StepsToEightCore
-        product: StepsToEightCore
+      - package: EightfulCore
+        product: EightfulCore
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: org.whitelabel.stepstoeight.watchkitapp
+        PRODUCT_BUNDLE_IDENTIFIER: org.whitelabel.eightful.watchkitapp
         INFOPLIST_FILE: App/Watch/Info.plist
-        CODE_SIGN_ENTITLEMENTS: App/Watch/StepsToEightWatch.entitlements
+        CODE_SIGN_ENTITLEMENTS: App/Watch/EightfulWatch.entitlements
         CURRENT_PROJECT_VERSION: "1"
         MARKETING_VERSION: "0.1.0"
 
-  StepsToEightComplication:
+  EightfulComplication:
     type: app-extension
     platform: watchOS
     deploymentTarget: "9.0"
@@ -80,31 +80,31 @@ targets:
           - "*.entitlements"
       - path: App/Shared
     dependencies:
-      - package: StepsToEightCore
-        product: StepsToEightCore
+      - package: EightfulCore
+        product: EightfulCore
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: org.whitelabel.stepstoeight.watchkitapp.widget
+        PRODUCT_BUNDLE_IDENTIFIER: org.whitelabel.eightful.watchkitapp.widget
         INFOPLIST_FILE: App/Complication/Info.plist
-        CODE_SIGN_ENTITLEMENTS: App/Complication/StepsToEightComplication.entitlements
+        CODE_SIGN_ENTITLEMENTS: App/Complication/EightfulComplication.entitlements
         SKIP_INSTALL: YES
         CURRENT_PROJECT_VERSION: "1"
         MARKETING_VERSION: "0.1.0"
 
 schemes:
-  StepsToEight:
+  Eightful:
     build:
       targets:
-        StepsToEight: all
+        Eightful: all
     run:
       config: Debug
     archive:
       config: Release
 
-  StepsToEightWatch:
+  EightfulWatch:
     build:
       targets:
-        StepsToEightWatch: all
+        EightfulWatch: all
     run:
       config: Debug
     archive:

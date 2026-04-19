@@ -1,6 +1,6 @@
 import Foundation
 import HealthKit
-import StepsToEightCore
+import EightfulCore
 
 /// Reads today's step count and workout scoring from HealthKit.
 /// Used by both the iOS app (for notifications) and the watchOS app/complication (for rendering).

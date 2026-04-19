@@ -5,7 +5,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleDisplayName</key>
-    <string>StepsToEight</string>
+    <string>Eightful</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -23,9 +23,9 @@
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSHealthShareUsageDescription</key>
-    <string>StepsToEight reads your step count, workouts, and heart rate so it can track progress toward your daily 8-point target and nudge you when you're close to a threshold.</string>
+    <string>Eightful reads your step count, workouts, and heart rate so it can track progress toward your daily 8-point target and nudge you when you're close to a threshold.</string>
     <key>NSHealthUpdateUsageDescription</key>
-    <string>Not used. StepsToEight does not write to Health.</string>
+    <string>Not used. Eightful does not write to Health.</string>
     <key>UIBackgroundModes</key>
     <array>
         <string>processing</string>

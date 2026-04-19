@@ -5,7 +5,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleDisplayName</key>
-    <string>StepsToEight</string>
+    <string>Eightful</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -26,8 +26,8 @@
         <string>com.apple.widgetkit-extension</string>
     </dict>
     <key>NSHealthShareUsageDescription</key>
-    <string>StepsToEight reads your step count to display on watch complications.</string>
+    <string>Eightful reads your step count to display on watch complications.</string>
     <key>NSMotionUsageDescription</key>
-    <string>StepsToEight uses the motion sensors so the complication updates in real time.</string>
+    <string>Eightful uses the motion sensors so the complication updates in real time.</string>
 </dict>
 </plist>

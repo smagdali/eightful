@@ -1,6 +1,6 @@
 import Foundation
 import Combine
-import StepsToEightCore
+import EightfulCore
 
 /// Persists AppSettings to UserDefaults (via App Group on real devices) and publishes changes.
 /// On iOS, the store also relays settings to the paired Watch via WatchConnectivity.
@@ -8,7 +8,7 @@ public final class SettingsStore: ObservableObject {
     public static let shared = SettingsStore()
 
     private enum Key {
-        static let settings = "stepstoeight.settings.v1"
+        static let settings = "eightful.settings.v1"
     }
 
     private let defaults: UserDefaults

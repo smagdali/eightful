@@ -1,6 +1,6 @@
 import SwiftUI
 import WidgetKit
-import StepsToEightCore
+import EightfulCore
 
 struct ComplicationView: View {
     @Environment(\.widgetFamily) private var family

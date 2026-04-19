@@ -1,7 +1,7 @@
 import SwiftUI
 import HealthKit
 import UserNotifications
-import StepsToEightCore
+import EightfulCore
 
 struct RootView: View {
     @StateObject private var store = SettingsStore.shared
@@ -18,7 +18,7 @@ struct RootView: View {
                 settingsSection
                 aboutSection
             }
-            .navigationTitle("StepsToEight")
+            .navigationTitle("Eightful")
             .task { await refresh() }
         }
     }

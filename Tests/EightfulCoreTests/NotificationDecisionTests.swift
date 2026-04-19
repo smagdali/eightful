@@ -1,5 +1,5 @@
 import XCTest
-@testable import StepsToEightCore
+@testable import EightfulCore
 
 final class NotificationDecisionTests: XCTestCase {
     private let calendar: Calendar = {

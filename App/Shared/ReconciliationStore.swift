@@ -1,13 +1,13 @@
 import Foundation
 import Combine
-import StepsToEightCore
+import EightfulCore
 
 /// Persists user-entered "Vitality reported" points per calendar day.
 /// Storage format: `[yyyy-MM-dd -> Int]` in UserDefaults.
 public final class ReconciliationStore: ObservableObject {
     public static let shared = ReconciliationStore()
 
-    private enum Key { static let reports = "stepstoeight.reports.v1" }
+    private enum Key { static let reports = "eightful.reports.v1" }
 
     private let defaults: UserDefaults
     private let dateFormatter: DateFormatter

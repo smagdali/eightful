@@ -1,6 +1,6 @@
 import SwiftUI
 import WidgetKit
-import StepsToEightCore
+import EightfulCore
 
 struct WatchRootView: View {
     @Environment(\.scenePhase) private var scenePhase
@@ -21,7 +21,7 @@ struct WatchRootView: View {
                 VStack(spacing: 6) {
                     Text("Grant Health access")
                         .font(.headline).multilineTextAlignment(.center)
-                    Text("Open the StepsToEight iPhone app and tap Grant Health, or approve the prompt here.")
+                    Text("Open the Eightful iPhone app and tap Grant Health, or approve the prompt here.")
                         .font(.caption2).multilineTextAlignment(.center).foregroundStyle(.secondary)
                     Button("Request again") { Task { await grantAndLoad() } }
                         .buttonStyle(.borderedProminent)
@@ -31,19 +31,23 @@ struct WatchRootView: View {
             case .ready:
                 if let s = state {
                     Text(NumberFormatter.localizedString(from: NSNumber(value: s.steps), number: .decimal))
-                        .font(.system(size: 34, weight: .bold, design: .rounded))
+                        .font(.system(size: 58, weight: .heavy, design: .rounded))
                         .foregroundStyle(s.effectiveTier.color)
-                    Text("\(s.points) pt\(s.points == 1 ? "" : "s")")
-                        .font(.headline)
-                        .foregroundStyle(.secondary)
-                    if s.workoutGreen {
-                        Label("workout", systemImage: "heart.fill")
-                            .labelStyle(.iconOnly)
-                            .foregroundStyle(.green)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
+                    HStack(spacing: 4) {
+                        Text("\(s.points) pt\(s.points == 1 ? "" : "s")")
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                            .foregroundStyle(s.effectiveTier.color.opacity(0.9))
+                        if s.workoutGreen {
+                            Image(systemName: "heart.fill")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.green)
+                        }
                     }
                     if let updated = lastUpdated {
-                        Text("updated \(updated, format: .relative(presentation: .numeric))")
-                            .font(.system(size: 10))
+                        Text(updated, format: .dateTime.hour(.twoDigits(amPM: .omitted)).minute(.twoDigits))
+                            .font(.system(size: 11))
                             .foregroundStyle(.tertiary)
                     }
                 }

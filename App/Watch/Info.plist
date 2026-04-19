@@ -5,7 +5,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleDisplayName</key>
-    <string>StepsToEight</string>
+    <string>Eightful</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -21,13 +21,13 @@
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>NSHealthShareUsageDescription</key>
-    <string>StepsToEight reads your step count, workouts, and heart rate so it can show progress toward your 8-point target on your watch face.</string>
+    <string>Eightful reads your step count, workouts, and heart rate so it can show progress toward your 8-point target on your watch face.</string>
     <key>NSMotionUsageDescription</key>
-    <string>StepsToEight uses the motion sensors so the step count on the watch face updates in real time, not minutes after you take them.</string>
+    <string>Eightful uses the motion sensors so the step count on the watch face updates in real time, not minutes after you take them.</string>
     <key>WKApplication</key>
     <true/>
     <key>WKCompanionAppBundleIdentifier</key>
-    <string>org.whitelabel.stepstoeight</string>
+    <string>org.whitelabel.eightful</string>
     <key>WKRunsIndependentlyOfCompanionApp</key>
     <true/>
 </dict>

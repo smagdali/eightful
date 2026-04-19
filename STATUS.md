@@ -1,4 +1,4 @@
-# StepsToEight - Status
+# Eightful - Status
 
 ## TL;DR
 
@@ -8,9 +8,9 @@ Xcode project scaffolded, all 35 core unit tests pass, both iOS and watchOS targ
 
 ```
 watch-stepcounter/
-  docs/superpowers/specs/2026-04-18-stepstoeight-design.md   # Full design spec
+  docs/superpowers/specs/2026-04-18-eightful-design.md   # Full design spec
   Package.swift                                              # Core logic as an SPM library
-  Sources/StepsToEightCore/                                  # Pure logic, no platform deps
+  Sources/EightfulCore/                                  # Pure logic, no platform deps
     StepTier.swift                                           # Red/orange/yellow/green from steps
     VitalityPoints.swift                                     # Step + workout scoring rules
     MaxHeartRate.swift                                       # 220 - age
@@ -20,29 +20,29 @@ watch-stepcounter/
     NotificationHistory.swift                                # Per-day history (resets at midnight)
     NotificationDecision.swift                               # Pure decision function
     NotificationCopy.swift                                   # User-facing strings
-  Tests/StepsToEightCoreTests/                               # 35 unit tests
+  Tests/EightfulCoreTests/                               # 35 unit tests
   App/
-    iOS/         (StepsToEight app - phone)
-    Watch/       (StepsToEightWatch app)
-    Complication/(StepsToEightComplication - widget extension)
+    iOS/         (Eightful app - phone)
+    Watch/       (EightfulWatch app)
+    Complication/(EightfulComplication - widget extension)
     Shared/      (HealthKitReader, SettingsStore, HistoryStore, TierColor)
   project.yml                                                # xcodegen spec
-  StepsToEight.xcodeproj                                     # Generated. Regenerate via `xcodegen`.
+  Eightful.xcodeproj                                     # Generated. Regenerate via `xcodegen`.
 ```
 
 ## How to run
 
-1. **Set your team.** Open `StepsToEight.xcodeproj`. In each of the three targets (StepsToEight, StepsToEightWatch, StepsToEightComplication), go to Signing & Capabilities and select your Apple Developer team. Xcode will auto-provision bundle IDs under `org.whitelabel.stepstoeight.*`.
+1. **Set your team.** Open `Eightful.xcodeproj`. In each of the three targets (Eightful, EightfulWatch, EightfulComplication), go to Signing & Capabilities and select your Apple Developer team. Xcode will auto-provision bundle IDs under `org.whitelabel.eightful.*`.
 
    - The bundle-ID prefix `org.whitelabel` is a placeholder; change to your own reverse-DNS in `project.yml` then run `xcodegen` to regenerate. (Or just change it in Xcode; next `xcodegen` run will overwrite unless you update the YAML too.)
 
 2. **HealthKit capability.** Already declared in all three `.entitlements` files. Xcode should accept it automatically. If it flags a provisioning issue, confirm your team is set.
 
-3. **App Groups.** The entitlements declare `group.org.whitelabel.stepstoeight`. You'll need to create this App Group on your developer portal (or let Xcode create it for you when you click "Fix"). It's used for sharing settings between the phone, watch, and complication.
+3. **App Groups.** The entitlements declare `group.org.whitelabel.eightful`. You'll need to create this App Group on your developer portal (or let Xcode create it for you when you click "Fix"). It's used for sharing settings between the phone, watch, and complication.
 
 4. **First run.** Install on paired devices. The iPhone app will prompt for HealthKit and notification authorization. The watch app will prompt for HealthKit.
 
-5. **Add the complication.** Long-press your watch face, edit, pick any of the four families (circular / rectangular / corner / inline), choose "StepsToEight".
+5. **Add the complication.** Long-press your watch face, edit, pick any of the four families (circular / rectangular / corner / inline), choose "Eightful".
 
 ## Manual device test checklist
 

@@ -1,5 +1,5 @@
 import WidgetKit
-import StepsToEightCore
+import EightfulCore
 
 struct StepsEntry: TimelineEntry {
     let date: Date

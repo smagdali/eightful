@@ -1,5 +1,5 @@
 import SwiftUI
-import StepsToEightCore
+import EightfulCore
 
 struct ReconciliationView: View {
     @StateObject private var store = ReconciliationStore.shared

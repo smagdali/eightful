@@ -1,6 +1,6 @@
 import Foundation
 
-/// One day of reconciliation between what StepsToEight calculated from HealthKit
+/// One day of reconciliation between what Eightful calculated from HealthKit
 /// and what Vitality's Member Zone reports. Calculated side is always present
 /// (we have HealthKit); reported side is optional because Vitality's feed lags
 /// and some days may still be pending when the user checks.

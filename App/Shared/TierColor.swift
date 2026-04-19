@@ -1,5 +1,5 @@
 import SwiftUI
-import StepsToEightCore
+import EightfulCore
 
 public extension StepTier {
     /// Punchy, full-saturation colours tuned to read clearly on a watch face in
