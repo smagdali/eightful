@@ -7,6 +7,15 @@ struct ComplicationView: View {
     let entry: StepsEntry
 
     var body: some View {
+        if #available(watchOS 10.0, *) {
+            content.containerBackground(for: .widget) { Color.clear }
+        } else {
+            content
+        }
+    }
+
+    @ViewBuilder
+    private var content: some View {
         switch family {
         case .accessoryCircular:    CircularView(state: entry.state)
         case .accessoryRectangular: RectangularView(state: entry.state)
