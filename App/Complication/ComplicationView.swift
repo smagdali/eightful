@@ -32,19 +32,20 @@ private struct CircularView: View {
         ZStack {
             if state.workoutGreen {
                 Circle()
-                    .stroke(state.effectiveTier.color, lineWidth: 2)
+                    .stroke(state.effectiveTier.color, lineWidth: 2.5)
                     .padding(1)
             }
-            VStack(spacing: 0) {
+            VStack(spacing: -2) {
                 Text(shortened(state.steps))
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .font(.system(size: 22, weight: .heavy, design: .rounded))
                     .foregroundStyle(state.effectiveTier.color)
+                    .minimumScaleFactor(0.6)
+                    .lineLimit(1)
                 Text("\(state.points)pt")
-                    .font(.system(size: 9, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.secondary)
+                    .font(.system(size: 11, weight: .bold, design: .rounded))
+                    .foregroundStyle(state.effectiveTier.color.opacity(0.85))
             }
         }
-        .widgetAccentable(true)
     }
 }
 
