@@ -6,8 +6,10 @@ struct WatchRootView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var state: DayState?
     @State private var phase: Phase = .loading
+    @State private var lastUpdated: Date?
+    @State private var observerToken: NSObjectProtocol?
     private let settings = SettingsStore.shared
-    private let refreshTimer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    private let refreshTimer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
 
     enum Phase: Equatable { case loading, needsAuth, error(String), ready }
 
@@ -40,6 +42,11 @@ struct WatchRootView: View {
                             .labelStyle(.iconOnly)
                             .foregroundStyle(.green)
                     }
+                    if let updated = lastUpdated {
+                        Text("updated \(updated, format: .relative(presentation: .numeric))")
+                            .font(.system(size: 10))
+                            .foregroundStyle(.tertiary)
+                    }
                 }
             }
         }
@@ -58,6 +65,7 @@ struct WatchRootView: View {
         guard phase == .ready || phase == .loading else { return }
         if let s = try? await HealthKitReader.shared.currentDayState(settings: settings.settings) {
             state = s
+            lastUpdated = Date()
             phase = .ready
             WidgetCenter.shared.reloadAllTimelines()
         }
@@ -73,6 +81,7 @@ struct WatchRootView: View {
         }
         do {
             state = try await HealthKitReader.shared.currentDayState(settings: settings.settings)
+            lastUpdated = Date()
             phase = .ready
             WidgetCenter.shared.reloadAllTimelines()
         } catch let err as NSError where err.domain == "com.apple.healthkit" && err.code == 5 {
