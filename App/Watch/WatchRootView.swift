@@ -7,8 +7,8 @@ struct WatchRootView: View {
     @State private var state: DayState?
     @State private var phase: Phase = .loading
     @State private var lastUpdated: Date?
+    @State private var refreshTask: Task<Void, Never>?
     private let settings = SettingsStore.shared
-    private let refreshTimer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
     enum Phase: Equatable { case loading, needsAuth, error(String), ready }
 
@@ -54,15 +54,50 @@ struct WatchRootView: View {
             }
         }
         .padding()
-        .task { await grantAndLoad() }
+        .task { await grantAndLoad(); startAdaptiveRefresh() }
         .onChange(of: scenePhase) { newPhase in
-            // Tap-the-complication-to-refresh: scene goes active when the app
-            // opens, which hits refresh() and tells the widget to reload.
-            if newPhase == .active { Task { await refresh() } }
+            switch newPhase {
+            case .active:
+                Task { await refresh() }     // immediate refresh on re-open / tap-through
+                startAdaptiveRefresh()       // reset cadence to fast
+            case .background, .inactive:
+                stopAdaptiveRefresh()
+            @unknown default: break
+            }
         }
-        .onReceive(refreshTimer) { _ in
-            Task { await refresh() }
+    }
+
+    /// Re-poll on an adaptive interval: faster while stepping hard, slower while idle.
+    /// Range: 15s (active) to 300s (idle). Activity of the user decides.
+    private func startAdaptiveRefresh() {
+        refreshTask?.cancel()
+        refreshTask = Task { @MainActor in
+            var interval: TimeInterval = 30
+            var lastSteps = state?.steps ?? 0
+            while !Task.isCancelled {
+                try? await Task.sleep(nanoseconds: UInt64(interval * 1_000_000_000))
+                if Task.isCancelled { break }
+                await refresh()
+                let now = state?.steps ?? lastSteps
+                let delta = now - lastSteps
+                lastSteps = now
+                // <10 steps since last check = backing off, double the interval
+                // 10..<100 = steady 60s
+                // >=100 = user is moving, tighten to 15s
+                if delta < 10 {
+                    interval = min(300, interval * 2)
+                } else if delta < 100 {
+                    interval = 60
+                } else {
+                    interval = 15
+                }
+            }
         }
+    }
+
+    private func stopAdaptiveRefresh() {
+        refreshTask?.cancel()
+        refreshTask = nil
     }
 
     /// Re-read HealthKit data without re-prompting for auth.
