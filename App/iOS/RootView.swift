@@ -112,9 +112,13 @@ struct RootView: View {
 
     private var aboutSection: some View {
         Section("About") {
-            Text("Tracks progress toward Vitality UK's 8-point daily activity target using your Health data. Not affiliated with Vitality.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Eightful helps you reach the 8-point daily activity target popular in UK private health insurance activity rewards programmes.")
+                Text("Not affiliated with, endorsed by, or connected to Vitality Health Insurance. This is an independent tool.")
+                Text("Your Health data stays on your device. Eightful reads your step count, workouts and heart rate from Apple Health and does all its calculations locally. Nothing is sent to a server — we don't run one.")
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
         }
     }
 
