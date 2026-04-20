@@ -87,14 +87,16 @@ struct WatchRootView: View {
                 let delta = now - lastSteps
                 lastSteps = now
                 // <10 steps since last check = backing off, double the interval
-                // 10..<100 = steady 60s
-                // >=100 = user is moving, tighten to 15s
+                // 10..<100 = steady 120s
+                // >=100 = user is moving, tighten to 60s (not 15s —
+                // this isn't a live step counter, it's a nudge tool;
+                // saving battery beats sub-minute animation)
                 if delta < 10 {
                     interval = min(300, interval * 2)
                 } else if delta < 100 {
-                    interval = 60
+                    interval = 120
                 } else {
-                    interval = 15
+                    interval = 60
                 }
             }
         }

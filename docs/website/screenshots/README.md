@@ -1,21 +1,21 @@
-# Screenshots for the website About page
+# Screenshots
 
-Current contents:
+Real device captures (pixel-accurate, submittable to the App Store too).
 
-- `icon.png` — the app icon (real, 1024×1024)
+- `icon.png` — app icon (1024x1024, SVG source in `design/icon.svg`)
+- `watch-circular.png` — 396x484. Apple Watch face with Eightful in the Infograph circular slot, showing workout-green state (5.9k / 8pt with a ring).
+- `watch-app.png` — 396x484. The Eightful watch app itself showing the big step count, points, heart icon and last-updated timestamp.
+- `iphone-today.png` — 1179x2556. iPhone Today tab with step count, points, and the "8-point goal reached" workout banner with real HIIT details.
+- `iphone-compare.png` — mockup (SVG source alongside). Not yet replaced with a real device shot.
 
-Placeholders to capture and drop in, matching the `<img>` references in `../about.md`:
+## Still to capture
 
-- `watch-circular.png` — a real watch face with the Eightful circular complication showing a red nudge-zone step count (e.g. 9,720). Take via **Watch side button + Digital Crown** with a face that has a circular slot (Infograph, Modular). AirDrop from iPhone Photos.
-- `iphone-today.png` — iPhone Today tab screenshot, ideally on a workout-green day so the banner is visible. Capture in Xcode simulator or on device with **Volume Up + Side button**.
-- `iphone-compare.png` — iPhone Compare tab with a few days entered, showing at least one mismatch so the pattern hint appears.
+- Real iPhone screenshot of the **Week** (formerly Compare) tab once the next build is on device.
+- Optional: a watch face shot in a *red* nudge-zone state (between 6,500-6,999 or 9,500-9,999 steps) for a more dramatic "push now" colour story.
 
-Recommended sizes (for retina display on the web, width × height):
+## How to capture a watch screenshot
 
-| File | Source size | Displayed at |
-|------|-------------|--------------|
-| watch-circular.png | 1824 × 2232 (Apple Watch Ultra) | 260px |
-| iphone-today.png | 1320 × 2868 (iPhone 16 Pro Max) | 280px |
-| iphone-compare.png | 1320 × 2868 | 280px |
-
-The screenshots in App Store Connect need the same shots at full resolution — capture once, use twice.
+1. On iPhone, open **Watch** → **General** → **Enable Screenshots** (one-time)
+2. On the watch, bring up what you want
+3. Press **side button + Digital Crown** briefly
+4. Screenshot lands in iPhone Photos → AirDrop to Mac

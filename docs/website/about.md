@@ -25,8 +25,8 @@ The official Vitality app is great at telling you what you've already earned. It
 - **Compare tab** on iPhone — spot when your calculated points disagree with what Vitality reports
 
 <p align="center">
-  <img src="screenshots/iphone-today.png" alt="iPhone Today screen with 9,720 steps in red and an 8-point goal reached banner" width="260">
-  <img src="screenshots/iphone-compare.png" alt="iPhone Compare tab showing seven days with matched and mismatched points" width="260">
+  <img src="screenshots/iphone-today.png" alt="iPhone Today screen with 5,902 steps in green, 8 points, and an 8-point goal reached banner showing HIIT 52 min at 78% of max HR" width="260">
+  <img src="screenshots/watch-app.png" alt="Eightful watch app showing 5,894 steps in green with 8 points and a heart, plus last-updated timestamp" width="260">
 </p>
 
 
