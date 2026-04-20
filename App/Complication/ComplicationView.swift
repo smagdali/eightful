@@ -32,18 +32,18 @@ private struct CircularView: View {
         ZStack {
             if state.workoutGreen {
                 Circle()
-                    .stroke(state.effectiveTier.color, lineWidth: 2.5)
+                    .stroke(state.displayColor.color, lineWidth: 2.5)
                     .padding(1)
             }
             VStack(spacing: -2) {
                 Text(shortened(state.steps))
                     .font(.system(size: 22, weight: .heavy, design: .rounded))
-                    .foregroundStyle(state.effectiveTier.color)
+                    .foregroundStyle(state.displayColor.color)
                     .minimumScaleFactor(0.6)
                     .lineLimit(1)
                 Text("\(state.points)pt")
                     .font(.system(size: 11, weight: .bold, design: .rounded))
-                    .foregroundStyle(state.effectiveTier.color.opacity(0.85))
+                    .foregroundStyle(state.displayColor.color.opacity(0.85))
             }
         }
     }
@@ -54,12 +54,12 @@ private struct RectangularView: View {
     var body: some View {
         HStack(spacing: 6) {
             ZStack {
-                Circle().fill(state.effectiveTier.color.opacity(0.2))
+                Circle().fill(state.displayColor.color.opacity(0.2))
                 if state.workoutGreen {
-                    Circle().stroke(state.effectiveTier.color, lineWidth: 1.5)
+                    Circle().stroke(state.displayColor.color, lineWidth: 1.5)
                 }
                 Image(systemName: "figure.walk")
-                    .foregroundStyle(state.effectiveTier.color)
+                    .foregroundStyle(state.displayColor.color)
                     .font(.system(size: 14, weight: .semibold))
             }
             .frame(width: 22, height: 22)
@@ -67,7 +67,7 @@ private struct RectangularView: View {
             VStack(alignment: .leading, spacing: 0) {
                 Text("\(formatted(state.steps)) steps")
                     .font(.system(size: 14, weight: .semibold, design: .rounded))
-                    .foregroundStyle(state.effectiveTier.color)
+                    .foregroundStyle(state.displayColor.color)
                 Text("\(state.points) pt\(state.points == 1 ? "" : "s") today")
                     .font(.system(size: 10))
                     .foregroundStyle(.secondary)
@@ -83,7 +83,7 @@ private struct CornerView: View {
     var body: some View {
         Text(shortened(state.steps))
             .font(.system(size: 16, weight: .bold, design: .rounded))
-            .foregroundStyle(state.effectiveTier.color)
+            .foregroundStyle(state.displayColor.color)
             .widgetLabel {
                 ProgressView(
                     value: min(Double(state.steps), 12_500),
@@ -91,7 +91,7 @@ private struct CornerView: View {
                 ) {
                     Text(state.workoutGreen ? "8 pts - workout" : "\(state.points) pts")
                 }
-                .tint(state.effectiveTier.color)
+                .tint(state.displayColor.color)
             }
     }
 }

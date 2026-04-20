@@ -32,13 +32,13 @@ struct WatchRootView: View {
                 if let s = state {
                     Text(NumberFormatter.localizedString(from: NSNumber(value: s.steps), number: .decimal))
                         .font(.system(size: 58, weight: .heavy, design: .rounded))
-                        .foregroundStyle(s.effectiveTier.color)
+                        .foregroundStyle(s.displayColor.color)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                     HStack(spacing: 4) {
                         Text("\(s.points) pt\(s.points == 1 ? "" : "s")")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundStyle(s.effectiveTier.color.opacity(0.9))
+                            .foregroundStyle(s.displayColor.color.opacity(0.9))
                         if s.workoutGreen {
                             Image(systemName: "heart.fill")
                                 .font(.system(size: 12))
@@ -104,10 +104,19 @@ struct WatchRootView: View {
     private func refresh() async {
         guard phase == .ready || phase == .loading else { return }
         if let s = try? await HealthKitReader.shared.currentDayState(settings: settings.settings) {
+            let previous = state
             state = s
             lastUpdated = Date()
             phase = .ready
-            WidgetCenter.shared.reloadAllTimelines()
+            // Only burn widget-reload budget when the user actually crossed
+            // into/out of a tier or nudge zone, or workout-green flipped.
+            // A fallback keeps the complication fresh-ish after 15 min of idle.
+            let crossed = s.isMaterialChange(from: previous)
+            let stale = WidgetReloadCoordinator.shared.shouldReloadOnIdle()
+            if crossed || stale {
+                WidgetCenter.shared.reloadAllTimelines()
+                WidgetReloadCoordinator.shared.markReloaded()
+            }
         }
     }
 

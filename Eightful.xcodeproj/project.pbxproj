@@ -11,6 +11,7 @@
 		194CD4D3155D0FA5F33AE4E6 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		1AB7DC4D69270C2418F85A22 /* EightfulComplication.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1F0A3A3348896205A324C0D5 /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
+		35064D0C31194269C7D099D4 /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
 		37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */; };
 		3AFAB8721194D71938E61688 /* ReconciliationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F38C72AEC1333427BE6974 /* ReconciliationView.swift */; };
 		3B81C98B572FA8CF3B40EF20 /* EightfulWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */; };
@@ -19,7 +20,9 @@
 		4CF76C3C3F6CE16C5C486F4E /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
 		54D46C6C738244E94A0A5F6C /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = E04E2704AC49CC60D243F7AA /* EightfulCore */; };
 		5CBFE1EB73511AEB8FD7D508 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
+		5E3143954FB32EAAC7904C38 /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
 		627AE66E140E9860B8EDEE04 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
+		685942B0173191031AB491FB /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
 		7543E86268A059A44F5AF578 /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5BE455088401FCAA1F7C6F42 /* EightfulCore */; };
 		76890318DD2729F0F8A639AC /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8111B0C99426D04775C869B8 /* TierColor.swift */; };
 		7A771BBF6F8EEBDEB3A22469 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494592A19BB9E5D09B7C64EE /* RootView.swift */; };
@@ -68,6 +71,7 @@
 /* Begin PBXFileReference section */
 		06D2DFC304448E7BCA7536F9 /* EightfulApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulApp.swift; sourceTree = "<group>"; };
 		0C2A4BAAC1E2B5FA29FC7A8C /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetReloadCoordinator.swift; sourceTree = "<group>"; };
 		18E88A4FD67D169DC688AD23 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
 		1BD0985B79FEB723C1ECA56F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		20856B70F85C0A7EBA257356 /* Eightful.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Eightful.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +178,7 @@
 				5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */,
 				7EE72392956158DCF5A7E261 /* SettingsStore.swift */,
 				8111B0C99426D04775C869B8 /* TierColor.swift */,
+				13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				7A771BBF6F8EEBDEB3A22469 /* RootView.swift in Sources */,
 				CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */,
 				76890318DD2729F0F8A639AC /* TierColor.swift in Sources */,
+				35064D0C31194269C7D099D4 /* WidgetReloadCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +344,7 @@
 				D0D46EDD5155EFE63EB4A3DB /* SettingsStore.swift in Sources */,
 				93DFF3CC89B658AA41F220E5 /* TierColor.swift in Sources */,
 				F64FDC6F3E23ED01C50A257E /* WatchRootView.swift in Sources */,
+				5E3143954FB32EAAC7904C38 /* WidgetReloadCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +361,7 @@
 				D306CE1943C301EA135C53CA /* SettingsStore.swift in Sources */,
 				37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */,
 				B0042B8E1478FA0BCD0D063B /* TierColor.swift in Sources */,
+				685942B0173191031AB491FB /* WidgetReloadCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

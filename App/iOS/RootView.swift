@@ -29,7 +29,7 @@ struct RootView: View {
                 HStack {
                     Text(NumberFormatter.localizedString(from: NSNumber(value: state.steps), number: .decimal))
                         .font(.system(size: 36, weight: .bold, design: .rounded))
-                        .foregroundStyle(state.effectiveTier.color)
+                        .foregroundStyle(state.displayColor.color)
                     Spacer()
                     VStack(alignment: .trailing) {
                         Text("\(state.points) pt\(state.points == 1 ? "" : "s")")
