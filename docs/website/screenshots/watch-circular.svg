@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 752" width="600" height="752">
+  <defs>
+    <linearGradient id="bezel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="752" fill="#fafafa"/>
+
+  <!-- Watch silhouette -->
+  <rect x="80" y="60" width="440" height="632" rx="90" ry="90" fill="url(#bezel)"/>
+  <!-- Digital crown hint -->
+  <rect x="515" y="220" width="14" height="60" rx="6" fill="#333"/>
+  <!-- Side button hint -->
+  <rect x="515" y="340" width="14" height="36" rx="4" fill="#333"/>
+
+  <!-- Watch face (screen) -->
+  <rect x="110" y="95" width="380" height="562" rx="60" ry="60" fill="#000"/>
+
+  <!-- Face clock (top) -->
+  <text x="300" y="180" font-family="Helvetica" font-weight="600"
+        font-size="54" text-anchor="middle" fill="#fff">20:14</text>
+
+  <!-- "Circular" complication slot with our app's content -->
+  <circle cx="300" cy="390" r="110" fill="#000" stroke="#333" stroke-width="2"/>
+  <text x="300" y="405" font-family="Helvetica" font-weight="900"
+        font-size="64" text-anchor="middle" fill="#ff4040">9.7k</text>
+  <text x="300" y="445" font-family="Helvetica" font-weight="700"
+        font-size="26" text-anchor="middle" fill="#ff4040" opacity="0.85">3pt</text>
+
+  <!-- Caption under the face -->
+  <text x="300" y="600" font-family="Helvetica"
+        font-size="22" text-anchor="middle" fill="#666">Circular complication</text>
+  <text x="300" y="630" font-family="Helvetica" font-weight="600"
+        font-size="20" text-anchor="middle" fill="#ff4040">red when you're in a nudge zone</text>
+</svg>

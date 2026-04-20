@@ -8,7 +8,9 @@ An Apple Watch complication and iPhone app that shows your progress toward the 8
 
 The difference is the colour. White below 6,500 steps. **Red** when you're within 500 steps of 7,000, 10,000 or 12,500 — push now, there's a point on the other side. Orange, yellow and green as you bank 3, 5 and 8 points.
 
-<!-- TODO: screenshots/watch-circular.png — watch face, Eightful circular complication, red nudge-zone -->
+<p align="center">
+  <img src="screenshots/watch-circular.png" alt="Apple Watch showing the Eightful circular complication with a red 9.7k step count" width="260">
+</p>
 
 
 ## Why
@@ -22,8 +24,10 @@ The official Vitality app is great at telling you what you've already earned. It
 - **Workout detection** — flips green early when a 60-min Z2 or 30-min Z3+ workout banks the 8 points ahead of steps
 - **Compare tab** on iPhone — spot when your calculated points disagree with what Vitality reports
 
-<!-- TODO: screenshots/iphone-today.png — Today tab with workout-green banner -->
-<!-- TODO: screenshots/iphone-compare.png — Compare tab with a mismatched day -->
+<p align="center">
+  <img src="screenshots/iphone-today.png" alt="iPhone Today screen with 9,720 steps in red and an 8-point goal reached banner" width="260">
+  <img src="screenshots/iphone-compare.png" alt="iPhone Compare tab showing seven days with matched and mismatched points" width="260">
+</p>
 
 
 ## Privacy
