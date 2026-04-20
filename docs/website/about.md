@@ -1,27 +1,32 @@
 # Eightful
 
+<p align="center">
+  <img src="screenshots/icon.png" alt="Eightful app icon: a magenta 8 on black" width="160">
+</p>
+
 An Apple Watch complication and iPhone app that shows your progress toward the 8-point daily activity target used by [Vitality Health](https://www.vitality.co.uk).
 
-The difference is the colour. White below 6,500 steps. **Red** when you're within 500 steps of 7,000, 10,000 or 12,500 — push now, there's a point on the other side. Orange at 7,000 (3 pts), yellow at 10,000 (5 pts), green at 12,500 (8 pts — you're done).
+The difference is the colour. White below 6,500 steps. **Red** when you're within 500 steps of 7,000, 10,000 or 12,500 — push now, there's a point on the other side. Orange, yellow and green as you bank 3, 5 and 8 points.
 
-Or, skip the step count entirely: record a run, cycle or swim at 60 minutes of 60%+ of your max heart rate — or 30 minutes of 70%+ — and the complication flips green early. Same 8 points, different path.
+<p align="center">
+  <img src="screenshots/watch-circular.png" alt="Watch face with Eightful complication showing a red step count of 9,720" width="260">
+</p>
 
 ## Why
 
-The official Vitality app is great at telling you what you've already earned. It's not great at nudging you before you miss a point. A night at 6,847 steps costs you 3 activity points; nobody finds out until tomorrow. Eightful is the thing on your wrist that reminds you, at a glance, that 153 steps stands between you and a point.
+The official Vitality app is great at telling you what you've already earned. It's not great at nudging you before you miss a point. A night at 6,847 steps costs you three points; nobody finds out until tomorrow. Eightful is the thing on your wrist that reminds you, at a glance, that 153 steps stands between you and a point.
 
 ## What it does
 
-- **Live step count** on your watch face, colour-graded by points tier
-- **One daily nudge** at a time you choose (default 8pm): if you're 500 away from a threshold, it tells you exactly how many steps to go. If you've hit green, it stays silent.
-- **Compare tab** for reconciling what you see in the Vitality Member app against what your Health data says. Surfaces systematic mismatches (wrong DOB, missed workouts, sync lag).
-- **Workout-green detection**: records any HR-qualifying workout that independently earns 8 points, and tells you *which* workout and at what intensity on the Today screen.
+- **Live step count** on your watch face, colour-coded by points tier
+- **One daily nudge** at a time you choose — silent if you've hit green
+- **Workout detection** — flips green early when a 60-min Z2 or 30-min Z3+ workout banks the 8 points ahead of steps
+- **Compare tab** on iPhone — spot when your calculated points disagree with what Vitality reports
 
-## What it doesn't do
-
-- Sign in, create an account, or sync anything online. Your Health data never leaves your device.
-- Run a server. We don't have one.
-- Replace the Vitality Member app — it can't log points for you. It tells you what you should expect to earn, and helps you get there.
+<p align="center">
+  <img src="screenshots/iphone-today.png" alt="iPhone Today screen showing 9,720 steps in red, 3 points, and a workout-green banner" width="280">
+  <img src="screenshots/iphone-compare.png" alt="iPhone Compare tab showing seven days with calculated vs reported points" width="280">
+</p>
 
 ## Privacy
 
@@ -36,6 +41,12 @@ Eightful is an independent tool, not affiliated with, endorsed by, or connected 
 ## Get it
 
 App Store link coming soon.
+
+## Support the project
+
+<a href="https://ko-fi.com/smagdali" target="_blank">☕ Buy Stef a coffee</a>
+
+Eightful is free and always will be. If it's saving you points and you fancy it, you can throw a coffee my way.
 
 ## Contact
 
