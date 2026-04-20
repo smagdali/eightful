@@ -2,9 +2,8 @@ import SwiftUI
 import EightfulCore
 
 struct ReconciliationView: View {
-    @StateObject private var store = ReconciliationStore.shared
     @StateObject private var settingsStore = SettingsStore.shared
-    @State private var weekOffset: Int = -1   // default: last week (lag-safe)
+    @State private var weekOffset: Int = -1   // default: last week
     @State private var week: WeekReconciliation?
     @State private var loading: Bool = false
 
@@ -24,15 +23,13 @@ struct ReconciliationView: View {
             List {
                 weekPickerSection
                 if let week {
-                    summarySection(week)
+                    totalSection(week)
                     daysSection(week)
-                    patternSection(week)
                 } else if loading {
                     Section { ProgressView() }
                 }
-                helpSection
             }
-            .navigationTitle("Compare with Vitality")
+            .navigationTitle("Week")
             .task(id: weekOffset) { await load() }
         }
     }
@@ -44,8 +41,8 @@ struct ReconciliationView: View {
                 Spacer()
                 VStack {
                     Text(weekLabel).font(.headline)
-                    Text(weekOffset == 0 ? "this week (data may still be lagging)" :
-                         weekOffset == -1 ? "last week (recommended)" :
+                    Text(weekOffset == 0 ? "this week" :
+                         weekOffset == -1 ? "last week" :
                          "\(abs(weekOffset)) weeks ago")
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -57,55 +54,28 @@ struct ReconciliationView: View {
         }
     }
 
-    private func summarySection(_ week: WeekReconciliation) -> some View {
-        Section("Week totals") {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Calculated")
-                        .font(.caption).foregroundStyle(.secondary)
-                    Text("\(week.calculatedTotal) pt")
-                        .font(.title3).bold()
-                }
+    private func totalSection(_ week: WeekReconciliation) -> some View {
+        Section("Week total") {
+            HStack(alignment: .firstTextBaseline) {
+                Text("\(week.calculatedTotal)")
+                    .font(.system(size: 44, weight: .heavy, design: .rounded))
+                Text("points")
+                    .font(.headline)
+                    .foregroundStyle(.secondary)
                 Spacer()
-                VStack(alignment: .trailing) {
-                    Text("Reported (Vitality)")
-                        .font(.caption).foregroundStyle(.secondary)
-                    if let rt = week.reportedTotal {
-                        Text("\(rt) pt")
-                            .font(.title3).bold()
-                            .foregroundStyle(rt == week.calculatedTotal ? .green : .orange)
-                    } else {
-                        Text("\(week.pendingCount) pending")
-                            .foregroundStyle(.secondary)
-                    }
-                }
+                Text("of 40 weekly cap")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
+            .padding(.vertical, 4)
         }
     }
 
     private func daysSection(_ week: WeekReconciliation) -> some View {
         Section("Day by day") {
             ForEach(week.days, id: \.date) { entry in
-                DayRow(entry: entry) { newVal in
-                    store.set(newVal, for: entry.date)
-                    Task { await load() }
-                }
+                DayRow(entry: entry)
             }
-        }
-    }
-
-    private func patternSection(_ week: WeekReconciliation) -> some View {
-        Section("Pattern") {
-            Text(week.pattern.humanReadable)
-                .font(.callout)
-        }
-    }
-
-    private var helpSection: some View {
-        Section {
-            Text("Open the Vitality Member app's Points Statement, then tap a day above to enter what Vitality shows. Use last week to avoid lag; a 2026-04-18 figure probably isn't final.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
         }
     }
 
@@ -121,14 +91,9 @@ struct ReconciliationView: View {
     private func load() async {
         loading = true
         defer { loading = false }
-        let reports = store.reports
         let w = await HealthKitReader.shared.weekReconciliation(
             containing: currentWeekDate,
             settings: settingsStore.settings,
-            reported: { date in
-                let key = ReconciliationStore.shared.key(for: date, calendar: calendar)
-                return reports[key]
-            },
             calendar: calendar
         )
         await MainActor.run { self.week = w }
@@ -137,24 +102,20 @@ struct ReconciliationView: View {
 
 private struct DayRow: View {
     let entry: ReconciliationEntry
-    let onSet: (Int?) -> Void
-    @State private var showEditor = false
-    @State private var draft: String = ""
 
     var body: some View {
-        Button { showEditor = true } label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(dayLabel).font(.callout).bold()
-                    Text("\(entry.calculated.steps) steps")
-                        .font(.caption).foregroundStyle(.secondary)
-                }
-                Spacer()
-                statusPill
+        HStack(alignment: .center) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(dayLabel).font(.callout).bold()
+                Text("\(formatted(entry.calculated.steps)) steps")
+                    .font(.caption).foregroundStyle(.secondary)
             }
+            Spacer()
+            Text("\(entry.calculated.points) pt")
+                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .foregroundStyle(entry.calculated.effectiveTier.color)
         }
-        .buttonStyle(.plain)
-        .sheet(isPresented: $showEditor) { editor }
+        .padding(.vertical, 2)
     }
 
     private var dayLabel: String {
@@ -163,57 +124,9 @@ private struct DayRow: View {
         return fmt.string(from: entry.date)
     }
 
-    private var statusPill: some View {
-        HStack(spacing: 10) {
-            Text("\(entry.calculated.points) pt")
-                .foregroundStyle(tierColor(entry.calculated.effectiveTier))
-                .bold()
-            Image(systemName: "arrow.left.arrow.right").font(.caption).foregroundStyle(.secondary)
-            if let r = entry.reported {
-                Text("\(r) pt")
-                    .foregroundStyle(entry.status == .matched ? .green : .orange)
-                    .bold()
-            } else {
-                Text("—")
-                    .foregroundStyle(.secondary)
-            }
-        }
+    private func formatted(_ n: Int) -> String {
+        let f = NumberFormatter()
+        f.numberStyle = .decimal
+        return f.string(from: NSNumber(value: n)) ?? String(n)
     }
-
-    private var editor: some View {
-        NavigationStack {
-            Form {
-                Section("Vitality says") {
-                    TextField("points (0–8)", text: $draft)
-                        .keyboardType(.numberPad)
-                }
-                Section {
-                    Button("Pending (clear value)", role: .destructive) {
-                        onSet(nil)
-                        showEditor = false
-                    }
-                }
-            }
-            .navigationTitle(dayLabel)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { showEditor = false }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        if let v = Int(draft.trimmingCharacters(in: .whitespaces)), (0...8).contains(v) {
-                            onSet(v)
-                            showEditor = false
-                        }
-                    }
-                }
-            }
-            .onAppear {
-                if let r = entry.reported { draft = String(r) }
-            }
-        }
-    }
-
-    private func tierColor(_ tier: StepTier) -> Color { tier.color }
 }

@@ -6,7 +6,7 @@ struct MainTabView: View {
             RootView()
                 .tabItem { Label("Today", systemImage: "figure.walk") }
             ReconciliationView()
-                .tabItem { Label("Compare", systemImage: "chart.bar.doc.horizontal") }
+                .tabItem { Label("Week", systemImage: "chart.bar.doc.horizontal") }
         }
     }
 }
