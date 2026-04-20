@@ -61,8 +61,9 @@ public final class HealthKitReader {
         try await steps(from: calendar.startOfDay(for: now), to: now)
     }
 
-    /// Returns true if any single workout between `start` and `end` earns 8 Vitality points.
-    public func workoutGreen(maxHR: Double, from start: Date, to end: Date) async throws -> Bool {
+    /// Returns the first qualifying workout's details (8 Vitality points) in
+    /// the range, or nil if none qualify.
+    public func qualifyingWorkoutGreen(maxHR: Double, from start: Date, to end: Date) async throws -> WorkoutGreenDetail? {
         let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
 
         let workouts: [HKWorkout] = try await withCheckedThrowingContinuation { cont in
@@ -79,10 +80,15 @@ public final class HealthKitReader {
             let hr = (try? await averageHeartRate(for: workout)) ?? nil
             guard let avgHR = hr else { continue }
             if VitalityPoints.fromWorkout(durationMinutes: durationMinutes, avgHR: avgHR, maxHR: maxHR) == 8 {
-                return true
+                return WorkoutGreenDetail(
+                    durationMinutes: durationMinutes,
+                    avgHR: avgHR,
+                    maxHR: maxHR,
+                    workoutName: workout.workoutActivityType.name
+                )
             }
         }
-        return false
+        return nil
     }
 
     /// Average heart rate (bpm) across the workout's time range.
@@ -133,14 +139,14 @@ public final class HealthKitReader {
         let dob = settings.dobOverride ?? dateOfBirth(calendar: calendar)
         let maxHR: Double = dob.map { MaxHeartRate.from(dateOfBirth: $0, now: startOfDay, calendar: calendar) } ?? 0
 
-        let isWorkoutGreen: Bool
+        let workoutDetail: WorkoutGreenDetail?
         if maxHR > 0 {
-            isWorkoutGreen = (try? await workoutGreen(maxHR: maxHR, from: startOfDay, to: end)) ?? false
+            workoutDetail = (try? await qualifyingWorkoutGreen(maxHR: maxHR, from: startOfDay, to: end)) ?? nil
         } else {
-            isWorkoutGreen = false
+            workoutDetail = nil
         }
 
-        return DayState(steps: steps, workoutGreen: isWorkoutGreen, timestamp: startOfDay)
+        return DayState(steps: steps, workoutDetail: workoutDetail, timestamp: startOfDay)
     }
 
     /// Build reconciliation entries for the week containing `date` (Monday -> Sunday, local calendar).

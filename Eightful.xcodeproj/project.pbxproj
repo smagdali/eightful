@@ -11,6 +11,8 @@
 		194CD4D3155D0FA5F33AE4E6 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		1AB7DC4D69270C2418F85A22 /* EightfulComplication.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1F0A3A3348896205A324C0D5 /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
+		251C1AA9078651FCDE54EBA6 /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
+		293D853139CA9A6211B5F040 /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
 		35064D0C31194269C7D099D4 /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
 		37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */; };
 		3AFAB8721194D71938E61688 /* ReconciliationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F38C72AEC1333427BE6974 /* ReconciliationView.swift */; };
@@ -39,6 +41,7 @@
 		B2143989B5D852BCC45F0EA2 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
 		B278A57071639EF42A5A53AA /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		B44B1A0C16D1588A6ED41604 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
+		C5AAB21DF1AB65A571EA652E /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
 		CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
 		CE0C134BB34976CA6AF44769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C77FD7D314CFD3E33610AF7 /* Assets.xcassets */; };
 		D0D46EDD5155EFE63EB4A3DB /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
@@ -96,6 +99,7 @@
 		D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWatchApp.swift; sourceTree = "<group>"; };
 		D98D51A4B5F9159516D1F5AE /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationView.swift; sourceTree = "<group>"; };
+		F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTypeName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,7 @@
 				7EE72392956158DCF5A7E261 /* SettingsStore.swift */,
 				8111B0C99426D04775C869B8 /* TierColor.swift */,
 				13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */,
+				F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */,
 				76890318DD2729F0F8A639AC /* TierColor.swift in Sources */,
 				35064D0C31194269C7D099D4 /* WidgetReloadCoordinator.swift in Sources */,
+				251C1AA9078651FCDE54EBA6 /* WorkoutTypeName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +390,7 @@
 				93DFF3CC89B658AA41F220E5 /* TierColor.swift in Sources */,
 				F64FDC6F3E23ED01C50A257E /* WatchRootView.swift in Sources */,
 				5E3143954FB32EAAC7904C38 /* WidgetReloadCoordinator.swift in Sources */,
+				C5AAB21DF1AB65A571EA652E /* WorkoutTypeName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +408,7 @@
 				37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */,
 				B0042B8E1478FA0BCD0D063B /* TierColor.swift in Sources */,
 				685942B0173191031AB491FB /* WidgetReloadCoordinator.swift in Sources */,
+				293D853139CA9A6211B5F040 /* WorkoutTypeName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

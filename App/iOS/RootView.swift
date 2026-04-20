@@ -26,22 +26,44 @@ struct RootView: View {
     private var statusSection: some View {
         Section("Today") {
             if let state = dayState {
-                HStack {
+                HStack(alignment: .top) {
                     Text(NumberFormatter.localizedString(from: NSNumber(value: state.steps), number: .decimal))
                         .font(.system(size: 36, weight: .bold, design: .rounded))
                         .foregroundStyle(state.displayColor.color)
                     Spacer()
-                    VStack(alignment: .trailing) {
+                    VStack(alignment: .trailing, spacing: 2) {
                         Text("\(state.points) pt\(state.points == 1 ? "" : "s")")
                             .font(.headline)
-                        Text(state.workoutGreen ? "Workout green" : state.effectiveTier.rawValue.capitalized)
+                        Text(state.effectiveTier.rawValue.capitalized)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
                 }
+                if let detail = state.workoutDetail, detail.maxHR > 0 {
+                    workoutDetailBanner(detail)
+                }
             } else {
                 ProgressView()
             }
+        }
+    }
+
+    @ViewBuilder
+    private func workoutDetailBanner(_ d: WorkoutGreenDetail) -> some View {
+        let name = d.workoutName ?? "Workout"
+        let minutes = Int(d.durationMinutes.rounded())
+        let avgBPM = Int(d.avgHR.rounded())
+        let pct = Int(d.percentOfMax.rounded())
+        HStack(spacing: 8) {
+            Image(systemName: "heart.fill").foregroundStyle(.green)
+            VStack(alignment: .leading, spacing: 2) {
+                Text("8-point goal reached")
+                    .font(.footnote).bold()
+                Text("\(name): \(minutes) min at \(pct)% of max HR (\(avgBPM) bpm)")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer(minLength: 0)
         }
     }
 
