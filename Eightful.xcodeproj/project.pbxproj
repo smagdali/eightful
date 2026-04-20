@@ -15,12 +15,14 @@
 		37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */; };
 		3AFAB8721194D71938E61688 /* ReconciliationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F38C72AEC1333427BE6974 /* ReconciliationView.swift */; };
 		3B81C98B572FA8CF3B40EF20 /* EightfulWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */; };
+		43CBD49E80E4E04CFFDAE1B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3323984B81DBB71E33C1A2FF /* Assets.xcassets */; };
 		4ACD579E401BF7B4C1218AAE /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
 		4CEC233B309BEC99F33AD18C /* EightfulApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D2DFC304448E7BCA7536F9 /* EightfulApp.swift */; };
 		4CF76C3C3F6CE16C5C486F4E /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
 		54D46C6C738244E94A0A5F6C /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = E04E2704AC49CC60D243F7AA /* EightfulCore */; };
 		5CBFE1EB73511AEB8FD7D508 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
 		5E3143954FB32EAAC7904C38 /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
+		609F34D24EB62704FC82E5D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E981759119105230460617A /* Assets.xcassets */; };
 		627AE66E140E9860B8EDEE04 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		685942B0173191031AB491FB /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
 		7543E86268A059A44F5AF578 /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5BE455088401FCAA1F7C6F42 /* EightfulCore */; };
@@ -38,6 +40,7 @@
 		B278A57071639EF42A5A53AA /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		B44B1A0C16D1588A6ED41604 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
 		CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
+		CE0C134BB34976CA6AF44769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C77FD7D314CFD3E33610AF7 /* Assets.xcassets */; };
 		D0D46EDD5155EFE63EB4A3DB /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
 		D306CE1943C301EA135C53CA /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
 		F532B5B5FDE7CEDD7C13A5FB /* ComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */; };
@@ -71,11 +74,13 @@
 /* Begin PBXFileReference section */
 		06D2DFC304448E7BCA7536F9 /* EightfulApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulApp.swift; sourceTree = "<group>"; };
 		0C2A4BAAC1E2B5FA29FC7A8C /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		0C77FD7D314CFD3E33610AF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetReloadCoordinator.swift; sourceTree = "<group>"; };
 		18E88A4FD67D169DC688AD23 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
 		1BD0985B79FEB723C1ECA56F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		20856B70F85C0A7EBA257356 /* Eightful.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Eightful.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21865445C7BFCF7A40E743AA /* PedometerReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedometerReader.swift; sourceTree = "<group>"; };
+		3323984B81DBB71E33C1A2FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3545FDA4B67CA8B075EBFAD6 /* EightfulWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EightfulWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E210304AA364A8F3D59694 /* EightfulWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWidget.swift; sourceTree = "<group>"; };
 		494592A19BB9E5D09B7C64EE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -83,6 +88,7 @@
 		7EE72392956158DCF5A7E261 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		8111B0C99426D04775C869B8 /* TierColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierColor.swift; sourceTree = "<group>"; };
 		82F38C72AEC1333427BE6974 /* ReconciliationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconciliationView.swift; sourceTree = "<group>"; };
+		8E981759119105230460617A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EightfulComplication.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		97473905B694747640847F9F /* HealthKitReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitReader.swift; sourceTree = "<group>"; };
 		B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProvider.swift; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 		1FADB73C88046DDD8FED6D8A /* Complication */ = {
 			isa = PBXGroup;
 			children = (
+				8E981759119105230460617A /* Assets.xcassets */,
 				EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */,
 				42E210304AA364A8F3D59694 /* EightfulWidget.swift */,
 				B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */,
@@ -133,6 +140,7 @@
 		32615921E6891BAFA8A20FBE /* Watch */ = {
 			isa = PBXGroup;
 			children = (
+				0C77FD7D314CFD3E33610AF7 /* Assets.xcassets */,
 				D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */,
 				D98D51A4B5F9159516D1F5AE /* WatchRootView.swift */,
 			);
@@ -142,6 +150,7 @@
 		5C8AEBF81143B63FB4CCCF0C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				3323984B81DBB71E33C1A2FF /* Assets.xcassets */,
 				06D2DFC304448E7BCA7536F9 /* EightfulApp.swift */,
 				1BD0985B79FEB723C1ECA56F /* MainTabView.swift */,
 				0C2A4BAAC1E2B5FA29FC7A8C /* NotificationScheduler.swift */,
@@ -211,6 +220,7 @@
 			buildConfigurationList = 42D18812713B804BAB6B10DA /* Build configuration list for PBXNativeTarget "Eightful" */;
 			buildPhases = (
 				1150A6E2B5BCE976BD1CAD9C /* Sources */,
+				8B96A39E578653B33CD5DFCD /* Resources */,
 				C643BC94DD266BFBD97F3BB0 /* Frameworks */,
 			);
 			buildRules = (
@@ -230,6 +240,7 @@
 			buildConfigurationList = FCDE978E6A4D57029CF7E618 /* Build configuration list for PBXNativeTarget "EightfulWatch" */;
 			buildPhases = (
 				301EAC7D87237E057D2D804A /* Sources */,
+				BB6795009A559046C5D79C95 /* Resources */,
 				585880AF5B87298FAC6359AE /* Frameworks */,
 				6E8EACF0C7CC5CABAA82FEC8 /* Embed Foundation Extensions */,
 			);
@@ -251,6 +262,7 @@
 			buildConfigurationList = B434D0FDF41308F9930FD666 /* Build configuration list for PBXNativeTarget "EightfulComplication" */;
 			buildPhases = (
 				94F6CA773511D64124FB4760 /* Sources */,
+				39890AA4E4F17FE5E8C924F9 /* Resources */,
 				303D8730CB54CFE4347347CC /* Frameworks */,
 			);
 			buildRules = (
@@ -311,6 +323,33 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		39890AA4E4F17FE5E8C924F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				609F34D24EB62704FC82E5D0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B96A39E578653B33CD5DFCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43CBD49E80E4E04CFFDAE1B7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB6795009A559046C5D79C95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE0C134BB34976CA6AF44769 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1150A6E2B5BCE976BD1CAD9C /* Sources */ = {

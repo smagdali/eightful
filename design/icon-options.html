@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Eightful - icon options</title>
+<style>
+  html { background: #1a1a1a; color: #ddd; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+  body { max-width: 1100px; margin: 2rem auto; padding: 0 2rem 6rem; }
+  h1 { font-weight: 300; letter-spacing: -0.02em; }
+  .row { display: flex; align-items: flex-end; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid #333; }
+  .meta { flex: 0 0 240px; }
+  .meta h2 { margin: 0 0 .3rem; font-size: 1.1rem; }
+  .meta p { margin: 0; color: #999; font-size: .88rem; line-height: 1.4; }
+  .sizes { display: flex; align-items: flex-end; gap: 1.5rem; }
+  .size { display: flex; flex-direction: column; align-items: center; gap: .4rem; }
+  .size .label { color: #777; font-size: .72rem; font-variant-numeric: tabular-nums; }
+  /* iOS app icon mask - 22.37% of side radius */
+  .ios { overflow: hidden; display: block; background: #000; }
+  .ios-1024 { width: 180px; height: 180px; border-radius: 40px; }
+  .ios-128  { width: 96px; height: 96px; border-radius: 21px; }
+  .ios-64   { width: 56px; height: 56px; border-radius: 12px; }
+  .ios-32   { width: 32px; height: 32px; border-radius: 7px; }
+  svg { display: block; }
+</style>
+</head>
+<body>
+
+<h1>Eightful - icon direction options</h1>
+<p style="color:#888;">Pick one (or a hybrid). I'll render it to 1024x1024 PNG, drop into AppIcon.appiconset for all three targets, regenerate, commit, push.</p>
+
+<!-- =========================================================
+     DEFS: shared gradients
+     ========================================================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Red -> green vertical, matching our tier palette -->
+    <linearGradient id="tier" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%"   stop-color="#ff4040"/>
+      <stop offset="33%"  stop-color="#ff9a1a"/>
+      <stop offset="66%"  stop-color="#ffe61a"/>
+      <stop offset="100%" stop-color="#33e659"/>
+    </linearGradient>
+    <linearGradient id="redhalf" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%"   stop-color="#ff4040"/>
+      <stop offset="100%" stop-color="#ff9a1a"/>
+    </linearGradient>
+    <linearGradient id="greenhalf" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%"   stop-color="#ffe61a"/>
+      <stop offset="100%" stop-color="#33e659"/>
+    </linearGradient>
+    <radialGradient id="bgRadial" cx="50%" cy="40%">
+      <stop offset="0%"   stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+  </defs>
+</svg>
+
+<!-- =========================================================
+     ICON DEFINITIONS (reused at different sizes)
+     ========================================================= -->
+<template id="A">
+  <svg viewBox="0 0 1024 1024" width="100%" height="100%">
+    <rect width="1024" height="1024" fill="url(#bgRadial)"/>
+    <g transform="translate(512,512)" fill="none" stroke-width="90" stroke-linecap="round">
+      <!-- Top loop -->
+      <circle cx="0" cy="-170" r="170" stroke="url(#greenhalf)"/>
+      <!-- Bottom loop -->
+      <circle cx="0" cy="170"  r="230" stroke="url(#redhalf)"/>
+    </g>
+  </svg>
+</template>
+
+<template id="B">
+  <svg viewBox="0 0 1024 1024" width="100%" height="100%">
+    <rect width="1024" height="1024" fill="url(#bgRadial)"/>
+    <text x="512" y="740" font-family="-apple-system, BlinkMacSystemFont, Helvetica, sans-serif"
+          font-weight="900" font-size="820" text-anchor="middle" fill="url(#tier)">8</text>
+    <!-- Simple walker: two legs + head inside the top loop -->
+    <g fill="#fff">
+      <circle cx="512" cy="330" r="44"/>
+      <rect x="488" y="380" width="48" height="120" rx="20"/>
+      <rect x="470" y="498" width="30" height="80" rx="14" transform="rotate(-18 485 538)"/>
+      <rect x="524" y="498" width="30" height="80" rx="14" transform="rotate(18 539 538)"/>
+    </g>
+  </svg>
+</template>
+
+<template id="C">
+  <svg viewBox="0 0 1024 1024" width="100%" height="100%">
+    <rect width="1024" height="1024" fill="#000"/>
+    <text x="512" y="770" font-family="-apple-system, BlinkMacSystemFont, Helvetica, sans-serif"
+          font-weight="900" font-size="920" text-anchor="middle" fill="url(#tier)">8</text>
+  </svg>
+</template>
+
+<template id="D">
+  <svg viewBox="0 0 1024 1024" width="100%" height="100%">
+    <rect width="1024" height="1024" fill="url(#bgRadial)"/>
+    <!-- 8 as a single continuous stroke forming infinity-ish vertical loop -->
+    <path d="M 512 192
+             C 320 192 320 432 512 512
+             C 704 592 704 832 512 832
+             C 320 832 320 592 512 512
+             C 704 432 704 192 512 192 Z"
+          fill="none" stroke="url(#tier)" stroke-width="88" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</template>
+
+<template id="E">
+  <svg viewBox="0 0 1024 1024" width="100%" height="100%">
+    <rect width="1024" height="1024" fill="#000"/>
+    <!-- Radial dial: 8 segments, filled red->green -->
+    <g transform="translate(512,512)">
+      <g stroke="#000" stroke-width="8">
+        <!-- 8 arcs around a circle, filled in tier colours -->
+        <path d="M 0 -360 A 360 360 0 0 1 254 -254 L 0 0 Z" fill="#33e659"/>
+        <path d="M 254 -254 A 360 360 0 0 1 360 0 L 0 0 Z" fill="#80df4d"/>
+        <path d="M 360 0 A 360 360 0 0 1 254 254 L 0 0 Z" fill="#ffe61a"/>
+        <path d="M 254 254 A 360 360 0 0 1 0 360 L 0 0 Z" fill="#ffc61a"/>
+        <path d="M 0 360 A 360 360 0 0 1 -254 254 L 0 0 Z" fill="#ff9a1a"/>
+        <path d="M -254 254 A 360 360 0 0 1 -360 0 L 0 0 Z" fill="#ff6a1a"/>
+        <path d="M -360 0 A 360 360 0 0 1 -254 -254 L 0 0 Z" fill="#ff4040"/>
+        <path d="M -254 -254 A 360 360 0 0 1 0 -360 L 0 0 Z" fill="#ff4070"/>
+      </g>
+      <circle r="180" fill="#000"/>
+      <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, Helvetica, sans-serif"
+            font-weight="900" font-size="240" text-anchor="middle" fill="#fff">8</text>
+    </g>
+  </svg>
+</template>
+
+<template id="F">
+  <svg viewBox="0 0 1024 1024" width="100%" height="100%">
+    <rect width="1024" height="1024" fill="url(#bgRadial)"/>
+    <!-- 8 as two rings stacked, like two Activity rings -->
+    <g fill="none" stroke-width="70" stroke-linecap="round" transform="translate(512,512)">
+      <!-- outer "backing" rings -->
+      <circle cx="0" cy="-185" r="185" stroke="#222"/>
+      <circle cx="0" cy="185"  r="205" stroke="#222"/>
+      <!-- foreground arcs -->
+      <circle cx="0" cy="-185" r="185" stroke="url(#greenhalf)"
+              stroke-dasharray="870 1162" transform="rotate(-90 0 -185)"/>
+      <circle cx="0" cy="185"  r="205" stroke="url(#redhalf)"
+              stroke-dasharray="965 1288" transform="rotate(-90 0 185)"/>
+    </g>
+  </svg>
+</template>
+
+<script>
+  // Render each template at multiple sizes
+  const designs = [
+    { id: 'A', name: 'Two rings forming 8', note: 'Red lower ring, green upper. Activity-inspired. Clear at 32pt.' },
+    { id: 'B', name: 'Walker inside 8', note: 'Playful, fitness-first. Walker detail lost below 64pt.' },
+    { id: 'C', name: 'Numeric 8, gradient', note: 'Minimal. Heavy Helvetica 8, red-bottom to green-top. Cleanest at scale.' },
+    { id: 'D', name: 'Continuous stroke 8', note: 'Single fluid path, tier gradient. Elegant; holds edges to ~32pt.' },
+    { id: 'E', name: 'Dial / 8 segments', note: '8 wedges, 8 in centre. Busiest design. Doubles as "8 points".' },
+    { id: 'F', name: '8 as two progress rings', note: 'Looks like Activity rings stacked. Subtle animation potential.' },
+  ];
+  const sizes = [
+    { cls: 'ios-1024', label: '180 (preview 1024)' },
+    { cls: 'ios-128',  label: '96 (preview 128)' },
+    { cls: 'ios-64',   label: '56 (preview 64)' },
+    { cls: 'ios-32',   label: '32 (home)' },
+  ];
+  for (const d of designs) {
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.innerHTML = `
+      <div class="meta">
+        <h2>${d.id}. ${d.name}</h2>
+        <p>${d.note}</p>
+      </div>
+      <div class="sizes"></div>
+    `;
+    const sizesEl = row.querySelector('.sizes');
+    for (const s of sizes) {
+      const wrap = document.createElement('div');
+      wrap.className = 'size';
+      const box = document.createElement('div');
+      box.className = 'ios ' + s.cls;
+      box.innerHTML = document.getElementById(d.id).innerHTML;
+      wrap.append(box);
+      const lbl = document.createElement('span');
+      lbl.className = 'label';
+      lbl.textContent = s.label;
+      wrap.append(lbl);
+      sizesEl.append(wrap);
+    }
+    document.body.append(row);
+  }
+</script>
+
+</body>
+</html>
