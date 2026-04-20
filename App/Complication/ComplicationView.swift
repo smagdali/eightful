@@ -45,6 +45,17 @@ private struct CircularView: View {
                     .font(.system(size: 11, weight: .bold, design: .rounded))
                     .foregroundStyle(state.displayColor.color.opacity(0.85))
             }
+            // Temporary deploy-verification marker. Bump
+            // CURRENT_PROJECT_VERSION in project.yml each time;
+            // when you see the number change on the face,
+            // you know the fresh bundle is live. Remove before
+            // App Store submission.
+            VStack {
+                Spacer()
+                Text("b\(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "?")")
+                    .font(.system(size: 6, weight: .medium, design: .rounded))
+                    .foregroundStyle(.tertiary)
+            }
         }
     }
 }
