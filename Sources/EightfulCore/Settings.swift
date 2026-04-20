@@ -22,21 +22,43 @@ public struct TimeOfDay: Equatable, Sendable, Codable {
 
 public struct AppSettings: Equatable, Sendable, Codable {
     public var notificationsEnabled: Bool
-    public var nudgeStartTime: TimeOfDay
-    public var reportTime: TimeOfDay
+    public var nudgeTime: TimeOfDay
     public var dobOverride: Date?
 
     public init(
         notificationsEnabled: Bool = true,
-        nudgeStartTime: TimeOfDay = .sevenPM,
-        reportTime: TimeOfDay = .eightPM,
+        nudgeTime: TimeOfDay = .eightPM,
         dobOverride: Date? = nil
     ) {
         self.notificationsEnabled = notificationsEnabled
-        self.nudgeStartTime = nudgeStartTime
-        self.reportTime = reportTime
+        self.nudgeTime = nudgeTime
         self.dobOverride = dobOverride
     }
 
     public static let `default` = AppSettings()
+
+    private enum CodingKeys: String, CodingKey {
+        case notificationsEnabled, nudgeTime, dobOverride
+        case reportTime   // legacy field
+    }
+
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        self.notificationsEnabled = try c.decodeIfPresent(Bool.self, forKey: .notificationsEnabled) ?? true
+        if let t = try c.decodeIfPresent(TimeOfDay.self, forKey: .nudgeTime) {
+            self.nudgeTime = t
+        } else if let legacy = try c.decodeIfPresent(TimeOfDay.self, forKey: .reportTime) {
+            self.nudgeTime = legacy
+        } else {
+            self.nudgeTime = .eightPM
+        }
+        self.dobOverride = try c.decodeIfPresent(Date.self, forKey: .dobOverride)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(notificationsEnabled, forKey: .notificationsEnabled)
+        try c.encode(nudgeTime, forKey: .nudgeTime)
+        try c.encodeIfPresent(dobOverride, forKey: .dobOverride)
+    }
 }

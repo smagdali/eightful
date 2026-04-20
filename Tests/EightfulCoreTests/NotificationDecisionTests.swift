@@ -18,172 +18,117 @@ final class NotificationDecisionTests: XCTestCase {
 
     // MARK: - Pre-window
 
-    func testBeforeNudgeWindowSuppresses() {
-        let state = DayState(steps: 9_600, workoutGreen: false, timestamp: date(14))
+    func testBeforeNudgeTimeSuppresses() {
+        let state = DayState(steps: 9_600, workoutGreen: false)
         let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(14),
-            settings: .default,
-            history: historyEmpty(at: date(14)),
-            calendar: calendar
-        )
+            state: state, now: date(14),
+            settings: .default, history: historyEmpty(at: date(14)), calendar: calendar)
         XCTAssertEqual(action, .suppress)
     }
 
     func testNotificationsDisabledSuppresses() {
-        let state = DayState(steps: 9_600, workoutGreen: false, timestamp: date(20))
+        let state = DayState(steps: 9_600, workoutGreen: false)
         var settings = AppSettings.default
         settings.notificationsEnabled = false
         let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(20),
-            settings: settings,
-            history: historyEmpty(at: date(20)),
-            calendar: calendar
-        )
+            state: state, now: date(20),
+            settings: settings, history: historyEmpty(at: date(20)), calendar: calendar)
         XCTAssertEqual(action, .suppress)
     }
 
-    // MARK: - Nudge window (7pm-8pm)
+    // MARK: - At nudge time: zone wins over green
 
-    func testNudgeAt7PmWhenInBelow10kZone() {
-        let state = DayState(steps: 9_600, workoutGreen: false, timestamp: date(19, 15))
+    func testNudgeWhenInBelow7kZone() {
+        let state = DayState(steps: 6_700, workoutGreen: false)
         let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(19, 15),
-            settings: .default,
-            history: historyEmpty(at: date(19, 15)),
-            calendar: calendar
-        )
-        XCTAssertEqual(action, .nudge(.below10k))
-    }
-
-    func testNudgeAt7PmWhenInBelow7kZone() {
-        let state = DayState(steps: 6_700, workoutGreen: false, timestamp: date(19, 30))
-        let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(19, 30),
-            settings: .default,
-            history: historyEmpty(at: date(19, 30)),
-            calendar: calendar
-        )
+            state: state, now: date(20),
+            settings: .default, history: historyEmpty(at: date(20)), calendar: calendar)
         XCTAssertEqual(action, .nudge(.below7k))
     }
 
-    func testNoNudgeForBelow12500ZoneInPreReportWindow() {
-        // User wanted 12,000-12,499 nudge at 8pm only
-        let state = DayState(steps: 12_200, workoutGreen: false, timestamp: date(19, 30))
+    func testNudgeWhenInBelow10kZone() {
+        let state = DayState(steps: 9_600, workoutGreen: false)
         let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(19, 30),
-            settings: .default,
-            history: historyEmpty(at: date(19, 30)),
-            calendar: calendar
-        )
-        XCTAssertEqual(action, .suppress)
-    }
-
-    func testNudgeSuppressedIfAlreadyFired() {
-        let state = DayState(steps: 9_600, workoutGreen: false, timestamp: date(19, 30))
-        var history = historyEmpty(at: date(19, 30))
-        history = history.markingNudged(.below10k)
-        let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(19, 30),
-            settings: .default,
-            history: history,
-            calendar: calendar
-        )
-        XCTAssertEqual(action, .suppress)
-    }
-
-    func testNoNudgeOutsideZone() {
-        let state = DayState(steps: 8_500, workoutGreen: false, timestamp: date(19, 30))
-        let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(19, 30),
-            settings: .default,
-            history: historyEmpty(at: date(19, 30)),
-            calendar: calendar
-        )
-        XCTAssertEqual(action, .suppress)
-    }
-
-    // MARK: - Report time (8pm)
-
-    func testReportAt8PmForNonGreenNonZone() {
-        let state = DayState(steps: 8_200, workoutGreen: false, timestamp: date(20))
-        let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(20),
-            settings: .default,
-            history: historyEmpty(at: date(20)),
-            calendar: calendar
-        )
-        XCTAssertEqual(action, .report(state))
-    }
-
-    func testSuppressAt8PmWhenStepsGreen() {
-        let state = DayState(steps: 13_000, workoutGreen: false, timestamp: date(20))
-        let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(20),
-            settings: .default,
-            history: historyEmpty(at: date(20)),
-            calendar: calendar
-        )
-        XCTAssertEqual(action, .suppress)
-    }
-
-    func testSuppressAt8PmWhenWorkoutGreen() {
-        let state = DayState(steps: 8_000, workoutGreen: true, timestamp: date(20))
-        let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(20),
-            settings: .default,
-            history: historyEmpty(at: date(20)),
-            calendar: calendar
-        )
-        XCTAssertEqual(action, .suppress)
-    }
-
-    func testNudgeAt8PmOverridesGreenSuppressionForBelow12500() {
-        // User explicitly wanted: nudge overrides green suppression in 12,000-12,499
-        let state = DayState(steps: 12_200, workoutGreen: true, timestamp: date(20))
-        let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(20),
-            settings: .default,
-            history: historyEmpty(at: date(20)),
-            calendar: calendar
-        )
-        XCTAssertEqual(action, .nudge(.below12500))
-    }
-
-    func testNudgeAt8PmOverridesForBelow10kZone() {
-        let state = DayState(steps: 9_800, workoutGreen: true, timestamp: date(20))
-        let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(20),
-            settings: .default,
-            history: historyEmpty(at: date(20)),
-            calendar: calendar
-        )
+            state: state, now: date(20),
+            settings: .default, history: historyEmpty(at: date(20)), calendar: calendar)
         XCTAssertEqual(action, .nudge(.below10k))
     }
 
-    func testReportSuppressedIfAlreadyFired() {
-        let state = DayState(steps: 8_200, workoutGreen: false, timestamp: date(20, 30))
+    func testNudgeWhenInBelow12500Zone() {
+        let state = DayState(steps: 12_200, workoutGreen: false)
+        let action = NotificationDecision.evaluate(
+            state: state, now: date(20),
+            settings: .default, history: historyEmpty(at: date(20)), calendar: calendar)
+        XCTAssertEqual(action, .nudge(.below12500))
+    }
+
+    func testNudgeOverridesWorkoutGreen() {
+        // Even though the user has 8pt via workout, 12,200 steps is so close
+        // to 12,500 that it's worth the prompt (vitality-agnostic "push!" UX).
+        let state = DayState(steps: 12_200, workoutGreen: true)
+        let action = NotificationDecision.evaluate(
+            state: state, now: date(20),
+            settings: .default, history: historyEmpty(at: date(20)), calendar: calendar)
+        XCTAssertEqual(action, .nudge(.below12500))
+    }
+
+    // MARK: - At nudge time: green suppresses when not in zone
+
+    func testSuppressWhenStepsGreen() {
+        let state = DayState(steps: 13_000, workoutGreen: false)
+        let action = NotificationDecision.evaluate(
+            state: state, now: date(20),
+            settings: .default, history: historyEmpty(at: date(20)), calendar: calendar)
+        XCTAssertEqual(action, .suppress)
+    }
+
+    func testSuppressWhenWorkoutGreenAndOutsideZone() {
+        let state = DayState(steps: 8_000, workoutGreen: true)
+        let action = NotificationDecision.evaluate(
+            state: state, now: date(20),
+            settings: .default, history: historyEmpty(at: date(20)), calendar: calendar)
+        XCTAssertEqual(action, .suppress)
+    }
+
+    // MARK: - At nudge time: not green, not in zone → report
+
+    func testReportWhenNotGreenNotInZone() {
+        let state = DayState(steps: 8_200, workoutGreen: false)
+        let action = NotificationDecision.evaluate(
+            state: state, now: date(20),
+            settings: .default, history: historyEmpty(at: date(20)), calendar: calendar)
+        XCTAssertEqual(action, .report(state))
+    }
+
+    // MARK: - Already fired today
+
+    func testSuppressedIfAlreadyReportedToday() {
+        let state = DayState(steps: 8_200, workoutGreen: false)
         var history = historyEmpty(at: date(20, 30))
         history = history.markingReported()
         let action = NotificationDecision.evaluate(
-            state: state,
-            now: date(20, 30),
-            settings: .default,
-            history: history,
-            calendar: calendar
-        )
+            state: state, now: date(20, 30),
+            settings: .default, history: history, calendar: calendar)
         XCTAssertEqual(action, .suppress)
+    }
+
+    // MARK: - Custom nudge time
+
+    func testRespectsCustomNudgeTime() {
+        let state = DayState(steps: 8_000, workoutGreen: false)
+        var settings = AppSettings.default
+        settings.nudgeTime = TimeOfDay(hour: 18, minute: 30)
+
+        // 18:00 — too early
+        XCTAssertEqual(
+            NotificationDecision.evaluate(state: state, now: date(18), settings: settings,
+                                          history: historyEmpty(at: date(18)), calendar: calendar),
+            .suppress)
+        // 18:30 — fires
+        XCTAssertEqual(
+            NotificationDecision.evaluate(state: state, now: date(18, 30), settings: settings,
+                                          history: historyEmpty(at: date(18, 30)), calendar: calendar),
+            .report(state))
     }
 
     // MARK: - Rollover

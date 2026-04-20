@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <rect width="1024" height="1024" fill="#000"/>
-  <text x="512" y="770"
-        font-family="-apple-system, SF Pro Rounded, Helvetica, sans-serif"
-        font-weight="900" font-size="920"
+  <!-- y is the baseline. Helvetica Bold 900pt has cap-height ≈ 643,
+       so baseline = 512 + 643/2 ≈ 833 centres the glyph vertically. -->
+  <text x="512" y="833"
+        font-family="Helvetica"
+        font-weight="bold" font-size="900"
         text-anchor="middle" fill="#E4007C">8</text>
 </svg>
