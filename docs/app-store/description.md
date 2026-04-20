@@ -17,7 +17,7 @@ Recommended: **1**. Clearest value proposition, no trademark risk.
 
 ## Promotional text (170 characters max, can be updated without a new build)
 
-> Eightful shows your progress toward 8 daily activity points on your Apple Watch face. Colour-coded step tiers, 8pm nudges, and a weekly compare-with-reality view.
+> Eightful shows your progress toward your daily 8 Vitality Health activity points on your Apple Watch face. Colour-coded step tiers, 8pm nudges, and a weekly compare-with-reality view.
 
 *(169 characters)*
 
@@ -25,8 +25,9 @@ Recommended: **1**. Clearest value proposition, no trademark risk.
 
 ```
 Eightful is a small, focused Apple Watch complication and iPhone companion
-for anyone chasing a daily 8-point activity target — the pattern used by
-several UK private health insurance activity rewards programmes.
+for Vitality Health members chasing the daily 8-point activity target.
+Not affiliated with Vitality — an independent tool that works alongside
+the official Vitality Member app (https://www.vitality.co.uk).
 
 WHAT IT SHOWS
 • A colour-coded step count on your watch face. White below 6,500; red when
@@ -61,9 +62,10 @@ you enter in the Compare tab are stored on your device only.
 
 DISCLAIMER
 Eightful is an independent tool, not affiliated with, endorsed by, or
-connected to Vitality Health Insurance or any other insurer. The 7,000 /
-10,000 / 12,500 step thresholds and heart-rate rules are industry-generic
-parameters; consult your provider's terms for the rules that apply to you.
+connected to Vitality Health Insurance. The 7,000 / 10,000 / 12,500 step
+thresholds and heart-rate rules implement Vitality's published activity-
+points scoring; consult your Vitality terms for the authoritative rules
+that apply to you.
 
 REQUIREMENTS
 iOS 16 or later, watchOS 9 or later. HealthKit permission required.

@@ -25,13 +25,14 @@ the Apple Health app on the review device (Health -> Browse -> Activity
 
 **Trademark / affiliation**
 
-Eightful is an independent third-party tool. It is NOT an official app from
-Vitality Health Insurance or any other insurance provider. The term
-"Vitality" appears in the app description and in the app's UI only to
-describe the type of insurance activity rewards programme the app is
-designed to complement, consistent with App Store Review Guideline 5.2.1
-("referential use of trademarks for the purpose of describing compatibility").
-The in-app About screen states this disclaimer explicitly.
+Eightful is an independent third-party tool, not an official app from
+Vitality Health Insurance. "Vitality Health" appears in the app description
+and UI as nominative/referential use: the app is designed specifically to
+complement Vitality's published 8-point daily activity target, and no other
+name accurately identifies that product. Consistent with App Store Review
+Guideline 5.2.1, the use is purely descriptive; no Vitality logos, colours,
+or artwork are used, and the in-app About screen states explicitly that
+Eightful is not affiliated with or endorsed by Vitality.
 
 The app does not use any Vitality-owned logos, imagery, branding, or
 artwork. The icon is an original design.
