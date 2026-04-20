@@ -46,15 +46,14 @@ struct WatchRootView: View {
                         }
                     }
                     if let updated = lastUpdated {
-                        // Apple HIG caption floor on watchOS: 13pt. .secondary
-                        // foreground (~60% primary) on the watch face's black
-                        // gives a contrast ratio ~12:1, well over WCAG 2.2 AA
-                        // normal-text minimum of 4.5:1. Medium weight helps
-                        // legibility at small sizes per Apple's SF guidance.
-                        Text(updated, format: .dateTime.hour(.twoDigits(amPM: .omitted)).minute(.twoDigits))
-                            .font(.system(size: 15, weight: .medium, design: .rounded))
+                        // 15pt medium rounded on .secondary foreground
+                        // clears WCAG 2.2 AA on the watch's black.
+                        Text("Last updated: \(updated, format: .dateTime.hour(.twoDigits(amPM: .omitted)).minute(.twoDigits).second(.twoDigits))")
+                            .font(.system(size: 14, weight: .medium, design: .rounded))
                             .foregroundStyle(.secondary)
-                            .accessibilityLabel("Last updated at \(updated.formatted(.dateTime.hour().minute()))")
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.75)
+                            .accessibilityLabel("Last updated at \(updated.formatted(.dateTime.hour().minute().second()))")
                     }
                 }
             }
