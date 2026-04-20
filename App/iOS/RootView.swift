@@ -47,15 +47,26 @@ struct RootView: View {
 
     private var permissionsSection: some View {
         Section("Permissions") {
-            Button {
-                Task { await requestHealthAuth() }
-            } label: {
-                Label("Grant Health access", systemImage: "heart.text.square")
+            if healthAuthNeeded {
+                Button {
+                    Task { await requestHealthAuth() }
+                } label: {
+                    Label("Grant Health access", systemImage: "heart.text.square")
+                }
+            } else {
+                Button {
+                    openiOSSettings()
+                } label: {
+                    Label("Manage Health access in Settings", systemImage: "heart.text.square")
+                        .foregroundStyle(.secondary)
+                }
             }
-            Button {
-                Task { await requestNotifAuth() }
-            } label: {
-                Label(notificationsAuthorized ? "Notifications on" : "Allow notifications", systemImage: "bell")
+            if !notificationsAuthorized {
+                Button {
+                    Task { await requestNotifAuth() }
+                } label: {
+                    Label("Allow notifications", systemImage: "bell")
+                }
             }
             if let err = authError {
                 Text(err).font(.caption).foregroundStyle(.red)
@@ -63,9 +74,20 @@ struct RootView: View {
         }
     }
 
+    /// True until we've ever successfully read a DayState. Once `dayState` is
+    /// non-nil, auth has happened at least once — switch the row to
+    /// "Manage in Settings" so the user can revoke.
+    private var healthAuthNeeded: Bool { dayState == nil }
+
+    private func openiOSSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
+    }
+
     private var settingsSection: some View {
         Section("Settings") {
-            Toggle("Notifications", isOn: Binding(
+            Toggle("Send me the evening nudges", isOn: Binding(
                 get: { store.settings.notificationsEnabled },
                 set: { val in store.update { $0.notificationsEnabled = val } }
             ))
@@ -102,8 +124,13 @@ struct RootView: View {
         do {
             let state = try await HealthKitReader.shared.currentDayState(settings: store.settings)
             dayState = state
+            authError = nil   // clear any previous error on successful read
+        } catch let err as NSError where err.domain == "com.apple.healthkit" && err.code == 5 {
+            // "Authorization not determined" — user hasn't tapped through the
+            // HealthKit sheet yet. Not a real error to surface.
+            authError = nil
         } catch {
-            authError = String(describing: error)
+            authError = "Couldn't read Health data."
         }
         let notif = await UNUserNotificationCenter.current().notificationSettings()
         notificationsAuthorized = notif.authorizationStatus == .authorized
@@ -115,7 +142,7 @@ struct RootView: View {
             healthAuthorized = true
             await refresh()
         } catch {
-            authError = String(describing: error)
+            authError = "Permission request failed — try again in a moment."
         }
     }
 
@@ -124,7 +151,7 @@ struct RootView: View {
             let granted = try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
             notificationsAuthorized = granted
         } catch {
-            authError = String(describing: error)
+            authError = "Permission request failed — try again in a moment."
         }
     }
 }
