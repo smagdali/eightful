@@ -107,11 +107,13 @@ private func formatted(_ n: Int) -> String {
 }
 
 /// Compact form for small views: 8.4k instead of 8,432.
+/// Always shows one decimal place, truncated (never rounded up) so the
+/// user can't be misled into thinking they're closer to a threshold than
+/// they are (e.g. 11,688 renders as "11.6k", not "12k").
 private func shortened(_ n: Int) -> String {
     if n < 1_000 { return String(n) }
-    let thousands = Double(n) / 1_000.0
-    if thousands >= 10 {
-        return String(Int(thousands.rounded())) + "k"
-    }
-    return String(format: "%.1fk", thousands)
+    let tenths = n / 100          // truncate toward zero: 11688 -> 116
+    let whole = tenths / 10
+    let decimal = tenths % 10
+    return "\(whole).\(decimal)k"
 }
