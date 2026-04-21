@@ -124,10 +124,18 @@ public final class HealthKitReader {
         // behind the motion coprocessor by minutes. On iPhone we keep HealthKit
         // because the phone may be on a desk (CMPedometer = 0) while the watch
         // is actually the counting device — HealthKit merges those samples.
+        //
+        // If CoreMotion errors transiently (low-power / sensor service blip) we
+        // fall back to HealthKit rather than silently reporting zero. A genuine
+        // zero should only appear when BOTH sources agree.
         let steps: Int
         #if os(watchOS)
         if isToday, PedometerReader.shared.isAvailable {
-            steps = (try? await PedometerReader.shared.steps(from: startOfDay, to: end)) ?? 0
+            do {
+                steps = try await PedometerReader.shared.steps(from: startOfDay, to: end)
+            } catch {
+                steps = try await self.steps(from: startOfDay, to: end)
+            }
         } else {
             steps = try await self.steps(from: startOfDay, to: end)
         }

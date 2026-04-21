@@ -21,6 +21,7 @@
 		4ACD579E401BF7B4C1218AAE /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
 		4CEC233B309BEC99F33AD18C /* EightfulApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D2DFC304448E7BCA7536F9 /* EightfulApp.swift */; };
 		4CF76C3C3F6CE16C5C486F4E /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
+		5467FE4C5EBE170B1A69C0D3 /* LastStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */; };
 		54D46C6C738244E94A0A5F6C /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = E04E2704AC49CC60D243F7AA /* EightfulCore */; };
 		5CBFE1EB73511AEB8FD7D508 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
 		5E3143954FB32EAAC7904C38 /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
@@ -32,6 +33,7 @@
 		7A771BBF6F8EEBDEB3A22469 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494592A19BB9E5D09B7C64EE /* RootView.swift */; };
 		82A5563A735404BD2B80FC16 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
 		8625D6F77725890B49472ACF /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
+		920BA8477AD9FA69DDF857C8 /* LastStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */; };
 		93DFF3CC89B658AA41F220E5 /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8111B0C99426D04775C869B8 /* TierColor.swift */; };
 		97CF77B55268017026C78D78 /* EightfulWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E210304AA364A8F3D59694 /* EightfulWidget.swift */; };
 		9DBEF2EC0B599B8BE02C5D84 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD0985B79FEB723C1ECA56F /* MainTabView.swift */; };
@@ -41,6 +43,7 @@
 		B2143989B5D852BCC45F0EA2 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
 		B278A57071639EF42A5A53AA /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		B44B1A0C16D1588A6ED41604 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
+		B8EC766C39E5869CF6ABBC26 /* LastStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */; };
 		C5AAB21DF1AB65A571EA652E /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
 		CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
 		CE0C134BB34976CA6AF44769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C77FD7D314CFD3E33610AF7 /* Assets.xcassets */; };
@@ -94,6 +97,7 @@
 		8E981759119105230460617A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EightfulComplication.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		97473905B694747640847F9F /* HealthKitReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitReader.swift; sourceTree = "<group>"; };
+		99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastStateCache.swift; sourceTree = "<group>"; };
 		B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProvider.swift; sourceTree = "<group>"; };
 		C216E9C7291B6F9795814F9D /* watch-stepcounter */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "watch-stepcounter"; path = .; sourceTree = SOURCE_ROOT; };
 		D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWatchApp.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 			children = (
 				97473905B694747640847F9F /* HealthKitReader.swift */,
 				18E88A4FD67D169DC688AD23 /* HistoryStore.swift */,
+				99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */,
 				21865445C7BFCF7A40E743AA /* PedometerReader.swift */,
 				5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */,
 				7EE72392956158DCF5A7E261 /* SettingsStore.swift */,
@@ -364,6 +369,7 @@
 				4CEC233B309BEC99F33AD18C /* EightfulApp.swift in Sources */,
 				194CD4D3155D0FA5F33AE4E6 /* HealthKitReader.swift in Sources */,
 				5CBFE1EB73511AEB8FD7D508 /* HistoryStore.swift in Sources */,
+				920BA8477AD9FA69DDF857C8 /* LastStateCache.swift in Sources */,
 				9DBEF2EC0B599B8BE02C5D84 /* MainTabView.swift in Sources */,
 				AA3EFCC829C0C426DD409C1B /* NotificationScheduler.swift in Sources */,
 				A2C14B91DA751D65D659DAB4 /* PedometerReader.swift in Sources */,
@@ -384,6 +390,7 @@
 				3B81C98B572FA8CF3B40EF20 /* EightfulWatchApp.swift in Sources */,
 				B278A57071639EF42A5A53AA /* HealthKitReader.swift in Sources */,
 				B2143989B5D852BCC45F0EA2 /* HistoryStore.swift in Sources */,
+				B8EC766C39E5869CF6ABBC26 /* LastStateCache.swift in Sources */,
 				B44B1A0C16D1588A6ED41604 /* PedometerReader.swift in Sources */,
 				4ACD579E401BF7B4C1218AAE /* ReconciliationStore.swift in Sources */,
 				D0D46EDD5155EFE63EB4A3DB /* SettingsStore.swift in Sources */,
@@ -402,6 +409,7 @@
 				97CF77B55268017026C78D78 /* EightfulWidget.swift in Sources */,
 				627AE66E140E9860B8EDEE04 /* HealthKitReader.swift in Sources */,
 				8625D6F77725890B49472ACF /* HistoryStore.swift in Sources */,
+				5467FE4C5EBE170B1A69C0D3 /* LastStateCache.swift in Sources */,
 				82A5563A735404BD2B80FC16 /* PedometerReader.swift in Sources */,
 				1F0A3A3348896205A324C0D5 /* ReconciliationStore.swift in Sources */,
 				D306CE1943C301EA135C53CA /* SettingsStore.swift in Sources */,
@@ -427,7 +435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App/Complication/EightfulComplication.entitlements;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				INFOPLIST_FILE = App/Complication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -515,7 +523,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/Watch/EightfulWatch.entitlements;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				INFOPLIST_FILE = App/Watch/Info.plist;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp;
@@ -531,7 +539,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/Watch/EightfulWatch.entitlements;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				INFOPLIST_FILE = App/Watch/Info.plist;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp;
@@ -548,7 +556,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/iOS/Eightful.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				INFOPLIST_FILE = App/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -569,7 +577,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App/Complication/EightfulComplication.entitlements;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				INFOPLIST_FILE = App/Complication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -651,7 +659,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/iOS/Eightful.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				INFOPLIST_FILE = App/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (

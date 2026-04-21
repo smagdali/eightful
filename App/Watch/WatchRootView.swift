@@ -125,6 +125,7 @@ struct WatchRootView: View {
             state = s
             lastUpdated = Date()
             phase = .ready
+            LastStateCache.shared.save(s)       // keep the widget's fallback warm
             let crossed = s.isMaterialChange(from: previous)
             let stale = WidgetReloadCoordinator.shared.shouldReloadOnIdle()
             if forceWidgetReload || crossed || stale {

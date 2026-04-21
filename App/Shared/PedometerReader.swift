@@ -10,27 +10,32 @@ public final class PedometerReader {
     private let pedometer = CMPedometer()
     private var isStreaming = false
 
+    public enum ReadError: Error {
+        /// CoreMotion returned nil data with no error — usually means the sensor
+        /// service is briefly unavailable (device sleeping, low-power, restart).
+        /// Callers should treat this as "unknown", not as "zero".
+        case noData
+        case unavailable
+    }
+
     public var isAvailable: Bool { CMPedometer.isStepCountingAvailable() }
 
     /// One-shot: today's step count from local midnight to now.
     public func stepsToday(calendar: Calendar = .current, now: Date = Date()) async throws -> Int {
-        guard isAvailable else { return 0 }
-        let start = calendar.startOfDay(for: now)
-        return try await withCheckedThrowingContinuation { cont in
-            pedometer.queryPedometerData(from: start, to: now) { data, error in
-                if let error { cont.resume(throwing: error); return }
-                cont.resume(returning: data?.numberOfSteps.intValue ?? 0)
-            }
-        }
+        try await steps(from: calendar.startOfDay(for: now), to: now)
     }
 
     /// Steps for an arbitrary date range. CMPedometer only goes back 7 days.
     public func steps(from start: Date, to end: Date) async throws -> Int {
-        guard isAvailable else { return 0 }
+        guard isAvailable else { throw ReadError.unavailable }
         return try await withCheckedThrowingContinuation { cont in
             pedometer.queryPedometerData(from: start, to: end) { data, error in
                 if let error { cont.resume(throwing: error); return }
-                cont.resume(returning: data?.numberOfSteps.intValue ?? 0)
+                guard let data else {
+                    cont.resume(throwing: ReadError.noData)
+                    return
+                }
+                cont.resume(returning: data.numberOfSteps.intValue)
             }
         }
     }
