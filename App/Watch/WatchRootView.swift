@@ -63,10 +63,16 @@ struct WatchRootView: View {
         .onChange(of: scenePhase) { newPhase in
             switch newPhase {
             case .active:
-                Task { await refresh() }     // immediate refresh on re-open / tap-through
-                startAdaptiveRefresh()       // reset cadence to fast
+                // Tap-through from the complication: force-reload the
+                // widget timeline so when the user flicks back to the
+                // face it matches what they just saw in the app.
+                Task { await refresh(forceWidgetReload: true) }
+                startAdaptiveRefresh()
             case .background, .inactive:
                 stopAdaptiveRefresh()
+                // One more nudge on exit so the freshest value is
+                // queued before the user looks at the face again.
+                WidgetCenter.shared.reloadAllTimelines()
             @unknown default: break
             }
         }
@@ -108,19 +114,20 @@ struct WatchRootView: View {
     }
 
     /// Re-read HealthKit data without re-prompting for auth.
-    private func refresh() async {
+    /// - Parameter forceWidgetReload: when the user is explicitly interacting
+    ///   (tap-through from the complication), skip the material-change debounce
+    ///   so the face catches up with what they see in the app. The adaptive
+    ///   polling loop leaves this false to preserve the 40-70/day budget.
+    private func refresh(forceWidgetReload: Bool = false) async {
         guard phase == .ready || phase == .loading else { return }
         if let s = try? await HealthKitReader.shared.currentDayState(settings: settings.settings) {
             let previous = state
             state = s
             lastUpdated = Date()
             phase = .ready
-            // Only burn widget-reload budget when the user actually crossed
-            // into/out of a tier or nudge zone, or workout-green flipped.
-            // A fallback keeps the complication fresh-ish after 15 min of idle.
             let crossed = s.isMaterialChange(from: previous)
             let stale = WidgetReloadCoordinator.shared.shouldReloadOnIdle()
-            if crossed || stale {
+            if forceWidgetReload || crossed || stale {
                 WidgetCenter.shared.reloadAllTimelines()
                 WidgetReloadCoordinator.shared.markReloaded()
             }
