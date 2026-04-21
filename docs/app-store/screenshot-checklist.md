@@ -12,15 +12,18 @@ to ten shots.
 
 Recommended shot list:
 
-1. **Today screen** with mid-day steps, colour tier visible, pt count showing
-2. **Today screen** with a green (12,500+) state, "workout green" label
-3. **Compare tab** - week view with a mix of matched/mismatched days and a pattern hint
-4. **Settings** section expanded (nudge time, DOB)
+1. **Today screen** — ideally showing workout-green banner with the HIIT
+   details (we have this: `docs/website/screenshots/iphone-today.png`)
+2. **Today screen** — a non-green state with a colour-tier number, so
+   reviewers see the tiering in action
+3. **Week tab** — last week's points day by day, showing different colours
+   on different days *(still to capture)*
+4. **Settings** section expanded (nudge time picker, DOB field)
 5. **About** section with the privacy disclaimer visible
 
-Tool tip: use Xcode -> Window -> Devices and Simulators -> Screenshot on the
-simulator. Export PNG; do not annotate for v1. Keep screenshots honest —
-Apple rejects heavily photoshopped composites.
+Tool tip: capture on real device with **Volume Up + Side button**. Airdrop
+to Mac. Do not annotate for v1. Apple rejects heavily photoshopped
+composites.
 
 ## Apple Watch
 
@@ -28,21 +31,24 @@ Required: one set at **49mm / Ultra** size (410x502). Optional: 45mm, 41mm.
 
 Recommended shot list:
 
-1. Watch face with **StepsToEight complication in a circular slot** showing
-   the step count in tier colour (take this on device, then screenshot via
-   side button + Digital Crown)
-2. Watch face with the complication in the **rectangular slot** (Modular
-   family watch face works well)
-3. Main watch app screen showing the big step number + pt
+1. **Watch face with the circular complication** in the "workout-green
+   ring" state (we have this: `docs/website/screenshots/watch-circular.png`)
+2. **Watch app main screen** with the big number and points (we have this:
+   `docs/website/screenshots/watch-app.png`)
+3. Optional: **watch face with rectangular complication** on a Modular face,
+   to show the second layout
 
 ## How to capture a real watch screenshot
 
 1. iPhone Watch app -> General -> **Enable Screenshots** -> On (one-time)
-2. On the watch, press **side button + Digital Crown** briefly
-3. Screenshot lands in iPhone Photos
-4. AirDrop to Mac
+2. On the watch, bring up what you want to capture
+3. Press **side button + Digital Crown** briefly
+4. Screenshot lands in iPhone Photos
+5. AirDrop to Mac
 
 ## Naming
 
 App Store Connect re-orders by filename. Name them `01-today.png`,
-`02-green-day.png`, etc.
+`02-week.png`, etc. The files currently in `docs/website/screenshots/` are
+suitable for direct upload to App Store Connect — they're captured at full
+device resolution.

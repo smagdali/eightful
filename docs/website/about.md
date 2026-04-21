@@ -20,9 +20,10 @@ The official Vitality app is great at telling you what you've already earned. It
 ## What it does
 
 - **Live step count** on your watch face, colour-coded by points tier
-- **One daily nudge** at a time you choose — silent if you've hit green
-- **Workout detection** — flips green early when a 60-min Z2 or 30-min Z3+ workout banks the 8 points ahead of steps
-- **Compare tab** on iPhone — spot when your calculated points disagree with what Vitality reports
+- **One daily nudge** at a time you choose — silent if you've hit green, loud when you're 500 steps from a point
+- **Workout detection** — flips green early when a 60-min Z2 or 30-min Z3+ workout banks the 8 points ahead of steps, and tells you which workout and at what intensity
+- **Week view** on iPhone — last week's points day by day in colour
+- **Gentle on battery** — adaptive refresh: quicker when you're walking, idle when you're not
 
 <p align="center">
   <img src="screenshots/iphone-today.png" alt="iPhone Today screen with 5,902 steps in green, 8 points, and an 8-point goal reached banner showing HIIT 52 min at 78% of max HR" width="260">
@@ -32,7 +33,7 @@ The official Vitality app is great at telling you what you've already earned. It
 
 ## Privacy
 
-Everything happens on your devices. Step counts, workout data, settings, and any points you manually enter in the Compare tab are stored locally. Nothing is sent to us (we have nowhere to send it to), nothing is sent to Vitality, nothing goes anywhere else.
+Everything happens on your devices. Step counts, workout data and settings stay on your watch and phone. Nothing is sent to us (we have nowhere to send it to), nothing is sent to Vitality, nothing goes anywhere else.
 
 Full [privacy policy](/eightful/privacy).
 

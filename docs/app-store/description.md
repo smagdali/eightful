@@ -17,9 +17,9 @@ Recommended: **1**. Clearest value proposition, no trademark risk.
 
 ## Promotional text (170 characters max, can be updated without a new build)
 
-> Eightful shows your progress toward your daily 8 Vitality Health activity points on your Apple Watch face. Colour-coded step tiers, 8pm nudges, and a weekly compare-with-reality view.
+> Eightful shows your progress toward your daily 8 Vitality Health activity points on your Apple Watch face. Colour-coded step tiers, an evening nudge, privacy-first.
 
-*(169 characters)*
+*(165 characters)*
 
 ## Description (4,000 characters max)
 
@@ -30,25 +30,28 @@ Not affiliated with Vitality — an independent tool that works alongside
 the official Vitality Member app (https://www.vitality.co.uk).
 
 WHAT IT SHOWS
-• A colour-coded step count on your watch face. White below 6,500; red when
-  you're within 500 steps of 7,000, 10,000 or 12,500 (push now!); orange,
-  yellow and green as you bank 3, 5 and 8 points.
-• The same number larger in the iPhone app, plus the points total, tier and
-  a live timestamp.
-• A Compare tab that lets you enter what your insurance app reported per day
-  and spots systematic mismatches.
+• A colour-coded step count on your watch face. White below 6,500; red
+  when you're within 500 steps of 7,000, 10,000 or 12,500 (push now!);
+  orange, yellow and green as you bank 3, 5 and 8 points.
+• The same number, larger, in the iPhone app — plus the points total,
+  tier, and a live timestamp.
+• A Week tab on iPhone showing last week's points day by day so you can
+  see at a glance where you earned and where you missed.
 
 WHAT IT DOES
-• Reads your step count from CoreMotion on the watch in real time (the same
-  source Apple Health uses, without the minutes-of-batching delay).
-• Scans today's workouts for any that satisfy the common 8-point rules
-  (30 min at >= 70% of your max HR, or 60 min at >= 60%) and turns the
-  display green early if you've earned the daily maximum via heart rate
-  rather than steps.
-• Can fire a single nudge per day at a time you choose (default 20:00).
-  If you're close to a threshold (6,500-6,999, 9,500-9,999, 12,000-12,499),
-  it tells you how many more steps you need to tip over. If you've already
-  hit the top tier, it stays quiet.
+• Reads your step count from CoreMotion on the watch in real time (the
+  same source Apple Health uses, without the minutes-of-batching delay).
+• Scans today's workouts for any that satisfy the 8-point rules (30 min
+  at >= 70% of your max HR, or 60 min at >= 60%) and turns the display
+  green early if you've earned the daily maximum via heart rate rather
+  than steps. Shows the qualifying workout's duration and intensity in
+  the app.
+• Fires a single notification per day at a time you choose (default
+  20:00). If you're close to a threshold — 6,500-6,999, 9,500-9,999, or
+  12,000-12,499 — it tells you how many more steps you need to tip over.
+  If you've already hit the top tier, it stays quiet.
+• Adapts its refresh rate: quicker while you're actively walking, idle
+  when you're sitting still. Built to be gentle on battery.
 
 WHAT IT DOESN'T DO
 • Sign in, sync with an online account, or send data off your device.
@@ -57,8 +60,8 @@ WHAT IT DOESN'T DO
 
 PRIVACY
 Your Apple Health data never leaves your device. Eightful has no server;
-calculations run locally on the watch and iPhone. Settings and any points
-you enter in the Compare tab are stored on your device only.
+calculations run locally on the watch and iPhone. Settings are stored
+on your device only.
 
 DISCLAIMER
 Eightful is an independent tool, not affiliated with, endorsed by, or
@@ -71,14 +74,15 @@ REQUIREMENTS
 iOS 16 or later, watchOS 9 or later. HealthKit permission required.
 ```
 
-*(~1,950 characters, leaves headroom for edits)*
+*(~2,050 characters, leaves headroom for edits)*
 
 ## What's New (on each update)
 
 First release:
 ```
-Initial release. Live step count on the watch, colour tiers, evening nudges,
-and a Compare tab to reconcile with your insurance app's numbers.
+Initial release. Live step count on the watch, colour-coded tiers,
+a single daily nudge when you're close to missing a threshold, and
+a Week view of last week's points on iPhone.
 ```
 
 ## Category

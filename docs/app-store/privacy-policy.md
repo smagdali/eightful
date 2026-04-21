@@ -8,7 +8,7 @@ before submitting.
 
 ## Privacy policy
 
-*Last updated: 2026-04-20*
+*Last updated: 2026-04-21*
 
 Eightful ("the app") is an independent Apple Watch complication and iPhone
 companion that tracks your daily activity against the 8-point target used
@@ -36,10 +36,11 @@ does not transmit any data to the developer or any third party.
 
 - **Settings** (notification time, notifications on/off, optional date-of-birth
   override) are stored in the app's sandbox on your device.
-- **Comparison data** you manually enter in the Compare tab (the daily points
-  your insurance app reports) is stored on your device only.
 - **Notification history** (whether today's notification has already fired)
   is stored on your device and resets at local midnight.
+- **Last-known step state** is cached locally so the watch complication can
+  show a sensible number even if a sensor read fails momentarily; it never
+  leaves your device and resets at local midnight.
 
 None of this data is synced to iCloud, shared with the developer, shared
 with an insurance provider, or shared with any third-party service.
