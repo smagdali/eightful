@@ -132,46 +132,25 @@
 <div class="row">
   <div class="meta">
     <h2>accessoryCorner</h2>
-    <p>Infograph curved corner slots. Weather-style layout: the points sit straight at the corner apex, and the step count curves along the bezel via <code>widgetLabel</code>.</p>
+    <p>Infograph curved corner slots. Points sit at the corner apex, and the <code>widgetLabel</code> wraps round the curve as a progress bar with the step count.</p>
+    <p>Progress is <code>min(steps, 12_500) / 12_500</code>.</p>
   </div>
   <div class="variants">
-    <!-- Top-left corner -->
     <div class="variant">
       <div class="bg corner">
         <svg viewBox="0 0 180 180" width="180" height="180">
-          <defs>
-            <path id="arc-tl" d="M 10 90 A 80 80 0 0 1 90 10"/>
-          </defs>
-          <!-- Curved step count along the bezel -->
-          <text font-family="-apple-system, Helvetica" font-weight="600" font-size="14" fill="#ffc61a">
-            <textPath href="#arc-tl" startOffset="8">10,540 STEPS</textPath>
-          </text>
-          <!-- Straight points at the corner apex -->
-          <text x="32" y="60" font-family="-apple-system, Helvetica" font-weight="900"
-                font-size="36" fill="#ffc61a">5</text>
-          <text x="34" y="78" font-family="-apple-system, Helvetica" font-weight="700"
-                font-size="14" fill="#ffc61a" opacity="0.85">pt</text>
+          <!-- Simulated curved widget label (arc) -->
+          <path d="M 12 90 A 78 78 0 0 1 90 12" fill="none" stroke="#222" stroke-width="8"/>
+          <path d="M 12 90 A 78 78 0 0 1 65 30" fill="none" stroke="#ffc61a" stroke-width="8" stroke-linecap="round"/>
+          <!-- Corner points -->
+          <text x="30" y="168" font-family="-apple-system, Helvetica" font-weight="700"
+                font-size="30" fill="#ffc61a">5pt</text>
+          <!-- Label text along the curve (just placed roughly) -->
+          <text x="55" y="60" font-family="-apple-system, Helvetica"
+                font-size="11" fill="#888" transform="rotate(-35 55 60)">10,540 steps</text>
         </svg>
       </div>
-      <span class="label">top-left corner (yellow, 5 pts)</span>
-    </div>
-    <!-- Bottom-right corner variant -->
-    <div class="variant">
-      <div class="bg corner">
-        <svg viewBox="0 0 180 180" width="180" height="180">
-          <defs>
-            <path id="arc-br" d="M 170 90 A 80 80 0 0 1 90 170"/>
-          </defs>
-          <text font-family="-apple-system, Helvetica" font-weight="600" font-size="14" fill="#ff4040">
-            <textPath href="#arc-br" startOffset="8">6,720 STEPS</textPath>
-          </text>
-          <text x="132" y="132" font-family="-apple-system, Helvetica" font-weight="900"
-                font-size="36" fill="#ff4040">0</text>
-          <text x="138" y="150" font-family="-apple-system, Helvetica" font-weight="700"
-                font-size="14" fill="#ff4040" opacity="0.85">pt</text>
-        </svg>
-      </div>
-      <span class="label">bottom-right corner (nudge-zone red)</span>
+      <span class="label">yellow (5 pts + step arc)</span>
     </div>
   </div>
 </div>
