@@ -81,18 +81,19 @@ private struct RectangularView: View {
 private struct CornerView: View {
     let state: DayState
     var body: some View {
-        Text(shortened(state.steps))
-            .font(.system(size: 16, weight: .bold, design: .rounded))
-            .foregroundStyle(state.displayColor.color)
-            .widgetLabel {
-                ProgressView(
-                    value: min(Double(state.steps), 12_500),
-                    total: 12_500
-                ) {
-                    Text(state.workoutGreen ? "8 pts - workout" : "\(state.points) pts")
-                }
-                .tint(state.displayColor.color)
-            }
+        // Weather-style: big points at the corner apex (straight),
+        // step count curves along the bezel via widgetLabel.
+        VStack(spacing: -4) {
+            Text("\(state.points)")
+                .font(.system(size: 30, weight: .heavy, design: .rounded))
+            Text("pt")
+                .font(.system(size: 11, weight: .bold, design: .rounded))
+                .opacity(0.85)
+        }
+        .foregroundStyle(state.displayColor.color)
+        .widgetLabel {
+            Text("\(formatted(state.steps)) steps")
+        }
     }
 }
 
