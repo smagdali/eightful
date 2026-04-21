@@ -84,17 +84,9 @@ private struct CornerView: View {
         Text("\(state.points)pt")
             .font(.system(size: 16, weight: .bold, design: .rounded))
             .foregroundStyle(state.displayColor.color)
-            .widgetLabel {
-                ProgressView(
-                    value: min(Double(state.steps), 12_500),
-                    total: 12_500
-                ) {
-                    Text(state.workoutGreen
+            .widgetLabel(state.workoutGreen
                          ? "\(formatted(state.steps)) steps (workout)"
                          : "\(formatted(state.steps)) steps")
-                }
-                .tint(state.displayColor.color)
-            }
     }
 }
 

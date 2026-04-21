@@ -132,25 +132,25 @@
 <div class="row">
   <div class="meta">
     <h2>accessoryCorner</h2>
-    <p>Infograph curved corner slots. Points sit at the corner apex, and the <code>widgetLabel</code> wraps round the curve as a progress bar with the step count.</p>
-    <p>Progress is <code>min(steps, 12_500) / 12_500</code>.</p>
+    <p>Infograph curved corner slots. Points sit at the corner apex; the step count wraps the bezel as plain curved text (no progress bar).</p>
   </div>
   <div class="variants">
     <div class="variant">
       <div class="bg corner">
         <svg viewBox="0 0 180 180" width="180" height="180">
-          <!-- Simulated curved widget label (arc) -->
-          <path d="M 12 90 A 78 78 0 0 1 90 12" fill="none" stroke="#222" stroke-width="8"/>
-          <path d="M 12 90 A 78 78 0 0 1 65 30" fill="none" stroke="#ffc61a" stroke-width="8" stroke-linecap="round"/>
-          <!-- Corner points -->
+          <defs>
+            <path id="arc-tl-2" d="M 14 90 A 76 76 0 0 1 90 14"/>
+          </defs>
+          <!-- Curved step count along the bezel -->
+          <text font-family="-apple-system, Helvetica" font-weight="600" font-size="14" fill="#ffc61a">
+            <textPath href="#arc-tl-2" startOffset="8">10,540 STEPS</textPath>
+          </text>
+          <!-- Points at the corner apex -->
           <text x="30" y="168" font-family="-apple-system, Helvetica" font-weight="700"
                 font-size="30" fill="#ffc61a">5pt</text>
-          <!-- Label text along the curve (just placed roughly) -->
-          <text x="55" y="60" font-family="-apple-system, Helvetica"
-                font-size="11" fill="#888" transform="rotate(-35 55 60)">10,540 steps</text>
         </svg>
       </div>
-      <span class="label">yellow (5 pts + step arc)</span>
+      <span class="label">yellow (5 pts + curved steps)</span>
     </div>
   </div>
 </div>
