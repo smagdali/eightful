@@ -5,6 +5,7 @@ import EightfulCore
 struct WatchRootView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var state: DayState?
+    @State private var week: WeekReconciliation?
     @State private var phase: Phase = .loading
     @State private var lastUpdated: Date?
     @State private var refreshTask: Task<Void, Never>?
@@ -45,9 +46,14 @@ struct WatchRootView: View {
                                 .foregroundStyle(.green)
                         }
                     }
+                    if let w = week {
+                        WeekTable(week: w)
+                            .padding(.top, 4)
+                        Text("\(min(40, w.calculatedTotal)) / 40 this week")
+                            .font(.system(size: 15, weight: .semibold, design: .rounded))
+                            .foregroundStyle(w.calculatedTotal >= 40 ? .green : .secondary)
+                    }
                     if let updated = lastUpdated {
-                        // 15pt medium rounded on .secondary foreground
-                        // clears WCAG 2.2 AA on the watch's black.
                         Text("Last updated: \(updated, format: .dateTime.hour(.twoDigits(amPM: .omitted)).minute(.twoDigits).second(.twoDigits))")
                             .font(.system(size: 14, weight: .medium, design: .rounded))
                             .foregroundStyle(.secondary)
@@ -59,14 +65,14 @@ struct WatchRootView: View {
             }
         }
         .padding()
-        .task { await grantAndLoad(); startAdaptiveRefresh() }
+        .task { await grantAndLoad(); await loadWeek(); startAdaptiveRefresh() }
         .onChange(of: scenePhase) { newPhase in
             switch newPhase {
             case .active:
                 // Tap-through from the complication: force-reload the
                 // widget timeline so when the user flicks back to the
                 // face it matches what they just saw in the app.
-                Task { await refresh(forceWidgetReload: true) }
+                Task { await refresh(forceWidgetReload: true); await loadWeek() }
                 startAdaptiveRefresh()
             case .background, .inactive:
                 stopAdaptiveRefresh()
@@ -79,7 +85,7 @@ struct WatchRootView: View {
     }
 
     /// Re-poll on an adaptive interval: faster while stepping hard, slower while idle.
-    /// Range: 15s (active) to 300s (idle). Activity of the user decides.
+    /// Range: 60s (active) to 300s (idle). Activity of the user decides.
     private func startAdaptiveRefresh() {
         refreshTask?.cancel()
         refreshTask = Task { @MainActor in
@@ -92,11 +98,6 @@ struct WatchRootView: View {
                 let now = state?.steps ?? lastSteps
                 let delta = now - lastSteps
                 lastSteps = now
-                // <10 steps since last check = backing off, double the interval
-                // 10..<100 = steady 120s
-                // >=100 = user is moving, tighten to 60s (not 15s —
-                // this isn't a live step counter, it's a nudge tool;
-                // saving battery beats sub-minute animation)
                 if delta < 10 {
                     interval = min(300, interval * 2)
                 } else if delta < 100 {
@@ -113,11 +114,6 @@ struct WatchRootView: View {
         refreshTask = nil
     }
 
-    /// Re-read HealthKit data without re-prompting for auth.
-    /// - Parameter forceWidgetReload: when the user is explicitly interacting
-    ///   (tap-through from the complication), skip the material-change debounce
-    ///   so the face catches up with what they see in the app. The adaptive
-    ///   polling loop leaves this false to preserve the 40-70/day budget.
     private func refresh(forceWidgetReload: Bool = false) async {
         guard phase == .ready || phase == .loading else { return }
         if let s = try? await HealthKitReader.shared.currentDayState(settings: settings.settings) {
@@ -125,7 +121,13 @@ struct WatchRootView: View {
             state = s
             lastUpdated = Date()
             phase = .ready
-            LastStateCache.shared.save(s)       // keep the widget's fallback warm
+            LastStateCache.shared.save(s)
+            // Update today's entry in the already-loaded week so the
+            // week total reflects intraday changes without refetching
+            // Mon-Sat from HealthKit.
+            if let oldWeek = week {
+                week = oldWeek.updating(today: s, calendar: .current)
+            }
             let crossed = s.isMaterialChange(from: previous)
             let stale = WidgetReloadCoordinator.shared.shouldReloadOnIdle()
             if forceWidgetReload || crossed || stale {
@@ -153,5 +155,76 @@ struct WatchRootView: View {
         } catch {
             phase = .error(error.localizedDescription)
         }
+    }
+
+    private func loadWeek() async {
+        var cal = Calendar.current
+        cal.firstWeekday = 2   // Monday
+        let w = await HealthKitReader.shared.weekReconciliation(
+            containing: Date(),
+            settings: settings.settings,
+            calendar: cal
+        )
+        await MainActor.run { self.week = w }
+    }
+}
+
+/// Mon-Sun mini table showing the week's points per day.
+/// Today's column highlighted with a dark pill.
+/// Future days render as an em-dash.
+private struct WeekTable: View {
+    let week: WeekReconciliation
+    private let letters = ["M", "T", "W", "T", "F", "S", "S"]
+
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(Array(week.days.enumerated()), id: \.offset) { idx, entry in
+                column(idx: idx, entry: entry)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func column(idx: Int, entry: ReconciliationEntry) -> some View {
+        let cal = Calendar.current
+        let now = Date()
+        let isToday = cal.isDate(entry.date, inSameDayAs: now)
+        let isFuture = cal.startOfDay(for: entry.date) > cal.startOfDay(for: now)
+
+        VStack(spacing: 2) {
+            Text(letters[idx])
+                .font(.system(size: 13, weight: isToday ? .bold : .medium, design: .rounded))
+                .foregroundStyle(isToday ? .primary : Color(white: 0.5))
+            if isFuture {
+                Text("—")
+                    .font(.system(size: 22, weight: .heavy, design: .rounded))
+                    .foregroundStyle(Color(white: 0.4))
+            } else {
+                Text("\(entry.calculated.points)")
+                    .font(.system(size: 22, weight: .heavy, design: .rounded))
+                    .foregroundStyle(entry.calculated.effectiveTier.color)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 4)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(isToday ? Color(white: 0.1) : .clear)
+        )
+    }
+}
+
+private extension WeekReconciliation {
+    /// Returns a new WeekReconciliation with today's entry replaced by `newState`.
+    /// Unchanged when today is outside this week (e.g. after midnight rollover before
+    /// the next loadWeek call).
+    func updating(today newState: DayState, calendar: Calendar) -> WeekReconciliation {
+        let now = Date()
+        guard let idx = days.firstIndex(where: { calendar.isDate($0.date, inSameDayAs: now) })
+        else { return self }
+        var updated = days
+        let existing = updated[idx]
+        updated[idx] = ReconciliationEntry(date: existing.date, calculated: newState, reported: existing.reported)
+        return WeekReconciliation(weekStart: weekStart, days: updated)
     }
 }
