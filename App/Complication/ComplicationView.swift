@@ -29,22 +29,15 @@ struct ComplicationView: View {
 private struct CircularView: View {
     let state: DayState
     var body: some View {
-        ZStack {
-            if state.workoutGreen {
-                Circle()
-                    .stroke(state.displayColor.color, lineWidth: 2.5)
-                    .padding(1)
-            }
-            VStack(spacing: -2) {
-                Text(shortened(state.steps))
-                    .font(.system(size: 22, weight: .heavy, design: .rounded))
-                    .foregroundStyle(state.displayColor.color)
-                    .minimumScaleFactor(0.6)
-                    .lineLimit(1)
-                Text("\(state.points)pt")
-                    .font(.system(size: 11, weight: .bold, design: .rounded))
-                    .foregroundStyle(state.displayColor.color.opacity(0.85))
-            }
+        VStack(spacing: -2) {
+            Text(shortened(state.steps))
+                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .foregroundStyle(state.displayColor.color)
+                .minimumScaleFactor(0.6)
+                .lineLimit(1)
+            Text("\(state.points)pt")
+                .font(.system(size: 11, weight: .bold, design: .rounded))
+                .foregroundStyle(state.displayColor.color.opacity(0.85))
         }
     }
 }

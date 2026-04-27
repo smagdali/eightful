@@ -5,7 +5,7 @@ import EightfulCore
 /// UserDefaults so the watch app and the widget extension (separate
 /// processes) share a view of "what we last knew".
 ///
-/// Used as a fallback when HealthKit / CoreMotion throw transiently —
+/// Used as a fallback when HealthKit / CoreMotion throw transiently -
 /// better to show a slightly stale but realistic number than zero.
 /// Entries older than the current calendar day are ignored on read;
 /// we don't want yesterday's 14,000 to persist past midnight.

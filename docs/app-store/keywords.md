@@ -13,14 +13,14 @@ steps,activity,points,target,complication,tracker,health,insurance,vitality,nudg
 - `steps,activity,points,target` - core functional terms
 - `complication,tracker` - feature type (App Store search commonly includes "complication")
 - `health,insurance` - audience intent
-- `vitality` - direct intent match. Including this as a keyword (not in visible title/subtitle) is how most "compatible with X insurer" apps do it. Walks the line — check section 5.2.1 of App Store Review Guidelines before submission.
+- `vitality` - direct intent match. Including this as a keyword (not in visible title/subtitle) is how most "compatible with X insurer" apps do it. Walks the line - check section 5.2.1 of App Store Review Guidelines before submission.
 - `nudge,rewards,daily` - secondary hooks
 
 ## Keywords to avoid
 
-- Brand names other than the one you've committed to risking ("Vitality"): Fitbit, Garmin, etc. — you don't integrate with them.
-- Anything medical ("diagnosis", "treatment", "clinical") — triggers extra review.
-- Vague superlatives ("best", "top") — Apple Review may ask you to drop.
+- Brand names other than the one you've committed to risking ("Vitality"): Fitbit, Garmin, etc. - you don't integrate with them.
+- Anything medical ("diagnosis", "treatment", "clinical") - triggers extra review.
+- Vague superlatives ("best", "top") - Apple Review may ask you to drop.
 
 ## Per-locale overrides
 

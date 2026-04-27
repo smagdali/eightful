@@ -8,12 +8,12 @@ before submitting.
 
 ## Privacy policy
 
-*Last updated: 2026-04-21*
+_Last updated: 2026-04-21_
 
 Eightful ("the app") is an independent Apple Watch complication and iPhone
 companion that tracks your daily activity against the 8-point target used
-by Vitality Health Insurance. Eightful is not affiliated with, endorsed
-by, or connected to Vitality.
+by [Vitality Health](https://www.vitality.co.uk). Eightful is not
+affiliated with, endorsed by, or connected to Vitality.
 
 ### What data the app reads
 

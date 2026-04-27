@@ -65,7 +65,16 @@ struct WatchRootView: View {
             }
         }
         .padding()
-        .task { await grantAndLoad(); await loadWeek(); startAdaptiveRefresh() }
+        .task {
+            if ScreenshotMode.isActive {
+                state = ScreenshotMode.sampleDayState
+                week = ScreenshotMode.sampleWeek()
+                lastUpdated = Date()
+                phase = .ready
+                return
+            }
+            await grantAndLoad(); await loadWeek(); startAdaptiveRefresh()
+        }
         .onChange(of: scenePhase) { newPhase in
             switch newPhase {
             case .active:
@@ -196,7 +205,7 @@ private struct WeekTable: View {
                 .font(.system(size: 13, weight: isToday ? .bold : .medium, design: .rounded))
                 .foregroundStyle(isToday ? .primary : Color(white: 0.5))
             if isFuture {
-                Text("—")
+                Text("-")
                     .font(.system(size: 22, weight: .heavy, design: .rounded))
                     .foregroundStyle(Color(white: 0.4))
             } else {

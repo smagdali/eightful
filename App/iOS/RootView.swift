@@ -19,7 +19,13 @@ struct RootView: View {
                 aboutSection
             }
             .navigationTitle("Eightful")
-            .task { await refresh() }
+            .task {
+                if ScreenshotMode.isActive {
+                    dayState = ScreenshotMode.sampleDayState
+                } else {
+                    await refresh()
+                }
+            }
         }
     }
 
@@ -35,8 +41,7 @@ struct RootView: View {
                         Text("\(state.points) pt\(state.points == 1 ? "" : "s")")
                             .font(.headline)
                         Text(state.effectiveTier.rawValue.capitalized)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .font(.subheadline)
                     }
                 }
                 if let detail = state.workoutDetail, detail.maxHR > 0 {
@@ -61,7 +66,6 @@ struct RootView: View {
                     .font(.footnote).bold()
                 Text("\(name): \(minutes) min at \(pct)% of max HR (\(avgBPM) bpm)")
                     .font(.footnote)
-                    .foregroundStyle(.secondary)
             }
             Spacer(minLength: 0)
         }
@@ -97,7 +101,7 @@ struct RootView: View {
     }
 
     /// True until we've ever successfully read a DayState. Once `dayState` is
-    /// non-nil, auth has happened at least once — switch the row to
+    /// non-nil, auth has happened at least once - switch the row to
     /// "Manage in Settings" so the user can revoke.
     private var healthAuthNeeded: Bool { dayState == nil }
 
@@ -137,10 +141,10 @@ struct RootView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Eightful helps you reach your daily 8-point activity target with [Vitality Health](https://www.vitality.co.uk).")
                 Text("Not affiliated with, endorsed by, or connected to Vitality Health Insurance. This is an independent tool.")
-                Text("Your Health data stays on your device. Eightful reads your step count, workouts and heart rate from Apple Health and does all its calculations locally. Nothing is sent to a server — we don't run one.")
+                Text("Your Health data stays on your device. Eightful reads your step count, workouts and heart rate from Apple Health and does all its calculations locally. Nothing is sent to a server - we don't run one.")
+                Text("Read more at [whitelabel.org/eightful](https://whitelabel.org/eightful).")
             }
-            .font(.caption)
-            .foregroundStyle(.secondary)
+            .font(.footnote)
         }
     }
 
@@ -150,7 +154,7 @@ struct RootView: View {
             dayState = state
             authError = nil   // clear any previous error on successful read
         } catch let err as NSError where err.domain == "com.apple.healthkit" && err.code == 5 {
-            // "Authorization not determined" — user hasn't tapped through the
+            // "Authorization not determined" - user hasn't tapped through the
             // HealthKit sheet yet. Not a real error to surface.
             authError = nil
         } catch {
@@ -166,7 +170,7 @@ struct RootView: View {
             healthAuthorized = true
             await refresh()
         } catch {
-            authError = "Permission request failed — try again in a moment."
+            authError = "Permission request failed - try again in a moment."
         }
     }
 
@@ -175,7 +179,7 @@ struct RootView: View {
             let granted = try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
             notificationsAuthorized = granted
         } catch {
-            authError = "Permission request failed — try again in a moment."
+            authError = "Permission request failed - try again in a moment."
         }
     }
 }
@@ -226,7 +230,7 @@ struct DOBRow: View {
                 displayedComponents: .date
             )
             if healthDOB == nil {
-                Text("Not set in Health — pick your DOB so workout scoring can compute your max heart rate (220 − age).")
+                Text("Not set in Health - pick your DOB so workout scoring can compute your max heart rate (220 − age).")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             } else if showRevert {

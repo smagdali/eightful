@@ -120,10 +120,10 @@ public final class HealthKitReader {
         let end = endOverride ?? endOfDay
         let isToday = calendar.isDateInToday(day)
 
-        // Prefer CoreMotion for today's live count ON THE WATCH — HealthKit lags
+        // Prefer CoreMotion for today's live count ON THE WATCH - HealthKit lags
         // behind the motion coprocessor by minutes. On iPhone we keep HealthKit
         // because the phone may be on a desk (CMPedometer = 0) while the watch
-        // is actually the counting device — HealthKit merges those samples.
+        // is actually the counting device - HealthKit merges those samples.
         //
         // If CoreMotion errors transiently (low-power / sensor service blip) we
         // fall back to HealthKit rather than silently reporting zero. A genuine

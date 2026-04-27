@@ -11,7 +11,7 @@ public final class WidgetReloadCoordinator {
     private let defaults: UserDefaults
     private enum Key { static let lastReload = "eightful.widgetReload.v1" }
 
-    /// Fallback interval — minimum time between "nothing interesting
+    /// Fallback interval - minimum time between "nothing interesting
     /// changed" reloads. 15 min keeps us at most ~96 reloads/day, well
     /// inside Apple's budget and plenty fresh.
     public let idleFallback: TimeInterval = 15 * 60

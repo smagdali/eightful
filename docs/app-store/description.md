@@ -26,14 +26,14 @@ Recommended: **1**. Clearest value proposition, no trademark risk.
 ```
 Eightful is a small, focused Apple Watch complication and iPhone companion
 for Vitality Health members chasing the daily 8-point activity target.
-Not affiliated with Vitality — an independent tool that works alongside
+Not affiliated with Vitality - an independent tool that works alongside
 the official Vitality Member app (https://www.vitality.co.uk).
 
 WHAT IT SHOWS
 • A colour-coded step count on your watch face. White below 6,500; red
   when you're within 500 steps of 7,000, 10,000 or 12,500 (push now!);
   orange, yellow and green as you bank 3, 5 and 8 points.
-• The same number, larger, in the iPhone app — plus the points total,
+• The same number, larger, in the iPhone app - plus the points total,
   tier, and a live timestamp.
 • A Week tab on iPhone showing last week's points day by day so you can
   see at a glance where you earned and where you missed.
@@ -47,8 +47,8 @@ WHAT IT DOES
   than steps. Shows the qualifying workout's duration and intensity in
   the app.
 • Fires a single notification per day at a time you choose (default
-  20:00). If you're close to a threshold — 6,500-6,999, 9,500-9,999, or
-  12,000-12,499 — it tells you how many more steps you need to tip over.
+  20:00). If you're close to a threshold - 6,500-6,999, 9,500-9,999, or
+  12,000-12,499 - it tells you how many more steps you need to tip over.
   If you've already hit the top tier, it stays quiet.
 • Adapts its refresh rate: quicker while you're actively walking, idle
   when you're sitting still. Built to be gentle on battery.
@@ -56,7 +56,7 @@ WHAT IT DOES
 WHAT IT DOESN'T DO
 • Sign in, sync with an online account, or send data off your device.
 • Claim any affiliation with any health insurance company.
-• Replace your insurer's official app — it won't log points for you.
+• Replace your insurer's official app - it won't log points for you.
 
 PRIVACY
 Your Apple Health data never leaves your device. Eightful has no server;

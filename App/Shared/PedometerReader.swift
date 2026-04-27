@@ -11,7 +11,7 @@ public final class PedometerReader {
     private var isStreaming = false
 
     public enum ReadError: Error {
-        /// CoreMotion returned nil data with no error — usually means the sensor
+        /// CoreMotion returned nil data with no error - usually means the sensor
         /// service is briefly unavailable (device sleeping, low-power, restart).
         /// Callers should treat this as "unknown", not as "zero".
         case noData

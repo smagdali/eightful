@@ -29,7 +29,7 @@ struct StepsProvider: TimelineProvider {
             let policy: TimelineReloadPolicy
 
             if let fresh {
-                // Good read — persist and coast until the next material change
+                // Good read - persist and coast until the next material change
                 // or ~30 min, whichever comes first. Avoids the "stale 0 sticks
                 // on the face until midnight" failure mode if the next refresh
                 // doesn't happen via observer.

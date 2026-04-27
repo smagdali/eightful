@@ -2,11 +2,11 @@
 
 Real device captures (pixel-accurate, submittable to the App Store too).
 
-- `icon.png` — app icon (1024x1024, SVG source in `design/icon.svg`)
-- `watch-circular.png` — 396x484. Apple Watch face with Eightful in the Infograph circular slot, showing workout-green state (5.9k / 8pt with a ring).
-- `watch-app.png` — 396x484. The Eightful watch app itself showing the big step count, points, heart icon and last-updated timestamp.
-- `iphone-today.png` — 1179x2556. iPhone Today tab with step count, points, and the "8-point goal reached" workout banner with real HIIT details.
-- `iphone-compare.png` — mockup (SVG source alongside). Not yet replaced with a real device shot.
+- `icon.png` - app icon (1024x1024, SVG source in `design/icon.svg`)
+- `watch-circular.png` - 396x484. Apple Watch face with Eightful in the Infograph circular slot, showing 8.3k / 3pt in orange (post build-11, ring removed).
+- `watch-app.png` - 396x484. The Eightful watch app itself showing the big step count, points, heart icon and last-updated timestamp.
+- `iphone-today.png` - 1179x2556. iPhone Today tab with step count, points, and the "8-point goal reached" workout banner with real HIIT details.
+- `iphone-compare.png` - mockup (SVG source alongside). Not yet replaced with a real device shot.
 
 ## Still to capture
 

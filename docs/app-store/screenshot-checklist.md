@@ -2,7 +2,7 @@
 
 Apple requires iPhone screenshots at specific sizes. Apple Watch screenshots
 are separate and also mandatory for watch apps. You don't need screenshots
-for every listed device size — Apple upscales — but you do need the
+for every listed device size - Apple upscales - but you do need the
 largest supported.
 
 ## iPhone
@@ -12,11 +12,11 @@ to ten shots.
 
 Recommended shot list:
 
-1. **Today screen** — ideally showing workout-green banner with the HIIT
+1. **Today screen** - ideally showing workout-green banner with the HIIT
    details (we have this: `docs/website/screenshots/iphone-today.png`)
-2. **Today screen** — a non-green state with a colour-tier number, so
+2. **Today screen** - a non-green state with a colour-tier number, so
    reviewers see the tiering in action
-3. **Week tab** — last week's points day by day, showing different colours
+3. **Week tab** - last week's points day by day, showing different colours
    on different days *(still to capture)*
 4. **Settings** section expanded (nudge time picker, DOB field)
 5. **About** section with the privacy disclaimer visible
@@ -50,5 +50,5 @@ Recommended shot list:
 
 App Store Connect re-orders by filename. Name them `01-today.png`,
 `02-week.png`, etc. The files currently in `docs/website/screenshots/` are
-suitable for direct upload to App Store Connect — they're captured at full
+suitable for direct upload to App Store Connect - they're captured at full
 device resolution.

@@ -38,6 +38,7 @@ struct ReconciliationView: View {
         Section {
             HStack {
                 Button { weekOffset -= 1 } label: { Image(systemName: "chevron.left") }
+                    .buttonStyle(.borderless)
                 Spacer()
                 VStack {
                     Text(weekLabel).font(.headline)
@@ -49,6 +50,7 @@ struct ReconciliationView: View {
                 }
                 Spacer()
                 Button { if weekOffset < 0 { weekOffset += 1 } } label: { Image(systemName: "chevron.right") }
+                    .buttonStyle(.borderless)
                     .disabled(weekOffset >= 0)
             }
         }
@@ -57,15 +59,13 @@ struct ReconciliationView: View {
     private func totalSection(_ week: WeekReconciliation) -> some View {
         Section("Week total") {
             HStack(alignment: .firstTextBaseline) {
-                Text("\(week.calculatedTotal)")
+                Text("\(min(40, week.calculatedTotal))")
                     .font(.system(size: 44, weight: .heavy, design: .rounded))
                 Text("points")
                     .font(.headline)
-                    .foregroundStyle(.secondary)
                 Spacer()
                 Text("of 40 weekly cap")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.subheadline)
             }
             .padding(.vertical, 4)
         }
@@ -85,12 +85,16 @@ struct ReconciliationView: View {
         fmt.dateFormat = "d MMM"
         let start = week.weekStart
         let end = calendar.date(byAdding: .day, value: 6, to: start) ?? start
-        return "\(fmt.string(from: start)) — \(fmt.string(from: end))"
+        return "\(fmt.string(from: start)) - \(fmt.string(from: end))"
     }
 
     private func load() async {
         loading = true
         defer { loading = false }
+        if ScreenshotMode.isActive {
+            await MainActor.run { self.week = ScreenshotMode.sampleWeek(calendar: calendar) }
+            return
+        }
         let w = await HealthKitReader.shared.weekReconciliation(
             containing: currentWeekDate,
             settings: settingsStore.settings,
@@ -108,7 +112,7 @@ private struct DayRow: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(dayLabel).font(.callout).bold()
                 Text("\(formatted(entry.calculated.steps)) steps")
-                    .font(.caption).foregroundStyle(.secondary)
+                    .font(.subheadline)
             }
             Spacer()
             Text("\(entry.calculated.points) pt")

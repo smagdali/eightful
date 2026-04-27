@@ -46,8 +46,8 @@ targets:
         SUPPORTS_MACCATALYST: NO
         SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
         SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
-        CURRENT_PROJECT_VERSION: "8"
-        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "14"
+        MARKETING_VERSION: "1.0"
 
   EightfulWatch:
     type: application
@@ -69,8 +69,8 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: org.whitelabel.eightful.watchkitapp
         INFOPLIST_FILE: App/Watch/Info.plist
         CODE_SIGN_ENTITLEMENTS: App/Watch/EightfulWatch.entitlements
-        CURRENT_PROJECT_VERSION: "8"
-        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "14"
+        MARKETING_VERSION: "1.0"
 
   EightfulComplication:
     type: app-extension
@@ -91,8 +91,8 @@ targets:
         INFOPLIST_FILE: App/Complication/Info.plist
         CODE_SIGN_ENTITLEMENTS: App/Complication/EightfulComplication.entitlements
         SKIP_INSTALL: YES
-        CURRENT_PROJECT_VERSION: "8"
-        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "14"
+        MARKETING_VERSION: "1.0"
 
 schemes:
   Eightful:
