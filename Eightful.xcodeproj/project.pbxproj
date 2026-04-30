@@ -43,6 +43,7 @@
 		B2143989B5D852BCC45F0EA2 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
 		B278A57071639EF42A5A53AA /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		B44B1A0C16D1588A6ED41604 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
+		B7D2EFDC2D6CEA5EDDDF6CDB /* EightfulWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3545FDA4B67CA8B075EBFAD6 /* EightfulWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8EC766C39E5869CF6ABBC26 /* LastStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */; };
 		C5AAB21DF1AB65A571EA652E /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
 		CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
@@ -64,9 +65,27 @@
 			remoteGlobalIDString = D2DDAB8D613BFA0AC3F7C285;
 			remoteInfo = EightfulComplication;
 		};
+		43B6C3B86E3572875C1EC478 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 235BB2F6B0721D37E7A1F91A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B56A62B0104E10131839EC84;
+			remoteInfo = EightfulWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		42A4BCD990EBAE9B68C2BFAE /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B7D2EFDC2D6CEA5EDDDF6CDB /* EightfulWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E8EACF0C7CC5CABAA82FEC8 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,10 +256,12 @@
 				1150A6E2B5BCE976BD1CAD9C /* Sources */,
 				8B96A39E578653B33CD5DFCD /* Resources */,
 				C643BC94DD266BFBD97F3BB0 /* Frameworks */,
+				42A4BCD990EBAE9B68C2BFAE /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B090D4E68C71FA70BF2DA93B /* PBXTargetDependency */,
 			);
 			name = Eightful;
 			packageProductDependencies = (
@@ -431,6 +452,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B090D4E68C71FA70BF2DA93B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B56A62B0104E10131839EC84 /* EightfulWatch */;
+			targetProxy = 43B6C3B86E3572875C1EC478 /* PBXContainerItemProxy */;
+		};
 		B0C654D6B2CB9144B5CA8FB6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2DDAB8D613BFA0AC3F7C285 /* EightfulComplication */;
@@ -443,14 +469,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App/Complication/EightfulComplication.entitlements;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				INFOPLIST_FILE = App/Complication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp.widget;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -531,9 +557,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/Watch/EightfulWatch.entitlements;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				INFOPLIST_FILE = App/Watch/Info.plist;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -547,9 +573,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/Watch/EightfulWatch.entitlements;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				INFOPLIST_FILE = App/Watch/Info.plist;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -564,14 +590,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/iOS/Eightful.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				INFOPLIST_FILE = App/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
@@ -585,14 +611,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App/Complication/EightfulComplication.entitlements;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				INFOPLIST_FILE = App/Complication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.watchkitapp.widget;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -667,14 +693,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/iOS/Eightful.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				INFOPLIST_FILE = App/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;

@@ -43,7 +43,7 @@ Eightful is an independent tool, not affiliated with, endorsed by, or connected 
 
 ## Get it
 
-App store link coming soon.
+[Download Eightful on the App Store](https://apps.apple.com/us/app/eightful/id6764133414)
 
 ## Support my work:
 
