@@ -257,7 +257,7 @@ private struct WeekTable: View {
             } else {
                 Text("\(entry.calculated.points)")
                     .font(.system(size: 22, weight: .heavy, design: .rounded))
-                    .foregroundStyle(entry.calculated.effectiveTier.color)
+                    .foregroundStyle(StepTier.from(points: entry.calculated.points).color)
             }
         }
         .frame(maxWidth: .infinity)

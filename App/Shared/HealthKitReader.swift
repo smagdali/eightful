@@ -80,11 +80,11 @@ public final class HealthKitReader {
         for workout in workouts {
             let durationMinutes = workout.duration / 60.0
             if durationMinutes < 30 { continue }
-            let samples = (try? await heartRateSamples(for: workout)) ?? []
-            let pts = VitalityPoints.fromWorkout(samples: samples, maxHR: maxHR)
+            let hr = (try? await averageHeartRate(for: workout)) ?? nil
+            guard let avgHR = hr else { continue }
+            let pts = VitalityPoints.fromWorkout(durationMinutes: durationMinutes, avgHR: avgHR, maxHR: maxHR)
             if pts == 0 { continue }
             if pts > (best?.points ?? 0) {
-                let avgHR = samples.isEmpty ? 0 : samples.map(\.bpm).reduce(0, +) / Double(samples.count)
                 best = WorkoutGreenDetail(
                     durationMinutes: durationMinutes,
                     avgHR: avgHR,
@@ -98,20 +98,16 @@ public final class HealthKitReader {
         return best
     }
 
-    /// Heart-rate samples within the workout's time range, sorted oldest first.
-    /// Used by `bestQualifyingWorkout` to compute continuous-window thresholds
-    /// (Vitality scores on continuity, not workout-wide average).
-    public func heartRateSamples(for workout: HKWorkout) async throws -> [HeartRateSample] {
+    /// Average heart rate (bpm) across the workout's time range.
+    public func averageHeartRate(for workout: HKWorkout) async throws -> Double? {
         let hrType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
         let predicate = HKQuery.predicateForSamples(withStart: workout.startDate, end: workout.endDate, options: .strictStartDate)
-        let unit = HKUnit.count().unitDivided(by: .minute())
-        let sort = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
 
         return try await withCheckedThrowingContinuation { cont in
-            let q = HKSampleQuery(sampleType: hrType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sort]) { _, samples, error in
+            let q = HKStatisticsQuery(quantityType: hrType, quantitySamplePredicate: predicate, options: .discreteAverage) { _, stats, error in
                 if let error { cont.resume(throwing: error); return }
-                let qSamples = (samples as? [HKQuantitySample]) ?? []
-                cont.resume(returning: qSamples.map { HeartRateSample(timestamp: $0.startDate, bpm: $0.quantity.doubleValue(for: unit)) })
+                let bpm = stats?.averageQuantity()?.doubleValue(for: HKUnit.count().unitDivided(by: .minute()))
+                cont.resume(returning: bpm)
             }
             self.store.execute(q)
         }

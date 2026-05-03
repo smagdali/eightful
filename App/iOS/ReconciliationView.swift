@@ -117,7 +117,7 @@ private struct DayRow: View {
             Spacer()
             Text("\(entry.calculated.points) pt")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
-                .foregroundStyle(entry.calculated.effectiveTier.color)
+                .foregroundStyle(StepTier.from(points: entry.calculated.points).color)
         }
         .padding(.vertical, 2)
     }
