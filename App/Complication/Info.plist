@@ -27,6 +27,8 @@
     </dict>
     <key>NSHealthShareUsageDescription</key>
     <string>Eightful reads your step count, workouts, and heart rate so the complication can show your daily Vitality points.</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>Eightful does not write to Health. This permission isn't requested.</string>
     <key>NSMotionUsageDescription</key>
     <string>Eightful uses the motion sensors so the complication updates in real time.</string>
 </dict>
