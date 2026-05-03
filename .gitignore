@@ -16,3 +16,6 @@ project.xcworkspace/
 
 # HAR captures may contain membership numbers / cookies / tokens
 *.har
+
+# Playwright MCP scratch dir
+.playwright-mcp/

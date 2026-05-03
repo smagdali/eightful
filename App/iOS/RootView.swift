@@ -59,10 +59,11 @@ struct RootView: View {
         let minutes = Int(d.durationMinutes.rounded())
         let avgBPM = Int(d.avgHR.rounded())
         let pct = Int(d.percentOfMax.rounded())
+        let headline = d.points == 8 ? "8-point goal reached" : "\(d.points)-point workout logged"
         HStack(spacing: 8) {
-            Image(systemName: "heart.fill").foregroundStyle(.green)
+            Image(systemName: "heart.fill").foregroundStyle(d.points == 8 ? .green : .orange)
             VStack(alignment: .leading, spacing: 2) {
-                Text("8-point goal reached")
+                Text(headline)
                     .font(.footnote).bold()
                 Text("\(name): \(minutes) min at \(pct)% of max HR (\(avgBPM) bpm)")
                     .font(.footnote)

@@ -61,9 +61,11 @@ public final class HealthKitReader {
         try await steps(from: calendar.startOfDay(for: now), to: now)
     }
 
-    /// Returns the first qualifying workout's details (8 Vitality points) in
-    /// the range, or nil if none qualify.
-    public func qualifyingWorkoutGreen(maxHR: Double, from start: Date, to end: Date) async throws -> WorkoutGreenDetail? {
+    /// Returns the highest-scoring workout in the range (5 or 8 Vitality
+    /// points), or nil if no workout qualifies. Scans every workout because
+    /// Vitality awards points for the single best activity per day, and a
+    /// later 8-pt workout must not be missed in favour of an earlier 5-pt one.
+    public func bestQualifyingWorkout(maxHR: Double, from start: Date, to end: Date) async throws -> WorkoutGreenDetail? {
         let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
 
         let workouts: [HKWorkout] = try await withCheckedThrowingContinuation { cont in
@@ -74,33 +76,42 @@ public final class HealthKitReader {
             self.store.execute(q)
         }
 
+        var best: WorkoutGreenDetail?
         for workout in workouts {
             let durationMinutes = workout.duration / 60.0
             if durationMinutes < 30 { continue }
-            let hr = (try? await averageHeartRate(for: workout)) ?? nil
-            guard let avgHR = hr else { continue }
-            if VitalityPoints.fromWorkout(durationMinutes: durationMinutes, avgHR: avgHR, maxHR: maxHR) == 8 {
-                return WorkoutGreenDetail(
+            let samples = (try? await heartRateSamples(for: workout)) ?? []
+            let pts = VitalityPoints.fromWorkout(samples: samples, maxHR: maxHR)
+            if pts == 0 { continue }
+            if pts > (best?.points ?? 0) {
+                let avgHR = samples.isEmpty ? 0 : samples.map(\.bpm).reduce(0, +) / Double(samples.count)
+                best = WorkoutGreenDetail(
                     durationMinutes: durationMinutes,
                     avgHR: avgHR,
                     maxHR: maxHR,
-                    workoutName: workout.workoutActivityType.name
+                    workoutName: workout.workoutActivityType.name,
+                    points: pts
                 )
+                if pts == 8 { break }
             }
         }
-        return nil
+        return best
     }
 
-    /// Average heart rate (bpm) across the workout's time range.
-    public func averageHeartRate(for workout: HKWorkout) async throws -> Double? {
+    /// Heart-rate samples within the workout's time range, sorted oldest first.
+    /// Used by `bestQualifyingWorkout` to compute continuous-window thresholds
+    /// (Vitality scores on continuity, not workout-wide average).
+    public func heartRateSamples(for workout: HKWorkout) async throws -> [HeartRateSample] {
         let hrType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
         let predicate = HKQuery.predicateForSamples(withStart: workout.startDate, end: workout.endDate, options: .strictStartDate)
+        let unit = HKUnit.count().unitDivided(by: .minute())
+        let sort = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
 
         return try await withCheckedThrowingContinuation { cont in
-            let q = HKStatisticsQuery(quantityType: hrType, quantitySamplePredicate: predicate, options: .discreteAverage) { _, stats, error in
+            let q = HKSampleQuery(sampleType: hrType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sort]) { _, samples, error in
                 if let error { cont.resume(throwing: error); return }
-                let bpm = stats?.averageQuantity()?.doubleValue(for: HKUnit.count().unitDivided(by: .minute()))
-                cont.resume(returning: bpm)
+                let qSamples = (samples as? [HKQuantitySample]) ?? []
+                cont.resume(returning: qSamples.map { HeartRateSample(timestamp: $0.startDate, bpm: $0.quantity.doubleValue(for: unit)) })
             }
             self.store.execute(q)
         }
@@ -149,7 +160,7 @@ public final class HealthKitReader {
 
         let workoutDetail: WorkoutGreenDetail?
         if maxHR > 0 {
-            workoutDetail = (try? await qualifyingWorkoutGreen(maxHR: maxHR, from: startOfDay, to: end)) ?? nil
+            workoutDetail = (try? await bestQualifyingWorkout(maxHR: maxHR, from: startOfDay, to: end)) ?? nil
         } else {
             workoutDetail = nil
         }

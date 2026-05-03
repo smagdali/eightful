@@ -1,19 +1,22 @@
 import Foundation
 
-/// The workout that earned the 8-point "workout green" state, and the
-/// metrics that qualified it. Shown in the iOS Today section so the user
-/// can see *why* the app is green rather than just a green flag.
+/// The best Vitality-scoring workout for the day and the metrics that
+/// qualified it. `points` is 5 (30 min @ 60% max HR) or 8 (30 min @ 70%
+/// or 60 min @ 60%). Shown in the iOS Today section so the user can see
+/// *why* a workout earned points rather than just a flag.
 public struct WorkoutGreenDetail: Equatable, Sendable, Codable {
     public let durationMinutes: Double
     public let avgHR: Double       // bpm
     public let maxHR: Double       // bpm (220 - age at the time)
     public let workoutName: String?
+    public let points: Int         // 5 or 8
 
-    public init(durationMinutes: Double, avgHR: Double, maxHR: Double, workoutName: String? = nil) {
+    public init(durationMinutes: Double, avgHR: Double, maxHR: Double, workoutName: String? = nil, points: Int = 8) {
         self.durationMinutes = durationMinutes
         self.avgHR = avgHR
         self.maxHR = maxHR
         self.workoutName = workoutName
+        self.points = points
     }
 
     public var percentOfMax: Double {
@@ -39,8 +42,10 @@ public struct DayState: Equatable, Sendable, Codable {
         self.timestamp = timestamp
     }
 
-    /// Convenience for tests and call sites that only care about the boolean.
-    public var workoutGreen: Bool { workoutDetail != nil }
+    /// True only when a workout earned the full 8 points - drives the
+    /// "green via workout" visual treatments. A 5-pt workout still
+    /// contributes to `points` but does not flip this flag.
+    public var workoutGreen: Bool { (workoutDetail?.points ?? 0) >= 8 }
 
     public var tier: StepTier { StepTier.from(steps: steps) }
 
@@ -50,9 +55,9 @@ public struct DayState: Equatable, Sendable, Codable {
 
     public var effectiveTier: StepTier { workoutGreen ? .green : tier }
 
-    /// Compute effective points for display: max of step-points and workout 8 (if applicable).
+    /// Per Vitality: only one activity per day counts, the highest-scoring one.
+    /// We take max(steps-points, workout-points) where workout-points is 0/5/8.
     public var points: Int {
-        let stepPoints = VitalityPoints.fromSteps(steps)
-        return workoutGreen ? max(stepPoints, 8) : stepPoints
+        max(VitalityPoints.fromSteps(steps), workoutDetail?.points ?? 0)
     }
 }

@@ -27,6 +27,8 @@
     </dict>
     <key>NSHealthShareUsageDescription</key>
     <string>Eightful reads your step count to display on watch complications.</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>Not used. Eightful does not write to Health.</string>
     <key>NSMotionUsageDescription</key>
     <string>Eightful uses the motion sensors so the complication updates in real time.</string>
 </dict>
