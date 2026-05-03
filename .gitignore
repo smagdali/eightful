@@ -19,3 +19,6 @@ project.xcworkspace/
 
 # Playwright MCP scratch dir
 .playwright-mcp/
+
+# Brainstorming companion
+.superpowers/

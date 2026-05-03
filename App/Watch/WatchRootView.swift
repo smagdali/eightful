@@ -14,7 +14,7 @@ struct WatchRootView: View {
     enum Phase: Equatable { case loading, needsAuth, error(String), ready }
 
     var body: some View {
-        VStack(spacing: 6) {
+        Group {
             switch phase {
             case .loading:
                 ProgressView()
@@ -27,44 +27,22 @@ struct WatchRootView: View {
                     Button("Request again") { Task { await grantAndLoad() } }
                         .buttonStyle(.borderedProminent)
                 }
+                .padding()
             case .error(let msg):
                 Text(msg).font(.caption2).foregroundStyle(.red).multilineTextAlignment(.center)
+                    .padding()
             case .ready:
                 if let s = state {
-                    Text(NumberFormatter.localizedString(from: NSNumber(value: s.steps), number: .decimal))
-                        .font(.system(size: 58, weight: .heavy, design: .rounded))
-                        .foregroundStyle(s.displayColor.color)
-                        .minimumScaleFactor(0.5)
-                        .lineLimit(1)
-                    HStack(spacing: 4) {
-                        Text("\(s.points) pt\(s.points == 1 ? "" : "s")")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundStyle(s.displayColor.color.opacity(0.9))
-                        if s.workoutGreen {
-                            Image(systemName: "heart.fill")
-                                .font(.system(size: 12))
-                                .foregroundStyle(.green)
+                    TabView {
+                        TodayPage(state: s, week: week, lastUpdated: lastUpdated)
+                        if let w = week {
+                            WeekPage(week: w)
                         }
                     }
-                    if let w = week {
-                        WeekTable(week: w)
-                            .padding(.top, 4)
-                        Text("\(min(40, w.calculatedTotal)) / 40 this week")
-                            .font(.system(size: 15, weight: .semibold, design: .rounded))
-                            .foregroundStyle(w.calculatedTotal >= 40 ? .green : .secondary)
-                    }
-                    if let updated = lastUpdated {
-                        Text("Last updated: \(updated, format: .dateTime.hour(.twoDigits(amPM: .omitted)).minute(.twoDigits).second(.twoDigits))")
-                            .font(.system(size: 14, weight: .medium, design: .rounded))
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.75)
-                            .accessibilityLabel("Last updated at \(updated.formatted(.dateTime.hour().minute().second()))")
-                    }
+                    .tabViewStyle(.page)
                 }
             }
         }
-        .padding()
         .task {
             if ScreenshotMode.isActive {
                 state = ScreenshotMode.sampleDayState
@@ -175,6 +153,74 @@ struct WatchRootView: View {
             calendar: cal
         )
         await MainActor.run { self.week = w }
+    }
+}
+
+/// Page 1: today's number, points, weekly total, last-updated.
+private struct TodayPage: View {
+    let state: DayState
+    let week: WeekReconciliation?
+    let lastUpdated: Date?
+
+    var body: some View {
+        VStack(spacing: 6) {
+            Text(NumberFormatter.localizedString(from: NSNumber(value: state.steps), number: .decimal))
+                .font(.system(size: 58, weight: .heavy, design: .rounded))
+                .foregroundStyle(state.displayColor.color)
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
+            HStack(spacing: 4) {
+                Text("\(state.points) pt\(state.points == 1 ? "" : "s")")
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                    .foregroundStyle(state.displayColor.color.opacity(0.9))
+                if state.workoutGreen {
+                    Image(systemName: "heart.fill")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.green)
+                }
+            }
+            if let w = week {
+                Text("\(min(40, w.calculatedTotal)) / 40 this week")
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .foregroundStyle(w.calculatedTotal >= 40 ? .green : .primary)
+            }
+            Spacer(minLength: 0)
+            if let updated = lastUpdated {
+                Text("Last updated: \(updated, format: .dateTime.hour(.twoDigits(amPM: .omitted)).minute(.twoDigits).second(.twoDigits))")
+                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                    .foregroundStyle(.primary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
+                    .accessibilityLabel("Last updated at \(updated.formatted(.dateTime.hour().minute().second()))")
+            }
+        }
+        .padding()
+    }
+}
+
+/// Page 2: Mon-Sun breakdown plus weekly total and "N pts to go".
+private struct WeekPage: View {
+    let week: WeekReconciliation
+
+    var body: some View {
+        let togo = max(0, 40 - week.calculatedTotal)
+        VStack(spacing: 4) {
+            Text("This week")
+                .font(.system(size: 14, weight: .bold, design: .rounded))
+                .foregroundStyle(.primary)
+            WeekTable(week: week)
+                .padding(.top, 4)
+            Spacer(minLength: 0)
+            Text("\(min(40, week.calculatedTotal)) / 40")
+                .font(.system(size: 17, weight: .heavy, design: .rounded))
+                .foregroundStyle(week.calculatedTotal >= 40 ? .green : .primary)
+            if togo > 0 {
+                Text("\(togo) pt\(togo == 1 ? "" : "s") to go")
+                    .font(.system(size: 11, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.primary)
+            }
+        }
+        .padding()
     }
 }
 
