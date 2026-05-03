@@ -24,8 +24,6 @@
     <true/>
     <key>NSHealthShareUsageDescription</key>
     <string>Eightful reads your step count, workouts, and heart rate so it can track progress toward your daily 8-point target and nudge you when you're close to a threshold.</string>
-    <key>NSHealthUpdateUsageDescription</key>
-    <string>Not used. Eightful does not write to Health.</string>
     <key>UILaunchScreen</key>
     <dict/>
     <key>UISupportedInterfaceOrientations</key>
