@@ -255,9 +255,14 @@ private struct WeekTable: View {
                     .font(.system(size: 22, weight: .heavy, design: .rounded))
                     .foregroundStyle(Color(white: 0.4))
             } else {
-                Text("\(entry.calculated.points)")
+                // 0 pts is red for past days (locked in, you missed it) but
+                // white for today (still time to earn). Other values use the
+                // points-tier colour (3 orange / 5 yellow / 8 green).
+                let pts = entry.calculated.points
+                let color: Color = (pts == 0 && isToday) ? .primary : StepTier.from(points: pts).color
+                Text("\(pts)")
                     .font(.system(size: 22, weight: .heavy, design: .rounded))
-                    .foregroundStyle(StepTier.from(points: entry.calculated.points).color)
+                    .foregroundStyle(color)
             }
         }
         .frame(maxWidth: .infinity)

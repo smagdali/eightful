@@ -44,7 +44,7 @@ struct RootView: View {
                             .font(.subheadline)
                     }
                 }
-                if let detail = state.workoutDetail, detail.maxHR > 0 {
+                if let detail = state.workoutDetail, detail.points > 0 {
                     workoutDetailBanner(detail)
                 }
             } else {
@@ -57,15 +57,22 @@ struct RootView: View {
     private func workoutDetailBanner(_ d: WorkoutGreenDetail) -> some View {
         let name = d.workoutName ?? "Workout"
         let minutes = Int(d.durationMinutes.rounded())
-        let avgBPM = Int(d.avgHR.rounded())
-        let pct = Int(d.percentOfMax.rounded())
         let headline = d.points == 8 ? "8-point goal reached" : "\(d.points)-point workout logged"
+        let detail: String = {
+            if d.avgHR > 0 && d.maxHR > 0 {
+                let avgBPM = Int(d.avgHR.rounded())
+                let pct = Int(d.percentOfMax.rounded())
+                return "\(name): \(minutes) min at \(pct)% of max HR (\(avgBPM) bpm)"
+            } else {
+                return "\(name): \(minutes) min"
+            }
+        }()
         HStack(spacing: 8) {
             Image(systemName: "heart.fill").foregroundStyle(d.points == 8 ? .green : .orange)
             VStack(alignment: .leading, spacing: 2) {
                 Text(headline)
                     .font(.footnote).bold()
-                Text("\(name): \(minutes) min at \(pct)% of max HR (\(avgBPM) bpm)")
+                Text(detail)
                     .font(.footnote)
             }
             Spacer(minLength: 0)

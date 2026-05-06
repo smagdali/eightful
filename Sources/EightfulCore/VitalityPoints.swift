@@ -27,4 +27,14 @@ public enum VitalityPoints {
         if meets60 && durationMinutes >= 30 { return 5 }
         return 0
     }
+
+    /// Peloton workouts use a different rule set per Vitality:
+    ///   - 20 min minimum (rounded up to nearest second by caller)
+    ///   - 5 pts base
+    ///   - 8 pts if heart rate is also tracked
+    /// No HR threshold applies - any HR signal at all bumps it to 8.
+    public static func fromPelotonWorkout(durationMinutes: Double, hasHR: Bool) -> Int {
+        guard durationMinutes >= 20 else { return 0 }
+        return hasHR ? 8 : 5
+    }
 }

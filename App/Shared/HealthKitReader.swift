@@ -78,18 +78,35 @@ public final class HealthKitReader {
 
         var best: WorkoutGreenDetail?
         for workout in workouts {
-            let durationMinutes = workout.duration / 60.0
-            if durationMinutes < 30 { continue }
+            let isPeloton = (workout.device?.manufacturer ?? "")
+                .localizedCaseInsensitiveContains("peloton")
             let hr = (try? await averageHeartRate(for: workout)) ?? nil
-            guard let avgHR = hr else { continue }
-            let pts = VitalityPoints.fromWorkout(durationMinutes: durationMinutes, avgHR: avgHR, maxHR: maxHR)
+
+            let pts: Int
+            let durationMinutes: Double
+            if isPeloton {
+                // Peloton: 20-min threshold, 5 pts no-HR / 8 pts with HR.
+                // Round up to nearest second so 19m 59.93s counts as 20m.
+                // Doesn't depend on maxHR, so works even without DOB.
+                durationMinutes = ceil(workout.duration) / 60.0
+                pts = VitalityPoints.fromPelotonWorkout(
+                    durationMinutes: durationMinutes,
+                    hasHR: hr != nil
+                )
+            } else {
+                durationMinutes = workout.duration / 60.0
+                guard maxHR > 0, durationMinutes >= 30, let avgHR = hr else { continue }
+                pts = VitalityPoints.fromWorkout(durationMinutes: durationMinutes, avgHR: avgHR, maxHR: maxHR)
+            }
+
             if pts == 0 { continue }
             if pts > (best?.points ?? 0) {
+                let name = isPeloton ? "Peloton ride" : workout.workoutActivityType.name
                 best = WorkoutGreenDetail(
                     durationMinutes: durationMinutes,
-                    avgHR: avgHR,
+                    avgHR: hr ?? 0,
                     maxHR: maxHR,
-                    workoutName: workout.workoutActivityType.name,
+                    workoutName: name,
                     points: pts
                 )
                 if pts == 8 { break }
@@ -154,12 +171,11 @@ public final class HealthKitReader {
         let dob = settings.dobOverride ?? dateOfBirth(calendar: calendar)
         let maxHR: Double = dob.map { MaxHeartRate.from(dateOfBirth: $0, now: startOfDay, calendar: calendar) } ?? 0
 
-        let workoutDetail: WorkoutGreenDetail?
-        if maxHR > 0 {
-            workoutDetail = (try? await bestQualifyingWorkout(maxHR: maxHR, from: startOfDay, to: end)) ?? nil
-        } else {
-            workoutDetail = nil
-        }
+        // Always scan workouts: Peloton scoring doesn't need maxHR, so we
+        // pick those up even when DOB isn't set. Generic HR-based scoring
+        // still requires maxHR > 0 (enforced inside bestQualifyingWorkout).
+        let workoutDetail: WorkoutGreenDetail? =
+            (try? await bestQualifyingWorkout(maxHR: maxHR, from: startOfDay, to: end)) ?? nil
 
         return DayState(steps: steps, workoutDetail: workoutDetail, timestamp: startOfDay)
     }

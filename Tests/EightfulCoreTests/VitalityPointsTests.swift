@@ -61,4 +61,30 @@ final class VitalityPointsTests: XCTestCase {
         XCTAssertEqual(VitalityPoints.fromWorkout(durationMinutes: 60, avgHR: 0, maxHR: 185), 0)
         XCTAssertEqual(VitalityPoints.fromWorkout(durationMinutes: 60, avgHR: 150, maxHR: 0), 0)
     }
+
+    // MARK: - Peloton
+
+    func testPeloton20MinWithHRearns8() {
+        XCTAssertEqual(VitalityPoints.fromPelotonWorkout(durationMinutes: 20, hasHR: true), 8)
+    }
+
+    func testPeloton20MinNoHRearns5() {
+        XCTAssertEqual(VitalityPoints.fromPelotonWorkout(durationMinutes: 20, hasHR: false), 5)
+    }
+
+    func testPeloton19MinEarnsNothing() {
+        XCTAssertEqual(VitalityPoints.fromPelotonWorkout(durationMinutes: 19.99, hasHR: true), 0)
+    }
+
+    func testPeloton45MinWithHRearns8() {
+        // No upper threshold; 8 is the cap.
+        XCTAssertEqual(VitalityPoints.fromPelotonWorkout(durationMinutes: 45, hasHR: true), 8)
+    }
+
+    func testPelotonIgnoresHRPercentage() {
+        // Vitality's Peloton rule has no HR threshold - any HR signal earns 8.
+        // The function takes hasHR rather than HR values so callers can't
+        // accidentally re-introduce a percentage check.
+        XCTAssertEqual(VitalityPoints.fromPelotonWorkout(durationMinutes: 20, hasHR: true), 8)
+    }
 }
