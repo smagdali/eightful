@@ -26,8 +26,14 @@ struct StepsProvider: TimelineProvider {
             return
         }
         Task {
-            let state = await readState() ?? DayState(steps: 0, workoutGreen: false)
-            let week = await readWeekPoints() ?? LastStateCache.shared.loadWeekPoints() ?? 0
+            let freshState = await readState()
+            let state = freshState ?? DayState(steps: 0, workoutGreen: false)
+            let week: Int
+            if freshState != nil {
+                week = await readWeekPoints() ?? LastStateCache.shared.loadWeekPoints() ?? 0
+            } else {
+                week = LastStateCache.shared.loadWeekPoints() ?? 0
+            }
             completion(StepsEntry(date: Date(), state: state, weekPoints: week))
         }
     }
@@ -47,7 +53,8 @@ struct StepsProvider: TimelineProvider {
         Task {
             let now = Date()
             let calendar = Calendar.current
-            let startOfTomorrow = calendar.startOfDay(for: now.addingTimeInterval(24 * 60 * 60))
+            let tomorrow = calendar.date(byAdding: .day, value: 1, to: now) ?? now.addingTimeInterval(24 * 60 * 60)
+            let startOfTomorrow = calendar.startOfDay(for: tomorrow)
 
             let fresh = await readState()
             let state: DayState
@@ -76,15 +83,21 @@ struct StepsProvider: TimelineProvider {
 
             // Week total: try fresh, fall back to cached, then to 0. Persist
             // freshly-computed values so cache-fallback renders aren't blank.
-            let freshWeek = await readWeekPoints()
+            let freshWeek: Int?
+            if fresh == nil {
+                freshWeek = nil
+            } else {
+                freshWeek = await readWeekPoints()
+            }
             if let freshWeek { LastStateCache.shared.saveWeekPoints(freshWeek) }
             let weekPoints = freshWeek ?? LastStateCache.shared.loadWeekPoints() ?? 0
+            let midnightWeekPoints = isSameMondayWeek(now, startOfTomorrow, calendar: calendar) ? weekPoints : 0
 
             let entry = StepsEntry(date: now, state: state, weekPoints: weekPoints)
             let midnightEntry = StepsEntry(
                 date: startOfTomorrow,
                 state: DayState(steps: 0, workoutGreen: false, timestamp: startOfTomorrow),
-                weekPoints: weekPoints   // visually fine; will refresh next reload
+                weekPoints: midnightWeekPoints
             )
             completion(Timeline(entries: [entry, midnightEntry], policy: policy))
         }
@@ -110,5 +123,12 @@ struct StepsProvider: TimelineProvider {
         // substitutes zero. So a literal 0 here might mean "all days failed".
         // We accept that: treat 0 as a legitimate (if depressing) week total.
         return week.calculatedTotal
+    }
+
+    private func isSameMondayWeek(_ lhs: Date, _ rhs: Date, calendar baseCalendar: Calendar = .current) -> Bool {
+        var cal = baseCalendar
+        cal.firstWeekday = 2
+        return cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: lhs) ==
+            cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: rhs)
     }
 }

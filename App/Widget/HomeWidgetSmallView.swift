@@ -35,7 +35,7 @@ struct HomeWidgetSmallView: View {
 
             Spacer(minLength: 0)
 
-            Text(state.timestamp, format: .dateTime.hour().minute())
+            Text(entry.date, format: .dateTime.hour().minute())
                 .font(.system(size: 10))
                 .foregroundStyle(.secondary)
         }
