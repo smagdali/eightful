@@ -44,8 +44,14 @@ struct HomeWidgetSmallView: View {
     }
 }
 
+/// Cached so we don't reallocate on every widget render. WidgetKit recomputes
+/// views aggressively; NumberFormatter setup is non-trivial.
+private let stepsFormatter: NumberFormatter = {
+    let f = NumberFormatter()
+    f.numberStyle = .decimal
+    return f
+}()
+
 private func formatted(_ n: Int) -> String {
-    let fmt = NumberFormatter()
-    fmt.numberStyle = .decimal
-    return fmt.string(from: NSNumber(value: n)) ?? String(n)
+    stepsFormatter.string(from: NSNumber(value: n)) ?? String(n)
 }

@@ -27,11 +27,18 @@ enum ScreenshotMode {
     }
 
     /// Call from the host app at launch so the widget extension picks up
-    /// the same flag. Idempotent and cheap.
-    static func syncFromLaunchArguments() {
+    /// the same flag. Returns true if the flag's value actually changed
+    /// (so the caller can decide whether a widget reload is warranted).
+    /// Idempotent and cheap.
+    @discardableResult
+    static func syncFromLaunchArguments() -> Bool {
         #if DEBUG
         let active = ProcessInfo.processInfo.arguments.contains("--screenshots")
+        let previous = defaults?.bool(forKey: key) ?? false
         defaults?.set(active, forKey: key)
+        return active != previous
+        #else
+        return false
         #endif
     }
 
