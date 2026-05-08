@@ -14,6 +14,8 @@ public final class LastStateCache {
 
     private static let appGroup = "group.org.whitelabel.eightful"
     private static let key = "eightful.lastState.v1"
+    private static let weekPointsKey = "eightful.lastWeekPoints.v1"
+    private static let weekPointsTimestampKey = "eightful.lastWeekPoints.timestamp.v1"
 
     private let defaults: UserDefaults
 
@@ -32,5 +34,26 @@ public final class LastStateCache {
               calendar.isDate(state.timestamp, inSameDayAs: now)
         else { return nil }
         return state
+    }
+
+    /// Cache the Mon-Sun running total alongside `DayState` so a cache-fallback
+    /// render of the widget can still show "X this week" instead of zero.
+    public func saveWeekPoints(_ points: Int, now: Date = Date()) {
+        defaults.set(points, forKey: Self.weekPointsKey)
+        defaults.set(now, forKey: Self.weekPointsTimestampKey)
+    }
+
+    /// Returns the cached week total only if it was written within the same
+    /// Mon-Sun week as `now`. Crossing into a new week invalidates it.
+    public func loadWeekPoints(calendar baseCalendar: Calendar = .current, now: Date = Date()) -> Int? {
+        guard defaults.object(forKey: Self.weekPointsKey) != nil,
+              let savedAt = defaults.object(forKey: Self.weekPointsTimestampKey) as? Date
+        else { return nil }
+        var cal = baseCalendar
+        cal.firstWeekday = 2
+        let savedWeek = cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: savedAt)
+        let nowWeek = cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now)
+        guard savedWeek == nowWeek else { return nil }
+        return defaults.integer(forKey: Self.weekPointsKey)
     }
 }

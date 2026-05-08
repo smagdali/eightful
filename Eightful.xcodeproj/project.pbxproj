@@ -7,52 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03CF4B2E5A3844025D3EEEE3 /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
 		03D3015C3F1C05574149788E /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4F69E774024529FC1E96074C /* EightfulCore */; };
+		106A9A60F8F2FF7AA71349E8 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
 		194CD4D3155D0FA5F33AE4E6 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		1AB7DC4D69270C2418F85A22 /* EightfulComplication.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1F0A3A3348896205A324C0D5 /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
+		221854AEC3E739A6FC6396E2 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
+		22EE92059428D130EB4B0B82 /* EightfulWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 554B67FDB373DC201C604EB5 /* EightfulWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		251C1AA9078651FCDE54EBA6 /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
+		27788DFF50DAA727245327AC /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76A690526B43CA42D8D3EE /* StepsProvider.swift */; };
+		28CB776E76325B56A2C62783 /* EightfulWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EC753AE7E6B76B0F51117F /* EightfulWidget.swift */; };
 		293D853139CA9A6211B5F040 /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
 		35064D0C31194269C7D099D4 /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
-		37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */; };
 		3AFAB8721194D71938E61688 /* ReconciliationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F38C72AEC1333427BE6974 /* ReconciliationView.swift */; };
 		3B81C98B572FA8CF3B40EF20 /* EightfulWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */; };
 		43CBD49E80E4E04CFFDAE1B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3323984B81DBB71E33C1A2FF /* Assets.xcassets */; };
+		49B26D9C1F052708C8BBCBBF /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		4ACD579E401BF7B4C1218AAE /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
 		4CEC233B309BEC99F33AD18C /* EightfulApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D2DFC304448E7BCA7536F9 /* EightfulApp.swift */; };
 		4CF76C3C3F6CE16C5C486F4E /* ReconciliationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */; };
+		53C2AA64C31B3D0D1B7DEF95 /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
 		5467FE4C5EBE170B1A69C0D3 /* LastStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */; };
 		54D46C6C738244E94A0A5F6C /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = E04E2704AC49CC60D243F7AA /* EightfulCore */; };
 		5CBFE1EB73511AEB8FD7D508 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
+		5CCFC63247CA1F4CC6BBF454 /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76A690526B43CA42D8D3EE /* StepsProvider.swift */; };
 		5E3143954FB32EAAC7904C38 /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
 		609F34D24EB62704FC82E5D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E981759119105230460617A /* Assets.xcassets */; };
 		627AE66E140E9860B8EDEE04 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
+		63E06318BF60FB154FD8A070 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
 		685942B0173191031AB491FB /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
 		7543E86268A059A44F5AF578 /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5BE455088401FCAA1F7C6F42 /* EightfulCore */; };
 		76890318DD2729F0F8A639AC /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8111B0C99426D04775C869B8 /* TierColor.swift */; };
 		7A771BBF6F8EEBDEB3A22469 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494592A19BB9E5D09B7C64EE /* RootView.swift */; };
 		82A5563A735404BD2B80FC16 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
+		8586F876DFF27A82FBDBE5C7 /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
 		8625D6F77725890B49472ACF /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
 		920BA8477AD9FA69DDF857C8 /* LastStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */; };
 		93DFF3CC89B658AA41F220E5 /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8111B0C99426D04775C869B8 /* TierColor.swift */; };
 		97CF77B55268017026C78D78 /* EightfulWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E210304AA364A8F3D59694 /* EightfulWidget.swift */; };
 		9DBEF2EC0B599B8BE02C5D84 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD0985B79FEB723C1ECA56F /* MainTabView.swift */; };
 		A2C14B91DA751D65D659DAB4 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
+		A9AED87159B04798C4EF9521 /* HomeWidgetSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77847FF52ED3C85117A58F73 /* HomeWidgetSmallView.swift */; };
 		AA3EFCC829C0C426DD409C1B /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A4BAAC1E2B5FA29FC7A8C /* NotificationScheduler.swift */; };
 		B0042B8E1478FA0BCD0D063B /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8111B0C99426D04775C869B8 /* TierColor.swift */; };
 		B2143989B5D852BCC45F0EA2 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E88A4FD67D169DC688AD23 /* HistoryStore.swift */; };
 		B278A57071639EF42A5A53AA /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97473905B694747640847F9F /* HealthKitReader.swift */; };
 		B44B1A0C16D1588A6ED41604 /* PedometerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21865445C7BFCF7A40E743AA /* PedometerReader.swift */; };
+		B5FE0AD0E62DC5A5F2372F7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C513116303CA088CE6FBBC92 /* Assets.xcassets */; };
 		B7D2EFDC2D6CEA5EDDDF6CDB /* EightfulWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3545FDA4B67CA8B075EBFAD6 /* EightfulWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B83DDF695131E570E781762F /* TierColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8111B0C99426D04775C869B8 /* TierColor.swift */; };
 		B8EC766C39E5869CF6ABBC26 /* LastStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */; };
+		C2D52B0BA60AB026C592CDDB /* ScreenshotMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1B632C537B2314ED53EDE /* ScreenshotMode.swift */; };
 		C5AAB21DF1AB65A571EA652E /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
 		CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
 		CE0C134BB34976CA6AF44769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C77FD7D314CFD3E33610AF7 /* Assets.xcassets */; };
 		D0D46EDD5155EFE63EB4A3DB /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
 		D306CE1943C301EA135C53CA /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE72392956158DCF5A7E261 /* SettingsStore.swift */; };
 		DBA991A78C79463C90179BA4 /* ScreenshotMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1B632C537B2314ED53EDE /* ScreenshotMode.swift */; };
+		DDB7F97C23A312EBE8DA08B4 /* LastStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */; };
 		E571CB0B0D36A0396D6F7A70 /* ScreenshotMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1B632C537B2314ED53EDE /* ScreenshotMode.swift */; };
+		E5DC96C9E1865F025D884A10 /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76A690526B43CA42D8D3EE /* StepsProvider.swift */; };
 		E6EE83FEE12C0348457DAA90 /* ScreenshotMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1B632C537B2314ED53EDE /* ScreenshotMode.swift */; };
+		E876B4A9AE3BB4819A8E1122 /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76A690526B43CA42D8D3EE /* StepsProvider.swift */; };
+		F187D0CFB32993E41CBEFF1B /* EightfulCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6DCA50E5EFCCD1219F90B2 /* EightfulCore */; };
 		F532B5B5FDE7CEDD7C13A5FB /* ComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */; };
 		F64FDC6F3E23ED01C50A257E /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98D51A4B5F9159516D1F5AE /* WatchRootView.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +89,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = B56A62B0104E10131839EC84;
 			remoteInfo = EightfulWatch;
+		};
+		DF5A47C86ECD69AA43D84166 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 235BB2F6B0721D37E7A1F91A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEAB1973E185A5A7A5207AE1;
+			remoteInfo = EightfulWidget;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -97,6 +122,17 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B92EEDBD95AEEF7A1A65DC34 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				22EE92059428D130EB4B0B82 /* EightfulWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -112,21 +148,25 @@
 		3545FDA4B67CA8B075EBFAD6 /* EightfulWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EightfulWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E210304AA364A8F3D59694 /* EightfulWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWidget.swift; sourceTree = "<group>"; };
 		494592A19BB9E5D09B7C64EE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		554B67FDB373DC201C604EB5 /* EightfulWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = EightfulWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconciliationStore.swift; sourceTree = "<group>"; };
+		77847FF52ED3C85117A58F73 /* HomeWidgetSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWidgetSmallView.swift; sourceTree = "<group>"; };
 		7EE72392956158DCF5A7E261 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		8111B0C99426D04775C869B8 /* TierColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierColor.swift; sourceTree = "<group>"; };
 		82F38C72AEC1333427BE6974 /* ReconciliationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconciliationView.swift; sourceTree = "<group>"; };
 		84C1B632C537B2314ED53EDE /* ScreenshotMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotMode.swift; sourceTree = "<group>"; };
+		84EC753AE7E6B76B0F51117F /* EightfulWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWidget.swift; sourceTree = "<group>"; };
 		8E981759119105230460617A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EightfulComplication.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		97473905B694747640847F9F /* HealthKitReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitReader.swift; sourceTree = "<group>"; };
 		99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastStateCache.swift; sourceTree = "<group>"; };
-		B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProvider.swift; sourceTree = "<group>"; };
-		C216E9C7291B6F9795814F9D /* watch-stepcounter */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "watch-stepcounter"; path = .; sourceTree = SOURCE_ROOT; };
+		C513116303CA088CE6FBBC92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWatchApp.swift; sourceTree = "<group>"; };
 		D98D51A4B5F9159516D1F5AE /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationView.swift; sourceTree = "<group>"; };
+		EF76A690526B43CA42D8D3EE /* StepsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProvider.swift; sourceTree = "<group>"; };
 		F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTypeName.swift; sourceTree = "<group>"; };
+		FF6E6208DB93B4371D446680 /* eightful */ = {isa = PBXFileReference; lastKnownFileType = folder; name = eightful; path = .; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +175,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7543E86268A059A44F5AF578 /* EightfulCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C50F1AC264D924E01FD1C32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F187D0CFB32993E41CBEFF1B /* EightfulCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,13 +205,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05EEFDD698A6BF274E9995FE /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				C513116303CA088CE6FBBC92 /* Assets.xcassets */,
+				84EC753AE7E6B76B0F51117F /* EightfulWidget.swift */,
+				77847FF52ED3C85117A58F73 /* HomeWidgetSmallView.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		1FADB73C88046DDD8FED6D8A /* Complication */ = {
 			isa = PBXGroup;
 			children = (
 				8E981759119105230460617A /* Assets.xcassets */,
 				EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */,
 				42E210304AA364A8F3D59694 /* EightfulWidget.swift */,
-				B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */,
 			);
 			path = Complication;
 			sourceTree = "<group>";
@@ -194,7 +251,7 @@
 		7165C8C09F29283DD7C4F7CF /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				C216E9C7291B6F9795814F9D /* watch-stepcounter */,
+				FF6E6208DB93B4371D446680 /* eightful */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -205,6 +262,7 @@
 				20856B70F85C0A7EBA257356 /* Eightful.app */,
 				8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */,
 				3545FDA4B67CA8B075EBFAD6 /* EightfulWatch.app */,
+				554B67FDB373DC201C604EB5 /* EightfulWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -219,6 +277,7 @@
 				5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */,
 				84C1B632C537B2314ED53EDE /* ScreenshotMode.swift */,
 				7EE72392956158DCF5A7E261 /* SettingsStore.swift */,
+				EF76A690526B43CA42D8D3EE /* StepsProvider.swift */,
 				8111B0C99426D04775C869B8 /* TierColor.swift */,
 				13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */,
 				F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */,
@@ -233,6 +292,7 @@
 				5C8AEBF81143B63FB4CCCF0C /* iOS */,
 				E6C02CF93DA7B4BD31B2C837 /* Shared */,
 				32615921E6891BAFA8A20FBE /* Watch */,
+				05EEFDD698A6BF274E9995FE /* Widget */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -256,12 +316,14 @@
 				1150A6E2B5BCE976BD1CAD9C /* Sources */,
 				8B96A39E578653B33CD5DFCD /* Resources */,
 				C643BC94DD266BFBD97F3BB0 /* Frameworks */,
+				B92EEDBD95AEEF7A1A65DC34 /* Embed Foundation Extensions */,
 				42A4BCD990EBAE9B68C2BFAE /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				B090D4E68C71FA70BF2DA93B /* PBXTargetDependency */,
+				E96A466ED302BAB7EAFD7AA2 /* PBXTargetDependency */,
 			);
 			name = Eightful;
 			packageProductDependencies = (
@@ -313,6 +375,26 @@
 			productReference = 8E9E8349FBC05DBAE39A2ABF /* EightfulComplication.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		EEAB1973E185A5A7A5207AE1 /* EightfulWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CED1380ABC9911AE91C692F /* Build configuration list for PBXNativeTarget "EightfulWidget" */;
+			buildPhases = (
+				AFD17991CDE7453EEFDC286B /* Sources */,
+				E516E94EC1ED4F7D143C38DB /* Resources */,
+				3C50F1AC264D924E01FD1C32 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EightfulWidget;
+			packageProductDependencies = (
+				3D6DCA50E5EFCCD1219F90B2 /* EightfulCore */,
+			);
+			productName = EightfulWidget;
+			productReference = 554B67FDB373DC201C604EB5 /* EightfulWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -331,6 +413,10 @@
 						ProvisioningStyle = Automatic;
 					};
 					D2DDAB8D613BFA0AC3F7C285 = {
+						DevelopmentTeam = 86H54WCPYP;
+						ProvisioningStyle = Automatic;
+					};
+					EEAB1973E185A5A7A5207AE1 = {
 						DevelopmentTeam = 86H54WCPYP;
 						ProvisioningStyle = Automatic;
 					};
@@ -356,6 +442,7 @@
 				90534C0B17FD9F8636C624C7 /* Eightful */,
 				D2DDAB8D613BFA0AC3F7C285 /* EightfulComplication */,
 				B56A62B0104E10131839EC84 /* EightfulWatch */,
+				EEAB1973E185A5A7A5207AE1 /* EightfulWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -385,6 +472,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E516E94EC1ED4F7D143C38DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5FE0AD0E62DC5A5F2372F7D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -404,6 +499,7 @@
 				7A771BBF6F8EEBDEB3A22469 /* RootView.swift in Sources */,
 				E571CB0B0D36A0396D6F7A70 /* ScreenshotMode.swift in Sources */,
 				CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */,
+				27788DFF50DAA727245327AC /* StepsProvider.swift in Sources */,
 				76890318DD2729F0F8A639AC /* TierColor.swift in Sources */,
 				35064D0C31194269C7D099D4 /* WidgetReloadCoordinator.swift in Sources */,
 				251C1AA9078651FCDE54EBA6 /* WorkoutTypeName.swift in Sources */,
@@ -422,6 +518,7 @@
 				4ACD579E401BF7B4C1218AAE /* ReconciliationStore.swift in Sources */,
 				E6EE83FEE12C0348457DAA90 /* ScreenshotMode.swift in Sources */,
 				D0D46EDD5155EFE63EB4A3DB /* SettingsStore.swift in Sources */,
+				E5DC96C9E1865F025D884A10 /* StepsProvider.swift in Sources */,
 				93DFF3CC89B658AA41F220E5 /* TierColor.swift in Sources */,
 				F64FDC6F3E23ED01C50A257E /* WatchRootView.swift in Sources */,
 				5E3143954FB32EAAC7904C38 /* WidgetReloadCoordinator.swift in Sources */,
@@ -442,10 +539,30 @@
 				1F0A3A3348896205A324C0D5 /* ReconciliationStore.swift in Sources */,
 				DBA991A78C79463C90179BA4 /* ScreenshotMode.swift in Sources */,
 				D306CE1943C301EA135C53CA /* SettingsStore.swift in Sources */,
-				37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */,
+				5CCFC63247CA1F4CC6BBF454 /* StepsProvider.swift in Sources */,
 				B0042B8E1478FA0BCD0D063B /* TierColor.swift in Sources */,
 				685942B0173191031AB491FB /* WidgetReloadCoordinator.swift in Sources */,
 				293D853139CA9A6211B5F040 /* WorkoutTypeName.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFD17991CDE7453EEFDC286B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28CB776E76325B56A2C62783 /* EightfulWidget.swift in Sources */,
+				49B26D9C1F052708C8BBCBBF /* HealthKitReader.swift in Sources */,
+				106A9A60F8F2FF7AA71349E8 /* HistoryStore.swift in Sources */,
+				A9AED87159B04798C4EF9521 /* HomeWidgetSmallView.swift in Sources */,
+				DDB7F97C23A312EBE8DA08B4 /* LastStateCache.swift in Sources */,
+				63E06318BF60FB154FD8A070 /* PedometerReader.swift in Sources */,
+				03CF4B2E5A3844025D3EEEE3 /* ReconciliationStore.swift in Sources */,
+				C2D52B0BA60AB026C592CDDB /* ScreenshotMode.swift in Sources */,
+				221854AEC3E739A6FC6396E2 /* SettingsStore.swift in Sources */,
+				E876B4A9AE3BB4819A8E1122 /* StepsProvider.swift in Sources */,
+				B83DDF695131E570E781762F /* TierColor.swift in Sources */,
+				8586F876DFF27A82FBDBE5C7 /* WidgetReloadCoordinator.swift in Sources */,
+				53C2AA64C31B3D0D1B7DEF95 /* WorkoutTypeName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,9 +579,34 @@
 			target = D2DDAB8D613BFA0AC3F7C285 /* EightfulComplication */;
 			targetProxy = 09600DBA0FE3401AB8B165AD /* PBXContainerItemProxy */;
 		};
+		E96A466ED302BAB7EAFD7AA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEAB1973E185A5A7A5207AE1 /* EightfulWidget */;
+			targetProxy = DF5A47C86ECD69AA43D84166 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1FF6F663B90E2D4F97242DFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App/Widget/EightfulWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 27;
+				INFOPLIST_FILE = App/Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.4;
+				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		2EEDEC14A6CE5EBAB00D630A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -482,6 +624,26 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		77D3CB0B83148D223FDCFA50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App/Widget/EightfulWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 27;
+				INFOPLIST_FILE = App/Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.4;
+				PRODUCT_BUNDLE_IDENTIFIER = org.whitelabel.eightful.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -713,6 +875,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2CED1380ABC9911AE91C692F /* Build configuration list for PBXNativeTarget "EightfulWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FF6F663B90E2D4F97242DFC /* Debug */,
+				77D3CB0B83148D223FDCFA50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		42D18812713B804BAB6B10DA /* Build configuration list for PBXNativeTarget "Eightful" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -759,6 +930,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3D6DCA50E5EFCCD1219F90B2 /* EightfulCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EightfulCore;
+		};
 		4F69E774024529FC1E96074C /* EightfulCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EightfulCore;

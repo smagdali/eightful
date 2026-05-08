@@ -1,24 +1,49 @@
 import WidgetKit
 import EightfulCore
+import Foundation
 
 struct StepsEntry: TimelineEntry {
     let date: Date
     let state: DayState
+    /// Sum of `points` across the current Mon-Sun week (including today).
+    /// Capped by Vitality at 40/week, but we don't clamp here - leave that
+    /// to the view layer if it ever wants to display "of 40".
+    let weekPoints: Int
 }
 
 struct StepsProvider: TimelineProvider {
     func placeholder(in context: Context) -> StepsEntry {
-        StepsEntry(date: Date(), state: DayState(steps: 8_432, workoutGreen: false))
+        StepsEntry(date: Date(), state: DayState(steps: 8_432, workoutGreen: false), weekPoints: 23)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (StepsEntry) -> Void) {
+        if ScreenshotMode.isActive {
+            completion(StepsEntry(
+                date: Date(),
+                state: ScreenshotMode.sampleDayState,
+                weekPoints: ScreenshotMode.sampleWeek().calculatedTotal
+            ))
+            return
+        }
         Task {
             let state = await readState() ?? DayState(steps: 0, workoutGreen: false)
-            completion(StepsEntry(date: Date(), state: state))
+            let week = await readWeekPoints() ?? LastStateCache.shared.loadWeekPoints() ?? 0
+            completion(StepsEntry(date: Date(), state: state, weekPoints: week))
         }
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<StepsEntry>) -> Void) {
+        if ScreenshotMode.isActive {
+            // Static photogenic entry; refresh hourly. No HealthKit, no cache writes.
+            let now = Date()
+            let entry = StepsEntry(
+                date: now,
+                state: ScreenshotMode.sampleDayState,
+                weekPoints: ScreenshotMode.sampleWeek().calculatedTotal
+            )
+            completion(Timeline(entries: [entry], policy: .after(now.addingTimeInterval(3600))))
+            return
+        }
         Task {
             let now = Date()
             let calendar = Calendar.current
@@ -49,10 +74,17 @@ struct StepsProvider: TimelineProvider {
                 policy = .after(now.addingTimeInterval(5 * 60))
             }
 
-            let entry = StepsEntry(date: now, state: state)
+            // Week total: try fresh, fall back to cached, then to 0. Persist
+            // freshly-computed values so cache-fallback renders aren't blank.
+            let freshWeek = await readWeekPoints()
+            if let freshWeek { LastStateCache.shared.saveWeekPoints(freshWeek) }
+            let weekPoints = freshWeek ?? LastStateCache.shared.loadWeekPoints() ?? 0
+
+            let entry = StepsEntry(date: now, state: state, weekPoints: weekPoints)
             let midnightEntry = StepsEntry(
                 date: startOfTomorrow,
-                state: DayState(steps: 0, workoutGreen: false, timestamp: startOfTomorrow)
+                state: DayState(steps: 0, workoutGreen: false, timestamp: startOfTomorrow),
+                weekPoints: weekPoints   // visually fine; will refresh next reload
             )
             completion(Timeline(entries: [entry, midnightEntry], policy: policy))
         }
@@ -66,5 +98,17 @@ struct StepsProvider: TimelineProvider {
         } catch {
             return nil
         }
+    }
+
+    /// Sum of points across this Mon-Sun week. Nil on HK failure.
+    private func readWeekPoints() async -> Int? {
+        let week = await HealthKitReader.shared.weekReconciliation(
+            containing: Date(),
+            settings: SettingsStore.shared.settings
+        )
+        // weekReconciliation never throws - it swallows per-day errors and
+        // substitutes zero. So a literal 0 here might mean "all days failed".
+        // We accept that: treat 0 as a legitimate (if depressing) week total.
+        return week.calculatedTotal
     }
 }
