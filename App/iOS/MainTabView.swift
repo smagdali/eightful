@@ -7,6 +7,8 @@ struct MainTabView: View {
                 .tabItem { Label("Today", systemImage: "figure.walk") }
             ReconciliationView()
                 .tabItem { Label("Week", systemImage: "chart.bar.doc.horizontal") }
+            SettingsView()
+                .tabItem { Label("Settings", systemImage: "gear") }
         }
     }
 }

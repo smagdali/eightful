@@ -15,6 +15,7 @@
 		293D853139CA9A6211B5F040 /* WorkoutTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F265DCD83B83FD83FDBD62C4 /* WorkoutTypeName.swift */; };
 		35064D0C31194269C7D099D4 /* WidgetReloadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E934B20DCF09D5E1DE5120 /* WidgetReloadCoordinator.swift */; };
 		37A812900B68A68ABA301774 /* StepsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */; };
+		39B72E8814AC95F258CA8334 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5781F41CFEBE50FA559792 /* SettingsView.swift */; };
 		3AFAB8721194D71938E61688 /* ReconciliationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F38C72AEC1333427BE6974 /* ReconciliationView.swift */; };
 		3B81C98B572FA8CF3B40EF20 /* EightfulWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */; };
 		43CBD49E80E4E04CFFDAE1B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3323984B81DBB71E33C1A2FF /* Assets.xcassets */; };
@@ -112,6 +113,7 @@
 		3545FDA4B67CA8B075EBFAD6 /* EightfulWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EightfulWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E210304AA364A8F3D59694 /* EightfulWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWidget.swift; sourceTree = "<group>"; };
 		494592A19BB9E5D09B7C64EE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		4DF319F1D3F8F1DAF20D976C /* sleepy-dewdney-84874e */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "sleepy-dewdney-84874e"; path = .; sourceTree = SOURCE_ROOT; };
 		5C223AE5B6B196587EE2D267 /* ReconciliationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconciliationStore.swift; sourceTree = "<group>"; };
 		7EE72392956158DCF5A7E261 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		8111B0C99426D04775C869B8 /* TierColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierColor.swift; sourceTree = "<group>"; };
@@ -122,7 +124,7 @@
 		97473905B694747640847F9F /* HealthKitReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitReader.swift; sourceTree = "<group>"; };
 		99E7E1FDC4EE95B2FC14A123 /* LastStateCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastStateCache.swift; sourceTree = "<group>"; };
 		B57158A7514DDC8D8A19EFF7 /* StepsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProvider.swift; sourceTree = "<group>"; };
-		C216E9C7291B6F9795814F9D /* watch-stepcounter */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "watch-stepcounter"; path = .; sourceTree = SOURCE_ROOT; };
+		CD5781F41CFEBE50FA559792 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D2163A3B0A7BE0370CB354C0 /* EightfulWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightfulWatchApp.swift; sourceTree = "<group>"; };
 		D98D51A4B5F9159516D1F5AE /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		EC0E7780FFA7D8E8295EC15B /* ComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				0C2A4BAAC1E2B5FA29FC7A8C /* NotificationScheduler.swift */,
 				82F38C72AEC1333427BE6974 /* ReconciliationView.swift */,
 				494592A19BB9E5D09B7C64EE /* RootView.swift */,
+				CD5781F41CFEBE50FA559792 /* SettingsView.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -194,7 +197,7 @@
 		7165C8C09F29283DD7C4F7CF /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				C216E9C7291B6F9795814F9D /* watch-stepcounter */,
+				4DF319F1D3F8F1DAF20D976C /* sleepy-dewdney-84874e */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				7A771BBF6F8EEBDEB3A22469 /* RootView.swift in Sources */,
 				E571CB0B0D36A0396D6F7A70 /* ScreenshotMode.swift in Sources */,
 				CB68C52D4A48A815EFA97C0D /* SettingsStore.swift in Sources */,
+				39B72E8814AC95F258CA8334 /* SettingsView.swift in Sources */,
 				76890318DD2729F0F8A639AC /* TierColor.swift in Sources */,
 				35064D0C31194269C7D099D4 /* WidgetReloadCoordinator.swift in Sources */,
 				251C1AA9078651FCDE54EBA6 /* WorkoutTypeName.swift in Sources */,
