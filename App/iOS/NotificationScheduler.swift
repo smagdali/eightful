@@ -19,29 +19,19 @@ public final class NotificationScheduler {
         observer = HealthKitReader.shared.observeUpdates { [weak self] in
             Task { await self?.evaluate() }
         }
-        // Also evaluate on a timer around the report time (in case observer has been quiet).
-        scheduleFallbackRefresh()
+        // Earlier builds scheduled a daily empty notification at 19:55 intending
+        // to "kick" evaluation. iOS doesn't run code on local-notification fire,
+        // so it just showed an empty banner to users (issue #1). Cancel any that
+        // were already scheduled by an upgrade-from build.
+        UNUserNotificationCenter.current().removePendingNotificationRequests(
+            withIdentifiers: ["eightful.fallback.evaluate"]
+        )
     }
 
     public func stop() {
         if let q = observer { HKHealthStore().stop(q) }
         observer = nil
         isStarted = false
-    }
-
-    private func scheduleFallbackRefresh() {
-        let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        content.title = "Eightful"
-        content.body = "" // silent trigger; real notification content fires from evaluate()
-        content.sound = nil
-
-        let comps = DateComponents(hour: 19, minute: 55) // kicks evaluation ahead of 8pm
-        let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: true)
-        let req = UNNotificationRequest(identifier: "eightful.fallback.evaluate", content: content, trigger: trigger)
-        // The notification itself does nothing visible; observer-driven evaluation is the real path.
-        // Keep silent/low-noise: we just rely on HKObserverQuery which iOS typically delivers reliably.
-        center.add(req, withCompletionHandler: nil)
     }
 
     public func evaluate(now: Date = Date()) async {

@@ -24,11 +24,27 @@ public enum NotificationCopy {
                 )
             }
             let points = VitalityPoints.fromSteps(state.steps)
+            let tier = state.tier.rawValue.capitalized
+            let body: String
+            if let next = nextTierGap(steps: state.steps) {
+                body = "\(tier) tier, \(points) point\(points == 1 ? "" : "s"). \(formatSteps(next.gap)) steps to \(next.points) points."
+            } else {
+                body = "\(tier) tier, \(points) point\(points == 1 ? "" : "s")."
+            }
             return Message(
                 title: "\(formatSteps(state.steps)) steps today",
-                body: "\(state.tier.rawValue.capitalized) tier, \(points) point\(points == 1 ? "" : "s")."
+                body: body
             )
         }
+    }
+
+    /// Steps remaining to the next points tier, and the points value at that
+    /// threshold. Returns nil when the user is already at the top tier (8 pts).
+    static func nextTierGap(steps: Int) -> (gap: Int, points: Int)? {
+        if steps < 7_000  { return (7_000 - steps,  3) }
+        if steps < 10_000 { return (10_000 - steps, 5) }
+        if steps < 12_500 { return (12_500 - steps, 8) }
+        return nil
     }
 
     public static func nudge(zone: NudgeZone, steps: Int?) -> Message {
