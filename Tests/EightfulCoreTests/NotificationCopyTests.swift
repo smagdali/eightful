@@ -8,46 +8,40 @@ final class NotificationCopyTests: XCTestCase {
         return f.date(from: s)!
     }
 
-    // MARK: - .report copy includes step count and distance to next tier
+    // MARK: - .report copy: single-line "X steps - Y points - Z more to N points"
 
     func testReportInRedIncludesGapTo7k() {
         let state = DayState(steps: 5_902, workoutGreen: false, timestamp: date("2026-05-14T19:30:00Z"))
         let msg = NotificationCopy.message(for: .report(state))
         XCTAssertNotNil(msg)
-        XCTAssertEqual(msg?.title, "5,902 steps today")
-        XCTAssertEqual(msg?.body, "Red tier, 0 points. 1,098 steps to 3 points.")
+        XCTAssertEqual(msg?.title, "5,902 steps - 0 points - 1,098 more to 3 points")
+        XCTAssertEqual(msg?.body, "")
     }
 
     func testReportInOrangeIncludesGapTo10k() {
         let state = DayState(steps: 7_345, workoutGreen: false, timestamp: date("2026-05-14T19:30:00Z"))
         let msg = NotificationCopy.message(for: .report(state))
-        XCTAssertEqual(msg?.title, "7,345 steps today")
-        XCTAssertEqual(msg?.body, "Orange tier, 3 points. 2,655 steps to 5 points.")
+        XCTAssertEqual(msg?.title, "7,345 steps - 3 points - 2,655 more to 5 points")
     }
 
     func testReportInYellowIncludesGapTo12500() {
         let state = DayState(steps: 11_010, workoutGreen: false, timestamp: date("2026-05-14T19:30:00Z"))
         let msg = NotificationCopy.message(for: .report(state))
-        XCTAssertEqual(msg?.title, "11,010 steps today")
-        XCTAssertEqual(msg?.body, "Yellow tier, 5 points. 1,490 steps to 8 points.")
+        XCTAssertEqual(msg?.title, "11,010 steps - 5 points - 1,490 more to 8 points")
     }
 
-    func testReportInGreenViaWorkoutOmitsGap() {
-        let detail = WorkoutGreenDetail(durationMinutes: 35, avgHR: 140, maxHR: 185, workoutName: "HIIT", points: 8)
-        let state = DayState(steps: 3_200, workoutDetail: detail, timestamp: date("2026-05-14T19:30:00Z"))
+    func testReportAtTopTierOmitsGap() {
+        // Decision logic suppresses .report once isGreen is true (steps>=12,500
+        // OR workoutGreen), but the copy guards against the case defensively.
+        let state = DayState(steps: 13_500, workoutGreen: false, timestamp: date("2026-05-14T19:30:00Z"))
         let msg = NotificationCopy.message(for: .report(state))
-        XCTAssertEqual(msg?.title, "Green via workout")
-        XCTAssertEqual(msg?.body, "Full 8 points already locked in. 3,200 steps so far today.")
+        XCTAssertEqual(msg?.title, "13,500 steps - 8 points")
     }
 
-    func testReportSingularPointHasCorrectGrammar() {
-        // 1 point doesn't actually happen with the current scoring (jumps 0→3),
-        // but the singular branch is still exercised defensively if scoring
-        // ever changes.
+    func testReportAt7kBoundary() {
         let state = DayState(steps: 7_000, workoutGreen: false, timestamp: date("2026-05-14T19:30:00Z"))
         let msg = NotificationCopy.message(for: .report(state))
-        // 7,000 = 3 points, plural
-        XCTAssertEqual(msg?.body, "Orange tier, 3 points. 3,000 steps to 5 points.")
+        XCTAssertEqual(msg?.title, "7,000 steps - 3 points - 3,000 more to 5 points")
     }
 
     // MARK: - nextTierGap helper

@@ -17,23 +17,17 @@ public enum NotificationCopy {
             return nudge(zone: zone, steps: nil)
 
         case .report(let state):
-            if state.workoutGreen {
+            let points = VitalityPoints.fromSteps(state.steps)
+            let pointsText = "\(points) point\(points == 1 ? "" : "s")"
+            if let next = nextTierGap(steps: state.steps) {
                 return Message(
-                    title: "Green via workout",
-                    body: "Full 8 points already locked in. \(formatSteps(state.steps)) steps so far today."
+                    title: "\(formatSteps(state.steps)) steps - \(pointsText) - \(formatSteps(next.gap)) more to \(next.points) points",
+                    body: ""
                 )
             }
-            let points = VitalityPoints.fromSteps(state.steps)
-            let tier = state.tier.rawValue.capitalized
-            let body: String
-            if let next = nextTierGap(steps: state.steps) {
-                body = "\(tier) tier, \(points) point\(points == 1 ? "" : "s"). \(formatSteps(next.gap)) steps to \(next.points) points."
-            } else {
-                body = "\(tier) tier, \(points) point\(points == 1 ? "" : "s")."
-            }
             return Message(
-                title: "\(formatSteps(state.steps)) steps today",
-                body: body
+                title: "\(formatSteps(state.steps)) steps - \(pointsText)",
+                body: ""
             )
         }
     }
