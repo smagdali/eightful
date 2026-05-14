@@ -24,8 +24,9 @@ watch-stepcounter/
   App/
     iOS/         (Eightful app - phone)
     Watch/       (EightfulWatch app)
-    Complication/(EightfulComplication - widget extension)
-    Shared/      (HealthKitReader, SettingsStore, HistoryStore, TierColor)
+    Complication/(EightfulComplication - watch widget extension)
+    Widget/      (EightfulWidget - iOS home-screen widget)
+    Shared/      (HealthKitReader, SettingsStore, HistoryStore, TierColor, StepsProvider)
   project.yml                                                # xcodegen spec
   Eightful.xcodeproj                                     # Generated. Regenerate via `xcodegen`.
 ```
@@ -86,6 +87,12 @@ swift test
 ```
 
 All 35 tests should pass. This covers the pure logic (tiers, points, zones, notification decision, history rollover) - the HealthKit/WidgetKit glue is not unit-tested because it requires an XCTest host target. Those paths are verified by on-device testing from the checklist above.
+
+## Credits
+
+Thanks to **Adrian Lansdown ([@yayadrian](https://github.com/yayadrian))** for contributing:
+- The iOS home-screen widget (`App/Widget/`, `.systemSmall` family, shares `StepsProvider` with the watch complication).
+- The dedicated Settings tab on iOS (nudge toggle, time picker, date of birth).
 
 ## One more thing
 

@@ -126,6 +126,7 @@ struct RootView: View {
                 Text("Your Health data stays on your device. Eightful reads your step count, workouts and heart rate from Apple Health and does all its calculations locally. Nothing is sent to a server - we don't run one.")
                 Text("Eightful only sees what's in Apple Health. Vitality also awards points for activities that sync directly to them - parkrun, partner gyms - so your Vitality total may be higher than what's shown here on those days.")
                 Text("Peloton support is experimental: rides recorded with your Apple Watch are detected via the bike's manufacturer tag, and scored on [Vitality's Peloton rules](https://www.vitality.co.uk/support/peloton/faqs/) (20 min minimum, 5 pts / 8 pts with HR). Please report rides that score differently from your Vitality statement.")
+                Text("Home-screen widget and Settings tab contributed by [Adrian Lansdown](https://github.com/yayadrian). Thank you.")
                 Text("Read more at [whitelabel.org/eightful](https://whitelabel.org/eightful).")
             }
             .font(.footnote)
