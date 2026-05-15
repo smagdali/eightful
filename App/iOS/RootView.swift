@@ -38,7 +38,7 @@ struct RootView: View {
                     Spacer()
                     Text("\(state.points) pt\(state.points == 1 ? "" : "s")")
                         .font(.headline)
-                        .foregroundStyle(state.effectiveTier.color)
+                        .foregroundStyle(state.displayColor.color)
                 }
                 if let detail = state.workoutDetail, detail.points > 0 {
                     workoutDetailBanner(detail)
