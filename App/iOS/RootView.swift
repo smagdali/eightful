@@ -31,17 +31,14 @@ struct RootView: View {
     private var statusSection: some View {
         Section("Today") {
             if let state = dayState {
-                HStack(alignment: .top) {
+                HStack(alignment: .firstTextBaseline) {
                     Text(NumberFormatter.localizedString(from: NSNumber(value: state.steps), number: .decimal))
                         .font(.system(size: 36, weight: .bold, design: .rounded))
                         .foregroundStyle(state.displayColor.color)
                     Spacer()
-                    VStack(alignment: .trailing, spacing: 2) {
-                        Text("\(state.points) pt\(state.points == 1 ? "" : "s")")
-                            .font(.headline)
-                        Text(state.effectiveTier.rawValue.capitalized)
-                            .font(.subheadline)
-                    }
+                    Text("\(state.points) pt\(state.points == 1 ? "" : "s")")
+                        .font(.headline)
+                        .foregroundStyle(state.effectiveTier.color)
                 }
                 if let detail = state.workoutDetail, detail.points > 0 {
                     workoutDetailBanner(detail)
